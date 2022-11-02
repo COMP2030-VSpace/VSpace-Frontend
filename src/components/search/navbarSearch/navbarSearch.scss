@@ -1,0 +1,56 @@
+// navbarSearch.scss
+
+@import '../../../scss/variables.scss';
+
+
+.navbar-search{
+    height: 3rem;
+    width: 27%;
+
+    position: absolute;
+    right: 0;
+
+    &:before{
+        content: "";
+        top: -8px;
+        bottom: 0;
+        height: 5rem;
+        background: #cd3c3f;
+        position: absolute;
+        display: block;
+        left: -2.1875rem;
+        right: -62.5rem;
+        -webkit-transform: skew(20deg,0);
+        -moz-transform: skew(20deg,0);
+        -ms-transform: skew(20deg,0);
+        -o-transform: skew(20deg,0);
+        z-index: 0;
+    }
+
+    .wrapper{
+        position: absolute;
+        bottom: 0.5rem;
+
+        input{
+            border: 0;
+            border-radius: 1.875rem;
+            font-size: .8125rem;
+            height: 1.6875rem;
+            padding: 0 0.9375rem 0 2.1875rem;
+            width: 13.125rem;
+            color: #3e3e3e;
+        }
+
+        span{
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+}

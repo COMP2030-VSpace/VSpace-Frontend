@@ -4,6 +4,13 @@
 
 .home {
     h1 {
-        color: $red;
+        // color: $red;
+    }
+
+    .main{
+        background: red;
+        padding: 0 $primary-padding;
+        // width: 100%;
+        height: 70vh;
     }
 }

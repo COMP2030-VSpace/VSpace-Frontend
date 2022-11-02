@@ -1,0 +1,89 @@
+// navbar.scss
+
+@import '../../scss/variables.scss';
+
+.navbar-container {
+    height: 12rem;
+    background-color: red;
+
+    .navbar-top{
+        width: 100%;
+        height: 27%;
+        background: $primary-blue;
+        position: relative;
+    }
+
+    .navbar-body{
+        // width: 100%;
+        height: 46%;
+        background: #ffffff;
+        padding: 0 $primary-padding;
+        display: flex;
+        flex-direction: row;
+
+
+        .wrapper{
+            height: 50%;
+            position: absolute;
+            bottom: 0.8rem;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left{
+            height: 100%;
+            position: relative;
+            flex-basis: 40%;
+
+            display: flex;
+            flex-direction: row;
+
+            img{
+                height: 100%;
+                // position: absolute;
+                // bottom: 0.6rem;
+            }
+
+            .address{
+                margin-top: 1px;
+                height: 94%;
+                line-height: 2.5rem;
+                font-size: 0.9rem;
+
+                margin-left: 0.5rem;
+                padding-left: 0.5rem;
+                border-left: 1px solid red;
+            }
+        }
+
+        .right{
+            height: 100%;
+            width: 60%;
+
+            position: relative;
+
+            .wrapper{
+                position: absolute;
+                right: 0;
+
+                display: flex;
+                align-items: center;
+            }
+
+            .item{
+                margin-left: 5rem;
+            }
+
+            .item:first-child{
+                margin-left: 0;
+            }
+        }
+    }
+
+    .navbar-footer {
+        width: 100%;
+        height: 27%;
+        background: #000000;
+    }
+}
