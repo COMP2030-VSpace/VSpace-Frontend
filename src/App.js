@@ -1,14 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css';
 import Home from './pages/home/Home';
+import Register from './pages/register/Register';
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Home/>} />
-      {/* <Route path='/orders' element={<Orders />} />
-      <Route path='/products' element={<Products />} />
-      <Route path='/customers' element={<Customers />} /> */}
+      <Route path='/register' element={<Register/>} />
     </Routes>
   );
 }

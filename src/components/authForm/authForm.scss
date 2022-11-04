@@ -1,0 +1,46 @@
+// authForm.scss
+
+.auth-form{
+    height: 30rem;
+    width: 40vw;
+
+    // background-color: red;
+
+    margin-top: 7rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    .header{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 2.5rem;
+        color: #000000;
+        margin-bottom: 3rem;
+    }
+
+    .form-input{
+        margin-top: 2rem;
+
+        &:nth-child(2){
+            margin-top: 0;
+        }
+
+        input{
+            width: 25.5rem;
+            height: 2rem;
+
+            border: 1px solid #3D3D3D;
+            border-radius: 0.25rem;
+
+            padding: 0.3rem 0 0.3rem 1.5rem;
+        }
+
+        input[type=text]{
+            outline: none;
+        }
+    }
+}
