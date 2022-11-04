@@ -8,9 +8,59 @@
     }
 
     .main{
-        background: red;
+        margin-top: 1.5rem;
         padding: 0 $primary-padding;
         // width: 100%;
         height: 70vh;
+
+        display: flex;
+        flex-direction: row;
+
+        .header{
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+            padding-left: 1rem;
+
+            width: 55%;
+
+            h3{
+                color: $primary-blue;
+            }
+        }
+
+
+        .left{
+            flex-basis: 50%;
+            
+            .item{
+                .header{
+                    width: 75%;
+                }
+
+                margin-top: 2rem;
+            }
+
+            .item:first-child{
+                margin-top: 0;
+            }
+        }
+
+        .right{
+            .item{
+                .header{
+                    width: 75%;
+                }
+
+                margin-top: 2rem;
+            }
+
+            .item:first-child{
+                margin-top: 0;
+            }
+
+            flex-grow: 1;
+            padding-left: $primary-padding;
+            // background-color: blue;
+            border-left: 2.5px solid $primary-red;
+        }
     }
 }
