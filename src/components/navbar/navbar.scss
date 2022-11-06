@@ -55,6 +55,10 @@
                 padding-left: 0.5rem;
                 border-left: 1px solid red;
             }
+
+            &:hover{
+                cursor: pointer;
+            }
         }
 
         .right{
@@ -73,6 +77,10 @@
 
             .item{
                 margin-left: 5rem;
+
+                &:hover{
+                    cursor: pointer;
+                }
             }
 
             .item:first-child{

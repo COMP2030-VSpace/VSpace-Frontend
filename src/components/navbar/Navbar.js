@@ -50,6 +50,11 @@ const Navbar = (props) => {
     }
 
 
+    const moveTo = (page) => {
+        window.location.href = page;
+    }
+
+
     return (
         <div className="navbar-container">
             <div className="navbar-top">
@@ -65,11 +70,11 @@ const Navbar = (props) => {
 
                 <div className="right">
                     <div className="wrapper">
-                        <div className="item">
+                        <div className="item" onClick={() => moveTo("./")}>
                             Home
                         </div>
 
-                        <div className="item">
+                        <div className="item" onClick={() => moveTo("./register")}>
                             Register
                         </div>
 

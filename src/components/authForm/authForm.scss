@@ -37,10 +37,24 @@
             border-radius: 0.25rem;
 
             padding: 0.3rem 0 0.3rem 1.5rem;
+
+            font-size: 0.9rem;
         }
 
         input[type=text]{
             outline: none;
+        }
+    }
+
+    .auth-help{
+        width: 27rem;
+        border-top: 1px solid #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .item{
+            margin-top: 0.7rem;
         }
     }
 }

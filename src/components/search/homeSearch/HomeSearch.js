@@ -16,7 +16,7 @@ const HomeSearch = (props)=>{
                 </div>
 
                 <div className='search-input'>
-                    <div class="button">
+                    <div class="tmp-button">
                         Search
                     </div>
 
