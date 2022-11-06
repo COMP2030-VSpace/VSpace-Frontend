@@ -39,10 +39,12 @@
                 margin-top: 2rem;
                 
                 .item-main{
-                    margin-right: 0.5rem;
-                    opacity: 0.5;
-                    line-height: 1.2rem;
+                    font-weight: 300;
+                    line-height: 1.25rem;
                     font-size: 1rem;
+                    font-weight: 300;
+                  
+                    color: #3E3E3E;
                 }
                 .submit-button{
                     left: 14rem;
@@ -91,10 +93,14 @@
                 .item-main{
                     ul{
                         list-style-type: none;
+                        margin: 0;
+                        padding: 0;
                         margin-right: 0.5rem;
-                        opacity: 0.5;
-                        line-height: 1.2rem;
+                        margin-top: 1.25rem;
+                        line-height: 1.8rem;
                         font-size: 1rem;
+                        font-weight: 300;
+                        color: #3E3E3E;
                     }
                 }
 
@@ -108,10 +114,10 @@
 
             .collections{
                 margin: 1rem 3.5rem 0.5rem 0;
-                opacity: 0.7;
                 display: flex;
                 justify-content: flex-end;
                 font-size: 0.8rem;
+                line-height: 20px;
                 color: #cd3c3f;
                 font-weight: 700;
             }
