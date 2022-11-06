@@ -18,13 +18,18 @@
 
         .header{
             border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
-            padding-left: 1rem;
 
             width: 55%;
 
             h3{
                 color: $primary-blue;
+                padding-left: 1rem;
             }
+        }
+
+
+        .item{
+            width: 75%;
         }
 
 
@@ -33,7 +38,7 @@
             
             .item{
                 .header{
-                    width: 75%;
+                    width: 100%;
                 }
 
                 margin-top: 2rem;
@@ -45,7 +50,16 @@
                     font-weight: 300;
                   
                     color: #3E3E3E;
+
+                    padding-left: 1rem;
                 }
+
+                &:first-child{
+                    .item-main{
+                        padding-left: 0;
+                    }
+                }
+
                 .submit-button{
                     left: 14rem;
                     border: none;
@@ -85,7 +99,7 @@
         .right{
             .item{
                 .header{
-                    width: 75%;
+                    width: 100%;
                 }
 
                 margin-top: 2rem;
@@ -102,6 +116,19 @@
                         font-weight: 300;
                         color: #3E3E3E;
                     }
+
+                    padding-left: 1rem;
+                }
+
+
+                .collections{
+                    margin: 1rem 0 0.5rem 0;
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 0.8rem;
+                    line-height: 20px;
+                    color: #cd3c3f;
+                    font-weight: 700;
                 }
 
                
@@ -111,16 +138,6 @@
                 margin-top: 0;
             }
 
-
-            .collections{
-                margin: 1rem 3.5rem 0.5rem 0;
-                display: flex;
-                justify-content: flex-end;
-                font-size: 0.8rem;
-                line-height: 20px;
-                color: #cd3c3f;
-                font-weight: 700;
-            }
 
             flex-grow: 1;
             padding-left: $primary-padding;
