@@ -21,7 +21,6 @@
             width: 100%;
 
             position: relative;
-
             margin-left: 0.5rem;
             
             .button{
@@ -47,9 +46,9 @@
                 &:hover{
                     cursor: pointer;
                 }
+            
             }
 
-            
     
             input{
                 width: 100%;
@@ -69,6 +68,54 @@
             input[type=search] {
                 -webkit-appearance: textfield;
                 outline-offset: -2px;
+            }
+        }
+    }
+
+    .home-textLink{
+
+        ul{
+            list-style-type: none;
+            background-color: none;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 0;
+            overflow: hidden;
+
+            li{
+                float:left;
+            }
+            a{
+                line-height: 1.25rem;
+                display: inline-block;;
+                text-align: center;
+                text-decoration: none;
+                color: #3E3E3E;
+                font-size: 0.9rem;
+                opacity: 0.7;
+                line-height: 1.2rem;
+            }
+            a:hover {
+                cursor: pointer;
+              }
+
+            .service:after{
+                content: '\007C';
+                opacity: 0.7;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+
+            }
+
+            .journal:after{
+                content: '\007C';
+                opacity: 0.7;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+
+            }
+            .advanced{
+                margin-left: 27%;
             }
         }
     }
