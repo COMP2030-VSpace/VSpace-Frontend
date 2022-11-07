@@ -22,14 +22,20 @@ const HomeSearch = (props)=>{
 
                     <input autocomplete="off" type="search" placeholder="Search"/>
                 </div>
-            <div className ="home-textLink">
-                <ul>
-                    <li className="service"><a href="#service">Services and Tools</a></li>
-                    <li className="journal"><a href="#journal">Journal titles</a></li>
-                    <li  className="data"><a href="#data">Databases</a></li>  
-                    <li className="advanced"><a href="#contact">Advanced search</a></li>
-                </ul>
+            <div className='navi'>
+                <div className ="home-textLink">
+                    <ul>
+                        <li><a href="#service">Services and Tools</a></li>
+                        <li><a href="#journal">Journal titles</a></li>
+                        <li><a href="#data">Databases</a></li>  
+                    </ul>
+                </div>
+                
+                <div className ="advanced">
+                    <a href="#advanced">Advanced search</a>
+                </div>
             </div>
+            
                 
            
             </div>
