@@ -23,13 +23,14 @@
 
             h3{
                 color: $primary-blue;
-                padding-left: 1rem;
+                padding-left: 0.5rem;
             }
         }
 
 
         .item{
             width: 75%;
+            height: 34vh;
         }
 
 
@@ -51,7 +52,7 @@
                   
                     color: #3E3E3E;
 
-                    padding-left: 1rem;
+                    padding-left: 0.5rem;
                 }
 
                 &:first-child{
@@ -117,12 +118,12 @@
                         color: #3E3E3E;
                     }
 
-                    padding-left: 1rem;
+                    padding-left: 0.5rem;
                 }
 
 
                 .collections{
-                    margin: 1rem 0 0.5rem 0;
+                    margin: 0.5rem 0;
                     display: flex;
                     justify-content: flex-end;
                     font-size: 0.8rem;
