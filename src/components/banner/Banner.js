@@ -3,7 +3,7 @@ import {useEffect, createRef, useContext, useState} from 'react';
 import './banner.scss';
 
 // import assets
-import sample_banner from "../../assets/sample/banner/banner.png";
+import sample_banner from "../../assets/sample/banner/banner_2.png";
 
 // import components;
 
