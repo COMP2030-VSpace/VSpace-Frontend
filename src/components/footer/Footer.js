@@ -60,15 +60,15 @@ const Footer = (props) => {
         </div>
 
         <div className="social-links">
-          <ul >
+          <ul>
             <li>
-              <img src={fb} />
+              <img src={fb} width="49" />
             </li>
             <li>
-              <img src={yt} />
+              <img src={yt} width="55" />
             </li>
             <li>
-              <img src={mail} />
+              <img src={mail} width="50" />
             </li>
           </ul>
         </div>
