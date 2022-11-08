@@ -90,7 +90,7 @@ const Navbar = (props) => {
             </div>
 
             <div className="navbar-footer">
-
+        
             </div>
         </div>
     )
