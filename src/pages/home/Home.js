@@ -16,6 +16,7 @@ const Home = (props) => {
         <Banner></Banner>
 
         <div className="main">
+
           <div className="left">
             <div className="item">
               <div className="header">
@@ -33,6 +34,8 @@ const Home = (props) => {
               <div className="item-main"></div>
             </div>
           </div>
+
+
           <div className="right">
             <div className="item">
               <div className="header">
@@ -50,9 +53,12 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+
       <div className="footer">
         <Footer></Footer>
       </div>
+
+
     </div>
   );
 };
