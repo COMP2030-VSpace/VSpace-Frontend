@@ -15,50 +15,81 @@ const Home = (props) => {
         <Navbar></Navbar>
         <Banner></Banner>
 
+
+
+
         <div className="main">
+            <div className="left">
+                <div className='item'>
+                    <div className="header">
+                        <h3>Search</h3>
+                    </div>
+                    <div className="item-main">
+                        <HomeSearch></HomeSearch>
+                    </div>
+                </div>
 
-          <div className="left">
-            <div className="item">
-              <div className="header">
-                <h3>Search</h3>
-              </div>
-              <div className="item-main">
-                <HomeSearch></HomeSearch>
-              </div>
+
+                <div className='item'>
+                    <div className="header">
+                        <h3>Submit your contribution</h3>
+                    </div>
+                    <div className="item-main">
+                        <p>Sumbit your document, research paper, image, data set and more into VinUni's digital respository.</p>
+                    </div>
+                    <div>
+                        <button className="submit-button">Submit your work</button>
+                        <p className='submit-text'>How to submit?</p>
+                    </div>
+                </div>
             </div>
 
-            <div className="item">
-              <div className="header">
-                <h3>Submit your contribution</h3>
-              </div>
-              <div className="item-main"></div>
-            </div>
-          </div>
+            <div className="right">
+                <div className='item'>
+                    <div className="header">
+                        <h3>Browse by</h3>
+                    </div>
+                    <div className="item-main">
+                        <ul> 
+                            <li>Communities & Collections</li>
+                            <li>Issue Dates</li>
+                            <li>Tittles</li>
+                            <li>Authors</li>
+                            <li>Subjects</li>
+                        </ul>
+                    </div>
 
+                    <div className = "collections">
+                        <span>View all collections</span>
+                    </div>
+                </div>
 
-          <div className="right">
-            <div className="item">
-              <div className="header">
-                <h3>Browse by</h3>
-              </div>
-              <div className="item-main"></div>
-            </div>
+                <div className='item'>
+                    <div className="header">
+                        <h3>Browse Collections</h3>
+                    </div>
 
-            <div className="item">
-              <div className="header">
-                <h3>Browse Collections</h3>
-              </div>
-              <div className="item-main"></div>
+                    <div className="item-main">
+                        <ul> 
+                            <li>College of Business & Management</li>
+                            <li>College of Engineering & Computer Science</li>
+                            <li>College of Health Science</li>
+                            <li>College of Arts & Science</li>
+                            <li>Smart Health Centers</li>
+                        </ul>
+                    </div>
+
+                    <div className = "collections">
+                        <span>View all collections</span>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+
+        <div className="footer">
+          <Footer></Footer>
         </div>
       </div>
-
-      <div className="footer">
-        <Footer></Footer>
-      </div>
-
-
     </div>
   );
 };
