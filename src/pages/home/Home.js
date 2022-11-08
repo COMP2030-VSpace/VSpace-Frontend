@@ -70,7 +70,7 @@ const Home = (props)=>{
                                 <li>College of Engineering & Computer Science</li>
                                 <li>College of Health Science</li>
                                 <li>College of Arts & Science</li>
-                                <li>Smart Health Center</li>
+                                <li>Smart Health Centers</li>
                             </ul>
                         </div>
                         <div className = "collections">
