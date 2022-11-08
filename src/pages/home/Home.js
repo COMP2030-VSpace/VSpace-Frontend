@@ -15,6 +15,9 @@ const Home = (props)=>{
             <Navbar></Navbar>
             <Banner></Banner>
 
+
+
+
             <div className="main">
                 <div className="left">
                     <div className='item'>
@@ -39,8 +42,8 @@ const Home = (props)=>{
                             <p className='submit-text'>How to submit?</p>
                         </div>
                     </div>
-
                 </div>
+
                 <div className="right">
                     <div className='item'>
                         <div className="header">
@@ -55,6 +58,7 @@ const Home = (props)=>{
                                 <li>Subjects</li>
                             </ul>
                         </div>
+
                         <div className = "collections">
                             <span>View all collections</span>
                         </div>
@@ -64,6 +68,7 @@ const Home = (props)=>{
                         <div className="header">
                             <h3>Browse Collections</h3>
                         </div>
+
                         <div className="item-main">
                             <ul> 
                                 <li>College of Business & Management</li>
@@ -73,13 +78,15 @@ const Home = (props)=>{
                                 <li>Smart Health Centers</li>
                             </ul>
                         </div>
+
                         <div className = "collections">
                             <span>View all collections</span>
                         </div>
                     </div>
-
                 </div>
             </div>
+
+
 
 
             <Footer></Footer>
