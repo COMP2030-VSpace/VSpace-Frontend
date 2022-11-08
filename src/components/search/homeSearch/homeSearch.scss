@@ -84,10 +84,12 @@
     
         padding: 0px 5px;
         margin-top: 0.5rem;
+
         a:link {
             color:  #3E3E3E;
             text-decoration: none;
         }
+
         a:hover {
             cursor: pointer;
             text-decoration: none;
@@ -124,9 +126,10 @@
             li:last-child {
                 border-right: 0px;
             }
+
             a:hover {
                 cursor: pointer;
-              }
+            }
         }
     }
 }
