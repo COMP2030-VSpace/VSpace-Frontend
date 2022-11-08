@@ -1,18 +1,7 @@
 // home.scss
 
 @import '../../scss/variables.scss';
-html{
-    position:relative; 
-    min-height: 100%;
-  }
-  .footer{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height:100px;
-      background:#ccc;
-  }
+
 
 .home {
     h1 {
