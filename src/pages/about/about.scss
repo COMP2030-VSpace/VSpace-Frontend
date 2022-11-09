@@ -12,7 +12,83 @@
 
 
     // ------------------------------- Thao space starts here ---------------------------
+    .two-col{
+        margin-top: 1.5rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
+        display: flex;
+        flex-direction: row;
 
+        .header{
+            width: 55%;
+            
+            h3{
+                color:  #2E5288;
+            }
+        }
+
+        .item{
+            width: 75%;
+            height: 34vh;
+        }
+
+        .about_left{
+            .item{
+                .header{
+                    width: 100%;
+                }
+
+                margin-top: 2rem;
+
+                .item-main{
+                    font-weight: 300;
+                    line-height: 1.25rem;
+                    font-size: 1rem;
+                    font-weight: 300;
+                  
+                    color: #3E3E3E;
+                }
+
+                &:first-child{
+                    .item-main{
+                        padding-left: 0;
+                    }
+                }
+
+                .item:first-child{
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .about_right{
+            .item{
+                .header{
+                    width: 100%;
+                }
+
+                margin-top: 2rem;
+
+                .item-main{
+                    font-weight: 300;
+                    line-height: 1.25rem;
+                    font-size: 1rem;
+                    font-weight: 300;
+                  
+                    color: #3E3E3E;
+                }
+
+                &:first-child{
+                    .item-main{
+                        padding-left: 0;
+                    }
+                }
+
+                .item:first-child{
+                    margin-top: 0;
+                }
+            }
+        }
+    }
     // ------------------------------- Thao space ends here ---------------------------
-
 }
