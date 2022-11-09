@@ -8,7 +8,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Banner from '../../components/banner/Banner';
 import AuthForm from '../../components/authForm/AuthForm';
 // import HomeSearch from '../../components/search/homeSearch/HomeSearch';
-// import Footer from '../../components/footer/Footer';
+import Footer from '../../components/footer/Footer';
 
 const Register = (props)=>{
     return(
@@ -21,6 +21,8 @@ const Register = (props)=>{
                     authType = "register"
                 ></AuthForm>
             </div>
+
+            <Footer></Footer>
         </div>
     );
 }

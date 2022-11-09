@@ -7,6 +7,7 @@ import './login.scss';
 import Navbar from "../../components/navbar/Navbar";
 import Banner from '../../components/banner/Banner';
 import AuthForm from '../../components/authForm/AuthForm';
+import Footer from '../../components/footer/Footer';
 
 
 const Login = (props)=>{
@@ -20,6 +21,8 @@ const Login = (props)=>{
                     authType = "login"
                 ></AuthForm>
             </div>
+
+            <Footer></Footer>
         </div>
     );
 }
