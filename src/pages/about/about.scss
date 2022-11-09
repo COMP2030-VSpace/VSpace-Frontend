@@ -5,14 +5,16 @@
 
     // ------------------------------- Tung space ends here ---------------------------
     .gen-intro {
-        display: flex;
         margin-top: 70px;
         background: rgba(217, 217, 217, 0.26);;
+
+        display: flex;
         align-items: center;
         justify-content: center;
         
         .content {
             width: 170%;
+
             padding-top: 10px;
             padding-right: 15px;
             padding-bottom: 40px;
@@ -38,17 +40,20 @@
             button {
                 height: 67px;
                 width: 300px;
-                background: #ffffff;
+
                 border: 1px solid $primary-blue;
                 border-radius: 0;
+
+                background: #ffffff;
+                color: $primary-blue;
                 font-size: 20px;
                 font-weight: 700;
-                color: $primary-blue;
                 
                 .button-content{
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    
                     gap: 4px;
                 }
             }

@@ -6,7 +6,6 @@ import "./about.scss";
 import Navbar from "../../components/navbar/Navbar";
 import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
-
 import arrow from "../../assets/about/arrow.png";
 
 const About = (props) => {
