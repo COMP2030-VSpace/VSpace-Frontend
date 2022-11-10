@@ -5,13 +5,14 @@
 
     // ------------------------------- Tung space ends here ---------------------------
     .gen-intro {
-        margin-top: 70px;
+        margin-top: 85px;
         background: rgba(217, 217, 217, 0.26);;
-
+        gap: 47px;
         display: flex;
         align-items: center;
         justify-content: center;
-        
+        height: 285px;
+
         .content {
             width: 170%;
 
@@ -22,12 +23,17 @@
             
             h2 {
                 color: #cd3c3f;
+                font-weight: 700;
+                font-size: 35px;
+                margin-bottom: 0px;
+                margin-top: 5px;
             }
 
-            .span {
+            span {
                 font-size: 18px;
-                font-weight: 500;
-                color: #65737e;
+                
+                color:rgba(101, 115, 126)
+                
             }
         }
 
@@ -46,6 +52,7 @@
 
                 background: #ffffff;
                 color: $primary-blue;
+                
                 font-size: 20px;
                 font-weight: 700;
                 

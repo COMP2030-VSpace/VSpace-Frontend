@@ -18,6 +18,7 @@ const About = (props) => {
                 <div className="gen-intro">
                     <div className="content">
                         <h2>LIBRARY</h2>
+                        <br/>
                         <span>
                             VinUni Library seeks to advance the intellectual
                             life of the University community through resources
