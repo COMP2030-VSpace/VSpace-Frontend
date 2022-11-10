@@ -20,6 +20,7 @@ const SideMenu = (props)=>{
             <div className='common-items menu-item'>
                 <ul>
                     <li>
+                        <div className='border'></div>
                         <div className='icon'>
                             <img src={sample_icon} alt = 'sample'></img>
                         </div>
@@ -27,6 +28,7 @@ const SideMenu = (props)=>{
                     </li>
 
                     <li>
+                        <div className='border'></div>
                         <div className='icon'>
                             <img src={sample_icon} alt = 'sample'></img>
                         </div>
@@ -34,6 +36,7 @@ const SideMenu = (props)=>{
                     </li>
 
                     <li>
+                        <div className='border'></div>
                         <div className='icon'>
                             <img src={sample_icon} alt = 'sample'></img>
                         </div>
@@ -45,6 +48,7 @@ const SideMenu = (props)=>{
             <div className='help-items menu-item'>
                 <ul>
                     <li>
+                        <div className='border'></div>
                         <div className='icon'>
                             <img src={sample_icon} alt = 'sample'></img>
                         </div>
@@ -52,6 +56,7 @@ const SideMenu = (props)=>{
                     </li>
 
                     <li>
+                        <div className='border'></div>
                         <div className='icon'>
                             <img src={sample_icon} alt = 'sample'></img>
                         </div>
