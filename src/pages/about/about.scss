@@ -13,11 +13,12 @@
 
     // ------------------------------- Thao space starts here ---------------------------
     .two-col{
-        margin-top: 1.5rem;
-        padding: 0 6rem;
+        margin-top: 2rem;
 
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
+        gap: 10rem;
+        padding: 0 8rem;
 
         .header{
             width: 55%;
@@ -28,8 +29,7 @@
         }
 
         .item{
-            width: 75%;
-            height: 34vh;
+            width: 94%;
         }
 
         .about_left{
@@ -38,10 +38,9 @@
                     width: 100%;
                 }
 
-                margin-top: 2rem;
 
                 .item-main{
-                    display: flex;
+                    text-align: justify;
                     font-weight: 300;
                     line-height: 1.5rem;
                     font-size: 1rem;
@@ -67,10 +66,9 @@
                     width: 100%;
                 }
 
-                margin-top: 2rem;
 
                 .item-main{
-                    display: flex;
+                    text-align: justify;
                     font-weight: 300;
                     line-height: 1.5rem;
                     font-size: 1rem;
