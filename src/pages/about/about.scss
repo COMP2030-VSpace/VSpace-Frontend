@@ -91,5 +91,29 @@
             }
         }
     }
+
+    .about-bottom{
+        padding: 0 8rem;
+
+        img{
+            width: 74rem;
+            height: 21rem;
+        }
+
+
+        .item{
+            margin-top: 3rem;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.5rem;
+
+            color: #65737E;
+
+        }
+
+        .item:first-child{
+            margin-top: 3rem;
+        }
+    }
     // ------------------------------- Thao space ends here ---------------------------
 }

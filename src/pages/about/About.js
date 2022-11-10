@@ -8,6 +8,9 @@ import Navbar from "../../components/navbar/Navbar";
 import Banner from '../../components/banner/Banner';
 import Footer from "../../components/footer/Footer";
 
+// import assets
+import library from "../../assets/about/library.jpg";
+
 
 const About = (props)=>{
     return(
@@ -79,6 +82,25 @@ const About = (props)=>{
                                     Located close to the book stacks, these quiet spaces are ideal for those seeking to study on their own in silence.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div className='about-bottom'>
+                    <div>
+                        <img src= {library} alt="Library"/>
+                    </div>
+
+                    <div className='item'>
+                        <p>The VinUniversity Library is building a collection of high quality, relevant, and intellectually diverse materials that will allow our patrons to have access to the latest knowledge that is being developed and shared around the world in a variety of disciplines. 
+                            VinUniversity patrons, which include faculty, students, and staff, will have access to books, journals, online databases, and other scholarly publications both in the physical spaces in the library as well as online via the “Library portal” (log in is required).
+                        </p>
+
+                        <p>To enable our patrons to access library materials from wherever they might be and to get rapid access to scholarly publications, 
+                            the VinUni library is building rich digital collections for teaching and research, as well as, 
+                            obtaining licensing access to a significant number of electronic books, journal articles, and other scholarly publications in all fields of study.
+                        </p>
+
+                        <p>In addition to the collections, the Library will provide research and reference services to patrons, to help them in their scholarly explorations.</p>
                     </div>
                 </div>
             </div>
