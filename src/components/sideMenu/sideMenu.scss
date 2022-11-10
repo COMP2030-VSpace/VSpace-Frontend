@@ -1,0 +1,64 @@
+// sideMenu.scss
+
+@import "../../scss/variables.scss";
+
+.side-menu{
+    height: 100vh;
+    width: 18vw;
+    background: #313131;
+    overflow: hidden;
+
+    position: sticky;
+    top: 0;
+
+    color: #ffffff;
+
+    .menu-item{
+        width: 100%;
+        
+        ul{
+            list-style: none;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+
+            li{
+                // background: yellow;
+                width: 100%;
+
+                padding: 0.7rem 0;
+                padding-left: 2rem;
+
+                display: flex;
+
+                .icon{
+                    width: 2.5rem;
+                    // background: red;
+                    img{
+                        height: 0.9rem;
+                    }
+                }
+
+                .text{
+                    // background: blue;
+                }
+            }
+        }
+    }
+
+    .heading{
+        margin: 3rem 0;
+        padding-left: 4.5rem;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        /* identical to box height */
+
+        letter-spacing: 0.4px;
+    }
+
+
+    .help-items{
+        margin-top: 3rem;
+    }
+}

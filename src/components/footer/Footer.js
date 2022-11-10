@@ -15,7 +15,7 @@ const Footer = (props) => {
     return (
         <div className="footer">
 
-            <div className="padding"></div>
+            {/* <div className="padding"></div> */}
 
             <div className="outer-wrapper">
                 <div className="footer--top">

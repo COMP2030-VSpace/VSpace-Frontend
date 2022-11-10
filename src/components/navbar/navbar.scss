@@ -3,8 +3,10 @@
 @import '../../scss/variables.scss';
 
 .navbar-container {
-    height: 12rem;
+    height: $navbar-height;
     background-color: red;
+    position: relative;
+    z-index: 2;
 
     .navbar-top{
         width: 100%;
