@@ -95,10 +95,19 @@
     .about-bottom{
         padding: 0 8rem;
 
-        img{
-            width: 74rem;
-            height: 21rem;
-        }
+        .img-row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+
+            img{
+                width: 385px;
+                height: 300px;
+            }
+        }   
+        
 
 
         .item{

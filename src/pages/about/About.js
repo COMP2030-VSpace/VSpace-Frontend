@@ -9,7 +9,9 @@ import Banner from '../../components/banner/Banner';
 import Footer from "../../components/footer/Footer";
 
 // import assets
-import library from "../../assets/about/library.jpg";
+import library1 from "../../assets/about/library1.jpg";
+import library2 from "../../assets/about/library2.jpg";
+import library3 from "../../assets/about/library3.jpg";
 
 
 const About = (props)=>{
@@ -86,8 +88,18 @@ const About = (props)=>{
                 </div>
 
                 <div className='about-bottom'>
-                    <div>
-                        <img src= {library} alt="Library"/>
+                    <div className='img-row'>
+                        <div className='img-col'>
+                            <img src= {library1} alt="Library1"/>
+                        </div>
+
+                        <div className='img-col'>
+                            <img src= {library2} alt="Library2"/>
+                        </div>
+                        
+                        <div className='img-col'>
+                            <img src= {library3} alt="Library3"/>
+                        </div>
                     </div>
 
                     <div className='item'>
