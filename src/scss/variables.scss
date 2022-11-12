@@ -3,10 +3,70 @@
 $primary-background: bisque;
 $primary-color: lightseagreen;
 
-$primary-blue: #2D5288;
+$primary-blue: #2E5288;
 $primary-red: #CD3C3F;
 
 $primary-padding: 6rem;
 
+h1 {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 6.25rem;
+    letter-spacing: 0rem;
+    line-height: 3.3333rem;
+}
 
+h2 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 2.9167rem;
+    letter-spacing: 0rem;
+    line-height: 2rem;
+    text-align: center;
+    font-style: italic;
+}
 
+h3 {
+    color: $primary-blue;
+    padding-left: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: 0rem;
+    line-height: 1.625rem;
+    text-align: left;
+    font-style: normal;
+}
+
+h4 {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 1.6667rem;
+    letter-spacing: 0rem;
+    line-height: 2.1667rem;
+}
+
+h5 {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 0rem;
+    line-height: 2rem;
+}
+
+base {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 1.3333rem;
+    letter-spacing: 0rem;
+    line-height: 1.6667rem;
+    text-align: left;
+    color: #3E3E3E;
+}
+
+small {
+    font-family: 'Montserrat';
+    font-size: 1.0833rem;
+    letter-spacing: 0rem;
+    line-height: 1.8333rem;
+}
