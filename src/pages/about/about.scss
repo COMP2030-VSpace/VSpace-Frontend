@@ -1,20 +1,75 @@
 // about.scss
-
-.about{
+@import "../../scss/variables.scss";
+.about {
     // ------------------------------- Tung space starts here ---------------------------
 
     // ------------------------------- Tung space ends here ---------------------------
+    .gen-intro {
+        margin-top: 85px;
+        background: rgba(217, 217, 217, 0.26);;
+        gap: 47px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 285px;
 
+        .content {
+            width: 170%;
 
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 40px;
+            padding-left: $primary-padding;
+            
+            h2 {
+                color: #cd3c3f;
+                font-weight: 700;
+                font-size: 35px;
+                margin-bottom: 0px;
+                margin-top: 5px;
+            }
 
+            span {
+                font-size: 18px;
+                
+                color:rgba(101, 115, 126)
+                
+            }
+        }
 
+        .button-div {
+            
+            width: 1000px;
+            display: flex;
+            margin-right: 40px;
+            
+            button {
+                height: 67px;
+                width: 300px;
 
+                border: 1px solid $primary-blue;
+                border-radius: 0;
 
+                background: #ffffff;
+                color: $primary-blue;
+                
+                font-size: 20px;
+                font-weight: 700;
+                
+                .button-content{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    gap: 4px;
+                }
+            }
+        }
+    }
 
-    // ------------------------------- Thao space starts here ---------------------------
+    
     .two-col{
         margin-top: 2rem;
-
         display: flex;
         justify-content: space-between;
         gap: 7rem;
