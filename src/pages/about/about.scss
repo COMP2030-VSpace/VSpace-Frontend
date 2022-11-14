@@ -94,6 +94,7 @@
 
     .about-bottom{
         padding: 0 8rem;
+        margin-top: 2rem;
 
         .img-row{
             display: flex;
@@ -101,10 +102,13 @@
             justify-content: space-between;
             align-items: center;
             gap: 10px;
+            width: 100%;
+            height: 300px;
 
             img{
-                width: 385px;
-                height: 300px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }   
         
