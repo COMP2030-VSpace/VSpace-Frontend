@@ -1,0 +1,59 @@
+// navbarFooterItem.scss
+
+.navbar-footer-content{
+    width: 8.625rem;
+    height: 100%;
+
+
+    position: relative;
+    display: inline-block;
+
+    .wrapper{
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+        justify-content: center;
+        align-items: center;
+
+        img{
+            margin-left: 0.8rem;
+        }
+    }
+
+    &:hover{
+        cursor: pointer;
+        background: #3e3e3e;
+        .dropdown-menu{
+            display: block;
+        }
+    }
+
+    .dropdown-menu{
+        position: absolute;
+        width: 12.25rem;
+        background: #313131;
+        z-index: 1;
+        display: none;
+
+        ul{
+            list-style: none;
+            margin: 0.5rem 1rem 0 1rem;
+            padding: 0;
+
+            li{
+                // margin-top: 0.5rem;
+
+                padding: 0.5rem;
+
+                &:last-child{
+                    margin-bottom: 0.5rem;
+                }
+
+                &:hover{
+                    background: #3e3e3e;
+                }
+            }
+        }
+    }
+}
