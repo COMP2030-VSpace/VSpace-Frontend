@@ -66,7 +66,7 @@ const Home = (props) => {
                       <h3>Browse Collections</h3>
                   </div>
 
-                  <div className="item-main">
+                  <div className="item-main base">
                       <ul> 
                           <li>College of Business & Management</li>
                           <li>College of Engineering & Computer Science</li>
