@@ -7,6 +7,7 @@ import './dashboard.scss';
 import Navbar from '../../../components/navbar/Navbar';
 import Footer from '../../../components/footer/Footer';
 import SideMenu from '../../../components/sideMenu/SideMenu';
+import Banner from '../../../components/banner/Banner';
 
 const Dashboard = (props)=>{
     return(
@@ -15,6 +16,15 @@ const Dashboard = (props)=>{
             
             <div className='main'>
                 <SideMenu></SideMenu>
+
+
+                {/* Tung starts here */}
+
+                <div className='main-right'>
+                    <Banner></Banner>
+                </div>
+
+                {/* Tung ends here */}
             </div>
 
             <Footer></Footer>
