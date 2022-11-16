@@ -1,0 +1,21 @@
+// dashboard.scss
+
+.dashboard{
+    .main{
+        height: 100rem;
+        // background: gray;
+        position: relative;
+
+
+        .main-right{
+            width: 82vw;
+            margin-left: 18vw;
+            position: absolute;
+            top: 0;
+
+            // height: 100vh;
+            // background: red;
+        }
+    }
+
+}
