@@ -47,7 +47,7 @@ const About = (props)=>{
                         <button className="button"  >
                             <div className="button-content">
                                 <span>SEARCH THE LIBRARY</span>
-                                <img src={arrow} style={{ width: "20px" }} />
+                                <img src={arrow} style={{ width: "1.25rem" }} />
                             </div>
                         </button>
                     </div>
