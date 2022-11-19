@@ -17,7 +17,7 @@ const Dashboard = (props) => {
             <Navbar></Navbar>
 
             <div className="main">
-                <div className="sidemenu-bg"></div>
+                {/* <div className="sidemenu-bg"></div> */}
                 <SideMenu></SideMenu>
 
                 <div className="main-right">

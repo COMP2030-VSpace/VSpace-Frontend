@@ -2,6 +2,16 @@
 
 @import "../../scss/variables.scss";
 
+.sidemenu-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 18vw;
+    height: auto;
+    background: #313131;   
+}
+
 .side-menu{
     width: 18vw;
     background: #313131;
