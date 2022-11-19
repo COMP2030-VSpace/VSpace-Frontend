@@ -2,45 +2,154 @@
 
 @import "../../scss/variables.scss";
 
+.collapsed{
+    width: 5vw;
+}
+
+.expand{
+    width: 18vw;
+}
+
 .sidemenu-bg{
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 18vw;
     height: auto;
     background: #313131;   
+    transition: width 0.3s linear;
 }
 
 .side-menu{
-    width: 18vw;
     background: #313131;
-    overflow: hidden;
+    // overflow: hidden;
     
     top: 0;
     bottom: 0;
     left: 0;
 
-    // margin-top:15px;
     height:100%;
-    // width:250px;
-    // margin-left:1%;
 
     position:sticky;
     position:-webkit-sticky;
     // top:20px;
 
+    transition: width 0.3s linear;
+
     color: #ffffff;
 
     .menu-item{
-        width: 100%;
+        // width: 100%;
         
-        ul{
+        ul {
             list-style: none;
             width: 100%;
             padding: 0;
             margin: 0;
 
+            li{
+                // background: yellow;
+                width: 100%;
+
+                // padding: 1rem 0;
+                // padding-left: 2rem;
+
+                .top{
+                    height: 3rem;
+
+                    display: flex;
+                    align-items: center;
+
+                    position: relative;
+                
+                    .icon{
+                        width: 2.5rem;
+                        // background: red;
+                        img{
+                            height: 0.9rem;
+                        }
+
+                        margin-left: 2rem;
+                    }
+
+                    .arrow{
+                        width: 2.5rem;
+
+                        img{
+                            height: 0.9rem;
+                        }
+
+                        position: absolute;
+                        right: 0.2rem;
+                    }
+
+                    .text{
+                        // background: blue;
+                        margin-bottom: 0.2rem;
+                    }
+
+                    .border{
+                        height: 100%;
+                        width: 3px;
+                        background: #DDE2FF;
+                        opacity: 0;
+                    }
+                    
+
+
+                    &:hover{
+                        cursor: pointer;
+                        background: #3e3e3e;
+                        // border-left: 3px solid #DDE2FF;
+                        .border{
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                .submenu{
+                    ul{
+                        li{
+                            margin-left: 5.5rem;
+                        }
+                    }
+                    
+                    .subtop{
+                        height: 2.5rem;
+
+                        display: flex;
+                        align-items: center;
+
+                        .text{
+                            &:hover{
+                                cursor: pointer;
+                                font-weight: bold;
+                                // background: #3e3e3e;
+                                // border-left: 3px solid #DDE2FF;
+                                // .border{
+                                //     opacity: 1;
+                                // }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+
+    .heading{
+        // display: flex;
+        margin: 3rem 0;
+        // padding-left: 4.5rem;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 24px;
+        /* identical to box height */
+
+        letter-spacing: 0.4px;
+        
+        ul{
             li{
                 // background: yellow;
                 width: 100%;
@@ -54,10 +163,10 @@
                 
 
                 .icon{
-                    width: 2.5rem;
+                    width: 3rem;
                     // background: red;
                     img{
-                        height: 0.9rem;
+                        height: 2rem;
                     }
 
                     margin-left: 2rem;
@@ -68,41 +177,39 @@
                     margin-bottom: 0.2rem;
                 }
 
-                .border{
+                .heading-border{
                     height: 100%;
                     width: 3px;
                     background: #DDE2FF;
                     opacity: 0;
                 }
 
-
                 &:hover{
-                    cursor: pointer;
-                    background: #3e3e3e;
-                    // border-left: 3px solid #DDE2FF;
-                    .border{
-                        opacity: 1;
-                    }
+                    background: none;
+                    cursor: auto;
                 }
             }
         }
     }
 
-    .heading{
+    .heading-collapsed{
         margin: 3rem 0;
-        padding-left: 4.5rem;
-        font-weight: 700;
-        font-size: 19px;
-        line-height: 24px;
-        /* identical to box height */
 
-        letter-spacing: 0.4px;
+        .icon{
+            width: 3rem;
+            // background: red;
+            img{
+                height: 2rem;
+            }
+
+            // margin-left: 2rem;
+        }
     }
 
 
     .help-items{
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid #DFE0EB;
+        // margin-top: 1.5rem;
+        // padding-top: 1.5rem;
+        // border-top: 1px solid #DFE0EB;
     }
 }
