@@ -2,51 +2,69 @@
 
 .dashboard {
     .main {
-        
         display: flex;
         padding-bottom: 5rem;
 
-
-
-        .main-right{
-
+        .main-right {
             flex-grow: 1;
-            // margin:15px 3%;
-            
 
-            // Tung starts here
+            .banner {
+                position: absolute;
+            }
 
             .search {
                 display: flex;
-                margin-left: 20rem;
+                margin-left: 10rem;
                 gap: 0;
+                padding-top: 3rem;
                 // position: absolute;
-                // top: 22rem;
+                // margin-top: 1rem;
 
                 .searchbar {
-                    width: 41rem;
-                    height: 3.5rem;
+                    width: 59.12%;
+                    height: 60px;
                     border: 1px solid rgba(49, 49, 49, 0.7);
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                     border-radius: 5px;
-                    padding-left: 20px;
+                    padding-left: 30px;
                 }
-                
+
                 .button {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     width: 13rem;
                     margin: 0;
-                    background: #2E5288;
+                    background: #2e5288;
+
+                    border: 1px solid rgba(49, 49, 49, 0.7);
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                     border-radius: 5px;
-                    gap: 1rem;       
-                    
+                    gap: 1rem;
                 }
             }
 
             .text {
-                margin-left: 20rem;
+                margin-left: 10rem;
+
+                .text__header {
+                    font-size: 40px;
+                    font-weight: 500;
+                    margin-bottom: 0;
+                    margin-top: 10px;
+                }
+
+                .text__secondheader {
+                    margin-top: 12px;
+                    margin-bottom: 15px;
+                    font-size: 28px;
+                    font-weight: 400;
+                }
+
+                .header__ul {
+                    margin-bottom: 25px;
+                    margin-top: 0;
+                }
                 // top: 10rem;
 
                 ul {
@@ -54,21 +72,39 @@
                     margin: 0;
                     padding: 0;
                 }
+
+                li {
+                    font-size: 28px;
+                    font-weight: 400;
+                    color: #2e5288;
+                }
             }
 
+            .blocklist {
+                display: flex;
+                width: 55%;
+                height: 56px;
+                justify-content: center;
+                margin-left: 15rem;
+                margin-top: 2rem;
+
+                .block {
+                    width: 56px;
+                    height: 45px;
+                    border: 1px solid rgba(0, 0, 0, 0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 28px;
+                    color: #2E5288;
+                    
+                }
+            }
             // Tung ends here
-
-
-
-
-
-
-
 
             // Thao starts here
 
             // Thao ends here
-
         }
     }
 }
