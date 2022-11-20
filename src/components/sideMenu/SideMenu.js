@@ -20,6 +20,12 @@ import admin_workflow_icon from "../../assets/side_menu/admin_workflow.png";
 import arrow_down_icon from "../../assets/side_menu/arrow_down.png";
 import arrow_right_icon from "../../assets/side_menu/arrow_right.png";
 
+
+
+// import functions
+import { moveTo } from '../../utils/helperFunctions';
+
+
 // import components
 
 
@@ -37,7 +43,7 @@ const SideMenu = (props)=>{
             [
                 {
                     "title": "Community",
-                    "link":""
+                    "link":"/admin/community/add"
                 },
                 {
                     "title": "Collection",
@@ -269,7 +275,7 @@ const SideMenu = (props)=>{
                                                         {menu_item.sub_menu_list.map((sub_menu_item, sub_key) => 
                                                             <li key = {sub_key}>
                                                                 <div className='subtop'>
-                                                                    <div className='text'>{sub_menu_item.title}</div>
+                                                                    <div className='text' onClick={() => moveTo(sub_menu_item.link)}>{sub_menu_item.title}</div>
                                                                 </div>
                                                             </li>
                                                         )}

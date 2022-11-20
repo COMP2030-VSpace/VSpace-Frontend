@@ -5,6 +5,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import About from './pages/about/About';
 import Dashboard from './pages/admin/dashboard/Dashboard';
+import CreateCommunity from './pages/admin/community/CreateCommunity';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path='/login' element={<Login/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/admin' element={<Dashboard/>} />
+      <Route path='/admin/community/add' element={<CreateCommunity/>} />
     </Routes>
   );
 }

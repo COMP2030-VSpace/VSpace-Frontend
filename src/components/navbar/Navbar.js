@@ -8,6 +8,9 @@ import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/navbar/logo.png";
 import dropdown from "../../assets/navbar/Polygon 4.png";
 
+// import functions
+import { moveTo } from "../../utils/helperFunctions";
+
 // import components
 import NavbarSearch from "../search/navbarSearch/NavbarSearch";
 import NavbarFooterItem from "./NavbarFooterItem";
@@ -37,13 +40,7 @@ const Navbar = (props) => {
     //     setCurHover(0);
     // }
 
-    const moveToHome = () => {
-        window.location.href = "/";
-    };
 
-    const moveTo = (page) => {
-        window.location.href = page;
-    };
 
     return (
         <div className="navbar-container">
@@ -51,7 +48,7 @@ const Navbar = (props) => {
                 <NavbarSearch></NavbarSearch>
             </div>
             <div className="navbar-body">
-                <div className="left" onClick={moveToHome}>
+                <div className="left" onClick={() => moveTo("/")}>
                     <div className="wrapper">
                         <img src={logo} alt="logo"></img>
                         <div className="address">VinSpace@VinUni</div>
