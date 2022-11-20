@@ -8,20 +8,22 @@
         .main-right {
             flex-grow: 1;
 
+            padding: 0 10rem;
+
             .banner {
                 position: absolute;
             }
 
             .search {
                 display: flex;
-                margin-left: 10rem;
+                width: 100%;
                 gap: 0;
                 padding-top: 3rem;
                 // position: absolute;
                 // margin-top: 1rem;
 
                 .searchbar {
-                    width: 59.12%;
+                    flex-grow: 1;
                     height: 60px;
                     border: 1px solid rgba(49, 49, 49, 0.7);
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -33,7 +35,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 13rem;
+                    width: 20%;
                     margin: 0;
                     background: #2e5288;
 
@@ -45,7 +47,7 @@
             }
 
             .text {
-                margin-left: 10rem;
+                // margin-left: 10rem;
 
                 .text__header {
                     font-size: 40px;
