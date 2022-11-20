@@ -66,7 +66,121 @@
 
 
             // Thao starts here
+            .bottom{
+                margin-left: 20rem;
 
+                .header{
+                    border-top: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+                    width: 100%;
+                    font-weight: 500;
+                    line-height: 3rem;
+
+                }
+
+                .item{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6rem;
+
+                   .item-content{
+                        
+                        .thumb{
+                            float: left;
+
+                            img{
+                                display: block;
+                                width: 217px;
+                                height: 278px;
+                                object-fit: cover;
+
+                            }
+                        }
+
+                        .thumb-info{
+                            float: right;
+
+                            .item-header{
+                                color: #2E5288;
+                            }
+
+                            .tag{
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                gap: 1rem;
+                                align-items: center;
+                            }
+
+                            .tag1{
+                                background: #2E5288;
+                                border-radius: 10px;
+
+                                color: #FFFFFF;
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                text-align: center;  
+                                padding: 0.4rem 1.25rem;                  
+                            }
+
+                            .tag2{
+                                background: #313131;
+                                border-radius: 10px;
+
+                                text-align: center;
+                                color: #FFFFFF;
+                                font-size: 0.8rem;
+                                font-weight: 600;
+                                text-align: center;
+                                padding: 0.4rem 1.25rem;
+                            }
+
+                            .item-sub{
+                                color: rgba(49, 49, 49, 0.7);
+                            }
+
+                            .item-main{
+                                width: 480px;
+                                margin-right: 9rem;
+                                font-size: 1rem;
+                                line-height: 1.2rem;
+                                font-weight: 400;
+                                color: #000000;
+                            }
+
+                            .show-button{
+                                display: flex;
+                                margin-top: 0rem;
+                                img{
+                                    height: 30px;
+                                    margin-top: 0.8rem
+                                }
+                            
+                                color: #2E5288;
+                                font-size: 1rem;
+                                font-weight: 400;
+                                gap: 0.8rem;
+                            }
+        
+                        }
+                   }
+                }
+
+                .load-button{
+                    margin-top: 6.3rem;
+                    background: #313131;
+                    border-radius: 5px;
+
+                    width: 170px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    line-height: 1.25rem;
+                    color: #FFFFFF;
+                    text-align: center;
+                    padding: 1rem 0;
+                }
+
+            }
             // Thao ends here
 
         }
