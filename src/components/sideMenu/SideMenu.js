@@ -47,7 +47,7 @@ const SideMenu = (props)=>{
                 },
                 {
                     "title": "Collection",
-                    "link":""
+                    "link":"/admin/collection/add"
                 },
                 {
                     "title": "Item",

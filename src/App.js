@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import About from './pages/about/About';
 import Dashboard from './pages/admin/dashboard/Dashboard';
 import CreateCommunity from './pages/admin/community/CreateCommunity';
+import CreateCollection from './pages/admin/collection/CreateCollection';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path='/about' element={<About/>} />
       <Route path='/admin' element={<Dashboard/>} />
       <Route path='/admin/community/add' element={<CreateCommunity/>} />
+      <Route path='/admin/collection/add' element={<CreateCollection/>} />
     </Routes>
   );
 }

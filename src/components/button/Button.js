@@ -13,10 +13,11 @@ const Button = (props) => {
                 style = {styles}
                 onClick = {props.handleClick}            
             >
-        {props.content}
         {props.icon &&
             <img src = {props.icon}></img>
         }
+
+        {props.content}
     </div>
 }
 

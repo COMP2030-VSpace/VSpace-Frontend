@@ -1,5 +1,8 @@
 .community-item{
     width: 80%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 10px;
     // height: 3rem;
     // background: red;
 
@@ -13,4 +16,8 @@
         font-weight: 700;
     }
 
+    &:hover{
+        cursor: pointer;
+        background: #D9D9D94D;
+    }
 }

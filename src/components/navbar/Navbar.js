@@ -57,13 +57,13 @@ const Navbar = (props) => {
 
                 <div className="right">
                     <div className="wrapper">
-                        <div className="item" onClick={() => moveTo("./")}>
+                        <div className="item" onClick={() => moveTo("/")}>
                             Home
                         </div>
 
                         <div
                             className="item"
-                            onClick={() => moveTo("./register")}
+                            onClick={() => moveTo("/register")}
                         >
                             Register
                         </div>

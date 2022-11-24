@@ -3,7 +3,9 @@ import {useEffect, createRef, useContext, useState} from 'react';
 import './createForm.scss';
 
 // import assets
-// import sample_banner from "../../assets/sample/banner/banner.png";
+import upload_icon from "../../assets/upload/upload.png";
+import save_icon from "../../assets/save/save.png";
+import arrow_left_icon from "../../assets/arrows/left.png";
 
 // import components;
 import Button from '../button/Button';
@@ -15,6 +17,12 @@ const CreateForm = (props)=>{
 
     const nextCreateState = () => {
         setCreateState(createState + 1);
+        return;
+    }
+
+    const lastCreateState = () => {
+        setCreateState(createState - 1);
+        return;
     }
 
 
@@ -54,7 +62,7 @@ const CreateForm = (props)=>{
                             </div>
 
                             <div className='form-input'>
-                                <input type = "text" placeholder='Full Name'></input>
+                                <input type = "text" placeholder='Search for a community'></input>
                             </div>
                         </div>
 
@@ -67,6 +75,33 @@ const CreateForm = (props)=>{
                         </div>
                     </>
                 }
+
+
+                {props.createType === "collection" &&
+                    <>
+                        <div className='header'>
+                            <div className='text'>New collection</div>
+                        </div>
+
+                        <div className='community-search'>
+                            <div className='text'>
+                                Create a new collection in
+                            </div>
+
+                            <div className='form-input'>
+                                <input type = "text" placeholder='Search for a community'></input>
+                            </div>
+                        </div>
+
+                        <div className='community-list'>
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+                        </div>
+                    </>
+                }
             </div>
         );
     }
@@ -76,47 +111,256 @@ const CreateForm = (props)=>{
                 {props.createType === "community" &&
                     <>
                         <div className='header'>
-                            <div className='text'>New community</div>
+                            <div className='text'>Create a community</div>
                         </div>
 
-                        <div className='top-level-community'>
+                        
+
+                        <div className='form'>
+                            <div className="form-item">
+                                <div className='text'>
+                                    Logo
+                                </div>
+
+                                <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                                
+                                <label for="logo-upload">
+                                    <div className='label-div'>
+                                        <img src = {upload_icon} alt = "add_images"/>
+                                        <div className='label-text'>Upload a logo</div>
+                                    </div>
+                                </label>
+                                {/* <img src={libraryIcon}></img> */}
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Name*
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Introductory text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Short description
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Copyright text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    News (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='form-submit'>
                             <Button 
                                 styles = {{
                                     "height": "2.6rem",
-                                    "width": "90%",
+                                    "width": "7rem",
+                                    "background": "#ffffff",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "color": "#000000",
+                                    "border": "1.5px solid #000000",
+                                }}
+
+                                content = "Back"
+                                icon = {arrow_left_icon}
+                                
+
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "7rem",
                                     "background": "#2D5288",
                                     "margin-right": "0",
                                     "margin-bottom": "0",
                                     "color": "#ffffff"
                                 }}
 
-                                content = "Create a new top-level community"
+                                content = "Save"
+                                icon = {save_icon}
 
                                 handleClick = {() => nextCreateState()}
                             ></Button>
                         </div>
 
-                        <span className="line">
-                            <div className='border'><span>Or</span></div>
-                        </span>
+                    </>
+                }
 
-                        <div className='community-search'>
-                            <div className='text'>
-                                Create a new community in
+
+
+
+
+
+
+                {props.createType === "collection" &&
+                    <>
+                        <div className='header'>
+                            <div className='text'>Create a collection for Community U0J7</div>
+                        </div>
+
+                        
+
+                        <div className='form'>
+                            <div className="form-item">
+                                <div className='text'>
+                                    Logo
+                                </div>
+
+                                <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                                
+                                <label for="logo-upload">
+                                    <div className='label-div'>
+                                        <img src = {upload_icon} alt = "add_images"/>
+                                        <div className='label-text'>Upload a logo</div>
+                                    </div>
+                                </label>
+                                {/* <img src={libraryIcon}></img> */}
                             </div>
 
-                            <div className='form-input'>
-                                <input type = "text" placeholder='Full Name'></input>
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Name*
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Introductory text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Short description
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Copyright text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    News (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    License
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Entity type
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
                             </div>
                         </div>
 
-                        <div className='community-list'>
-                            <CommunityItem></CommunityItem>
+                        <div className='form-submit'>
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "7rem",
+                                    "background": "#ffffff",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "color": "#000000",
+                                    "border": "1.5px solid #000000",
+                                }}
 
-                            <CommunityItem></CommunityItem>
+                                content = "Back"
+                                icon = {arrow_left_icon}
+                                
 
-                            <CommunityItem></CommunityItem>
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "7rem",
+                                    "background": "#2D5288",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff"
+                                }}
+
+                                content = "Save"
+                                icon = {save_icon}
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
                         </div>
+
                     </>
                 }
             </div>
