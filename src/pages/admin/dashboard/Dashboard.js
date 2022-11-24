@@ -99,7 +99,7 @@ const Dashboard = (props) => {
                     <div className="wrapper">
                         <div className="bottom">
                             <div className="header">
-                                <h2 className="text__header">Community in DSpace</h2>
+                                <h2 className="text__header">Recent Submissions</h2>
                             </div>
 
                             <div className="item">
@@ -123,10 +123,12 @@ const Dashboard = (props) => {
                                         </div>
 
                                         <div className="item-main">
-                                            <p>Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
+                                            <div className="content">
+                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
                                                 respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
                                                 En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía </p>
+                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                            </div>
                                         </div>
 
                                         <label for="text-button" className="show-button">
@@ -143,7 +145,7 @@ const Dashboard = (props) => {
 
                                     <div className="thumb-info">
                                         <div className="tag">
-                                            <span className="tag1">item</span>
+                                            <span className="tag1">datafile.listelement.badge</span>
                                             <span className="tag2">Open Access</span>
                                         </div>
 
@@ -156,10 +158,12 @@ const Dashboard = (props) => {
                                         </div>
 
                                         <div className="item-main">
-                                            <p>Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
+                                            <div className="content">
+                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
                                                 respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
                                                 En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía </p>
+                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                            </div>
                                         </div>
 
                                         <label for="text-button" className="show-button">
@@ -169,6 +173,7 @@ const Dashboard = (props) => {
                                     </div>
                                 </div> 
 
+
                                 <div className="item-content">
                                     <div className="thumb">
                                         <img src= {thumb} alt="Thumbnail"/>
@@ -176,7 +181,7 @@ const Dashboard = (props) => {
 
                                     <div className="thumb-info">
                                         <div className="tag">
-                                            <span className="tag1">item</span>
+                                            <span className="tag1">datafile.listelement.badge</span>
                                             <span className="tag2">Open Access</span>
                                         </div>
 
@@ -189,18 +194,21 @@ const Dashboard = (props) => {
                                         </div>
 
                                         <div className="item-main">
-                                            <p>Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
+                                            <div className="content">
+                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
                                                 respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
                                                 En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía </p>
+                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                            </div>
                                         </div>
 
-                                        <label for="show-button" className="show-button">
+                                        <label for="text-button" className="show-button">
                                             <img src={arrow}/>
                                             <p>Show more</p>
                                         </label>
                                     </div>
                                 </div> 
+
                             </div>
 
                             <div className="load-button">

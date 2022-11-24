@@ -161,7 +161,7 @@
 
                         .thumb{
                             // float: left;
-                            width: 217px;
+                            flex-grow: 1;
                             height: 278px;
 
                             img{
@@ -171,11 +171,15 @@
                                 object-fit: cover;
 
                             }
-                            margin-right: 10rem;
+                            margin-right: 7rem;
                         }
 
                         .thumb-info{
                             // float: right;
+
+                            flex-basis: 70%;
+
+
 
                             .item-header{
                                 color: #2E5288;
@@ -217,12 +221,14 @@
                             }
 
                             .item-main{
-                                width: 480px;
-                                margin-right: 9rem;
+                                width: 25rem;
+                                box-sizing: border-box;
+                                // margin-right: 9rem;
                                 font-size: 1rem;
                                 line-height: 1.2rem;
                                 font-weight: 400;
                                 color: #000000;
+                                // background: red;
                             }
 
                             .show-button{
