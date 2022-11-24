@@ -10,54 +10,118 @@ import Button from '../button/Button';
 import CommunityItem from '../communityItem/CommunityItem';
 
 const CreateForm = (props)=>{
-    return(
-        <div className = 'create-form'>
-            {props.createType === "community" &&
-                <>
-                    <div className='header'>
-                        <div className='text'>New community</div>
-                    </div>
 
-                    <div className='top-level-community'>
-                        <Button 
-                            styles = {{
-                                "height": "2.6rem",
-                                "width": "27rem",
-                                "background": "#2D5288",
-                                "margin-right": "0",
-                                "margin-bottom": "0",
-                                "color": "#ffffff"
-                            }}
+    const [createState, setCreateState] = useState(1);
 
-                            content = "Create a new top-level community"
-                        ></Button>
-                    </div>
+    const nextCreateState = () => {
+        setCreateState(createState + 1);
+    }
 
-                    <span className="line">
-                        <div className='border'><span>Or</span></div>
-                    </span>
 
-                    <div className='community-search'>
-                        <div className='text'>
-                            Create a new community in
+    if(createState === 1){
+        return(
+            <div className = 'create-form'>
+                {props.createType === "community" &&
+                    <>
+                        <div className='header'>
+                            <div className='text'>New community</div>
                         </div>
 
-                        <div className='form-input'>
-                            <input type = "text" placeholder='Full Name'></input>
+                        <div className='top-level-community'>
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "90%",
+                                    "background": "#2D5288",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff"
+                                }}
+
+                                content = "Create a new top-level community"
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
                         </div>
-                    </div>
 
-                    <div className='community-list'>
-                        <CommunityItem></CommunityItem>
+                        <span className="line">
+                            <div className='border'><span>Or</span></div>
+                        </span>
 
-                        <CommunityItem></CommunityItem>
+                        <div className='community-search'>
+                            <div className='text'>
+                                Create a new community in
+                            </div>
 
-                        <CommunityItem></CommunityItem>
-                    </div>
-                </>
-            }
-        </div>
-    );
+                            <div className='form-input'>
+                                <input type = "text" placeholder='Full Name'></input>
+                            </div>
+                        </div>
+
+                        <div className='community-list'>
+                            <CommunityItem></CommunityItem>
+
+                            <CommunityItem></CommunityItem>
+
+                            <CommunityItem></CommunityItem>
+                        </div>
+                    </>
+                }
+            </div>
+        );
+    }
+    else if(createState === 2){
+        return(
+            <div className = 'create-form-2'>
+                {props.createType === "community" &&
+                    <>
+                        <div className='header'>
+                            <div className='text'>New community</div>
+                        </div>
+
+                        <div className='top-level-community'>
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "90%",
+                                    "background": "#2D5288",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff"
+                                }}
+
+                                content = "Create a new top-level community"
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
+                        </div>
+
+                        <span className="line">
+                            <div className='border'><span>Or</span></div>
+                        </span>
+
+                        <div className='community-search'>
+                            <div className='text'>
+                                Create a new community in
+                            </div>
+
+                            <div className='form-input'>
+                                <input type = "text" placeholder='Full Name'></input>
+                            </div>
+                        </div>
+
+                        <div className='community-list'>
+                            <CommunityItem></CommunityItem>
+
+                            <CommunityItem></CommunityItem>
+
+                            <CommunityItem></CommunityItem>
+                        </div>
+                    </>
+                }
+            </div>
+        );
+    }
 }
 
 export default CreateForm;

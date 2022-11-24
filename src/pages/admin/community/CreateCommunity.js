@@ -14,7 +14,11 @@ import CreateForm from "../../../components/createForm/CreateForm";
 
 const CreateCommunity = (props) => {
 
-    const [createState, setCreateState] = useState(1);
+    // const [createState, setCreateState] = useState(1);
+
+    // const nextState = () => {
+    //     setCreateState(createState + 1);
+    // }
 
     return (
         <div className="admin-create-community">
@@ -25,12 +29,19 @@ const CreateCommunity = (props) => {
                 <SideMenu></SideMenu>
 
                 <div className="main-right">
-                    {createState === 1 &&
+                    {/* {createState === 1 &&
                         <CreateForm
                             createType = "community"
+                            // nextState = {() => nextState()}
                         >
                         </CreateForm>
-                    }
+                    } */}
+
+                    <CreateForm
+                        createType = "community"
+                        // nextState = {() => nextState()}
+                    >
+                    </CreateForm>
                 </div>
             </div>
 
