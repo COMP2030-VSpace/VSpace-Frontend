@@ -22,7 +22,7 @@
             .wrapper{
                 // margin-top: 25rem;
 
-                padding: 0 10rem;
+                padding: 0 15rem;
                 
                 .search {
                     display: flex;
@@ -37,8 +37,9 @@
                         height: 60px;
                         border: 1px solid rgba(49, 49, 49, 0.7);
                         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                        border-radius: 5px;
+                        border-radius: 5px 0 0 5px;
                         padding-left: 30px;
+                        font-size: 1rem;
                     }
 
                     .button {
@@ -63,12 +64,11 @@
                         font-size: 40px;
                         font-weight: 500;
                         margin-bottom: 0;
-                        margin-top: 10px;
+                        margin-top: 1.5rem;
                     }
 
                     .text__secondheader {
-                        margin-top: 12px;
-                        margin-bottom: 15px;
+                        margin: 1rem 0 1.5rem 0;
                         font-size: 28px;
                         font-weight: 400;
                     }
@@ -86,30 +86,44 @@
                     }
 
                     li {
-                        font-size: 28px;
+                        font-size: 1.5rem;
                         font-weight: 400;
                         color: #2e5288;
+                        margin-bottom: 0.7rem;
                     }
                 }
 
                 .blocklist {
                     display: flex;
-                    width: 55%;
-                    height: 56px;
+                    width: 100%;
+                    height: 4rem;
+                    box-sizing: border-box;
                     justify-content: center;
-                    margin-left: 15rem;
-                    margin-top: 2rem;
+                    // margin-left: 15rem;
+                    margin-top: 4rem;
+                    padding-bottom: 7rem;
+
+                    border-bottom: 1px solid #CDD4DE;
 
                     .block {
-                        width: 56px;
-                        height: 45px;
+                        width: 3.2rem;
+                        height: 2.4rem;
                         border: 1px solid rgba(0, 0, 0, 0.5);
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        font-size: 28px;
+                        font-size: 1.5rem;
                         color: #2E5288;
+
+                        img{
+                            height: 60%;
+                        }
                         
+                    }
+
+                    .active{
+                        background: #313131B2;
+                        color: #ffffff;
                     }
                 }
             }

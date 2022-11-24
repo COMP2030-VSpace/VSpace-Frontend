@@ -63,9 +63,11 @@ const Dashboard = (props) => {
                         </div>
 
                         <div className="blocklist">
-                            <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}><img src={arrow} alt="" /></div>
+                            <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+                                <img src={arrow} alt="" />
+                            </div>
                             <div className="block">1</div>
-                            <div className="block">2</div>
+                            <div className="block active">2</div>
                             <div className="block">3</div>
                             <div className="block">4</div>
                             <div className="block">5</div>
