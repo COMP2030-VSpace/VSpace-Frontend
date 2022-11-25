@@ -1,0 +1,141 @@
+// home.scss
+
+@import '../../scss/variables.scss';
+
+
+.home {
+    h1 {
+        // color: $red;
+    }
+
+    .main{
+        margin-top: 1.5rem;
+        padding: 0 $primary-padding;
+        // width: 100%;
+        // height: 70vh;
+
+        display: flex;
+        flex-direction: row;
+
+        margin-bottom: 10rem;
+
+
+        .header{
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+            width: 55%;
+
+            h3{
+                color: $primary-blue;
+                padding-left: 0.5rem;
+            }
+        }
+
+
+
+        .left{
+            // background: red;
+
+            flex-basis: 70%;
+            box-sizing: border-box;
+
+            .item{
+                margin-bottom: 4rem;
+
+                .heading{
+                    border-bottom: 1px solid #CDD4DE;
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .list{
+
+                .list-heading{
+                    margin-bottom: 2rem;
+                }
+
+                .list-main{
+                    ul{
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+    
+                        li{
+                            color: #2E5288;
+                            text-decoration: underline;
+                            font-size: 1.5rem;
+                            margin-bottom: 0.7rem;
+    
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .right{
+            // background: blue;
+
+            flex-grow: 1;
+            box-sizing: border-box;
+            padding-left: 2.5rem;
+
+            .browse{
+                .text{
+                    font-weight: 600;
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+
+                    color: #828282;
+                }
+            }
+
+            .vinspace-list{
+
+                .heading{
+                    font-weight: 700;
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+
+                    background: #2E5288;
+                    color: #ffffff;
+
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    padding: 0.7rem 1.2rem;
+
+                    border-radius: 5px 5px 0 0;
+                }
+
+                .browse-list{
+                    ul{
+                        padding: 0;
+                        margin: 0;
+
+                        list-style: none;
+
+                        border: 1px solid rgba(62, 62, 62, 0.3);
+                        border-top: none;
+                        border-bottom: none;
+
+                        li{
+                            box-sizing: border-box;
+                            width: 100%;
+                            padding: 0.7rem 1.2rem;
+                            border-bottom: 1px solid rgba(62, 62, 62, 0.3);
+
+                            &:hover{
+                                cursor: pointer;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

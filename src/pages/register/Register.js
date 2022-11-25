@@ -12,9 +12,9 @@ import Footer from '../../components/footer/Footer';
 
 const Register = (props)=>{
     return(
-        <div className = 'register'>
+        <div className = 'register mb10'>
             <Navbar></Navbar>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
 
             <div className="main">
                 <AuthForm

@@ -14,6 +14,7 @@ import { moveTo } from "../../utils/helperFunctions";
 // import components
 import NavbarSearch from "../search/navbarSearch/NavbarSearch";
 import NavbarFooterItem from "./NavbarFooterItem";
+import Button from "../button/Button";
 
 const Navbar = (props) => {
     // const { authState: { authLoading, isAuthenticated, user }, redirectToLogin } = useContext(AuthContext);
@@ -57,7 +58,7 @@ const Navbar = (props) => {
 
                 <div className="right">
                     <div className="wrapper">
-                        <div className="item" onClick={() => moveTo("/")}>
+                        {/* <div className="item" onClick={() => moveTo("/")}>
                             Home
                         </div>
 
@@ -70,7 +71,45 @@ const Navbar = (props) => {
 
                         <div className="item">My account</div>
 
-                        <div className="item">Contact</div>
+                        <div className="item">Contact</div> */}
+
+                        <div>
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    // "width": "3rem",
+                                    "background": " #CD3C3F",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff",
+                                    "padding": "0.05rem 1.2rem",
+                                    "margin": "0"
+                                }}
+
+                                content = "Register"
+
+                                handleClick = {() => moveTo("/register")}
+                            ></Button>
+                        </div>
+
+                        <div className="ml2">
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    // "width": "90%",
+                                    "background": " #CD3C3F",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff",
+                                    "padding": "0.05rem 1.5rem",
+                                    "margin": "0"
+                                }}
+
+                                content = "Login"
+
+                                handleClick = {() => moveTo("/login")}
+                            ></Button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,6 +171,25 @@ const Navbar = (props) => {
 
                 <NavbarFooterItem
                     content = "Help"
+                    items = {[
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        }
+                    ]}
+                ></NavbarFooterItem>
+
+
+                <NavbarFooterItem
+                    content = "Contact"
                     items = {[
                         {
                             "title":"About Vinuni Library",

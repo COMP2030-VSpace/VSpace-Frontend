@@ -14,9 +14,9 @@ const Login = (props)=>{
     return(
         <div className = 'login'>
             <Navbar></Navbar>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
 
-            <div className="main">
+            <div className="main mb10">
                 <AuthForm
                     authType = "login"
                 ></AuthForm>

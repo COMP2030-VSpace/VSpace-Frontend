@@ -11,7 +11,7 @@ const NavbarSearch = (props)=>{
     return(
         <div className = 'navbar-search'>
             <div className="wrapper">
-                <input class="search-field" type="search" value="" name="s"></input>
+                <input class="search-field" type="search" value="" name="s" placeholder='Search VinSpace Site'></input>
                 <span class="search-button">
                     <img src= {search_icon} alt="search icon"></img>
                 </span>
