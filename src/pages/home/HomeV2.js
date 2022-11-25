@@ -23,7 +23,7 @@ const HomeV2 = (props) => {
                             </div>
 
                             <div className="info">
-                                AUSpace is Athabasca University's institutional repository (IR). It is a digital service that collects, preserves, and distributes digital material. The collections and content in AUSpace can be browsed and searched. If you have any questions, please email auspace@athabascau.ca.
+                                VinSpace is VinUniversity's institutional repository (IR). It is a digital service that collects, preserves, and distributes digital material. The collections and content in AUSpace can be browsed and searched. If you have any questions, please email auspace@athabascau.ca.
                             </div>
                         </div>
 
