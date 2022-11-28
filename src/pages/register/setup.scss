@@ -1,0 +1,11 @@
+@import '../../scss/variables.scss';
+
+.register-setup{
+    .main{
+        padding: 0 $primary-padding;
+        background: red; // delete this after
+        height: 50rem; // delete this after
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
