@@ -2,7 +2,7 @@
 
 .auth-form{
     height: 30rem;
-    width: 40vw;
+    width: 39vw;
 
     // background-color: red;
 
@@ -12,6 +12,16 @@
     flex-direction: column;
     align-items: center;
 
+    .register--text_1 {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    .register--text_2 {
+        padding-top: 1rem;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+    }
 
     .header{
         font-style: normal;
@@ -19,19 +29,19 @@
         font-size: 2rem;
         line-height: 2.5rem;
         color: #000000;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
 
     .form-input{
-        margin-top: 2rem;
+        margin-top: 1.5rem;
 
         &:nth-child(2){
             margin-top: 0;
         }
 
         input{
-            width: 25.5rem;
-            height: 2rem;
+            width: 29.5rem;
+            height: 2.5rem;
 
             border: 1px solid #3D3D3D;
             border-radius: 0.25rem;
