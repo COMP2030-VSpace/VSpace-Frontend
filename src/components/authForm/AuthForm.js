@@ -30,11 +30,11 @@ const AuthForm = (props) => {
                     <Button
                         styles={{
                             "border-radius": "5px",
-                            width: "31rem",
-                            background: "#2D5288",
+                            "width": "100%",
+                            "background": "#2D5288",
                             "margin-right": "0",
-                            padding: "0.6rem 0",
-                            color: "#ffffff",
+                            "padding": "0.6rem 0",
+                            "color": "#ffffff",
                         }}
                         content="Create Account"
                     ></Button>
