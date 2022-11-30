@@ -1,11 +1,52 @@
-@import '../../scss/variables.scss';
+@import "../../scss/variables.scss";
 
-.register-setup{
-    .main{
+.register-setup {
+    .main {
         padding: 0 $primary-padding;
-        background: red; // delete this after
-        height: 50rem; // delete this after
         width: 100%;
         box-sizing: border-box;
+
+        .main--header {
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 3rem;
+            margin-top: 2rem;
+        }
+
+        .main--text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            margin-top: 1rem;
+            text-align: justify;
+        }
+
+        .checkbox-container {
+            margin-top: 1.5rem;
+
+            input[type="checkbox"] {
+                transform: scale(1.2);
+            }
+
+            .agreetext {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+
+                color: rgba(0, 0, 0, 0.7);
+
+                padding-left: 0.5rem;
+            }
+        }
+
+        .buttons {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;  
+        }
     }
 }
