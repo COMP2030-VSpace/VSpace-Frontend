@@ -7,8 +7,10 @@ import { useContext, useEffect, useState } from "react";
 // import assets
 import logo from "../../assets/navbar/logo.png";
 import dropdown from "../../assets/navbar/Polygon 4.png";
+
 // import components
 import NavbarSearch from "../search/navbarSearch/NavbarSearch";
+import NavbarFooterItem from "./NavbarFooterItem";
 
 const Navbar = (props) => {
     // const { authState: { authLoading, isAuthenticated, user }, redirectToLogin } = useContext(AuthContext);
@@ -77,47 +79,79 @@ const Navbar = (props) => {
             </div>
 
             <div className="navbar-footer">
-                <div className="navbar-footer-content">
-                    <div>
-                        <span>About us</span>
-                    </div>
+                <NavbarFooterItem
+                    content = "About us"
+                    items = {[
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        }
+                    ]}
+                ></NavbarFooterItem>
 
-                    <div>
-                        <img src={dropdown} />
-                    </div>
-                </div>
+                <NavbarFooterItem
+                    content = "Browse"
+                    items = {[
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        }
+                    ]}
+                ></NavbarFooterItem>
 
-                <div className="navbar-footer-content">
-                    <div>
-                        <span>Browse</span>
-                    </div>
+                <NavbarFooterItem
+                    content = "Resources"
+                    items = {[
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        }
+                    ]}
+                ></NavbarFooterItem>
 
-                    <div>
-                        <img src={dropdown} />
-                    </div>
-                </div>
+                <NavbarFooterItem
+                    content = "Help"
+                    items = {[
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        },
+                        {
+                            "title":"About Vinuni Library",
+                            "link":"/about"
+                        }
+                    ]}
+                ></NavbarFooterItem>
 
-                <div className="navbar-footer-content">
-                    <div>
-                        <span>Resources</span>
-                    </div>
-
-                    <div>
-                        <img src={dropdown} />
-                    </div>
-                </div>
-
-                <div className="navbar-footer-content">
-                    <div>
-                        <span>Help</span>
-                    </div>
-
-                    <div>
-                        <img src={dropdown} />
-                    </div>
-                </div>
-
-                <div></div>
+                {/* <div></div> */}
             </div>
         </div>
     );
