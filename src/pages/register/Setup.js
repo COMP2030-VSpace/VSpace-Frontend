@@ -11,6 +11,20 @@ import Footer from "../../components/footer/Footer";
 
 const Setup = (props) => {
     const [regState, setRegState] = useState(1);
+    const [isBoxChecked, setIsBoxChecked] = useState(false);
+
+    // functions
+    const setChecked = (newBoxState) => {
+        setIsBoxChecked(newBoxState);
+    };
+
+    const nextState = () => {
+        setRegState(regState + 1);
+    };
+
+    // const backState = () => {
+    //     setRegState(regState - 1);
+    // }
 
     return (
         <div className="register-setup mb10">
@@ -148,7 +162,10 @@ const Setup = (props) => {
                     <br />
 
                     <div class="checkbox-container">
-                        <input type="checkbox"></input>
+                        <input
+                            type="checkbox"
+                            onChange={() => setChecked(!isBoxChecked)}
+                        ></input>
                         <span class="agreetext">
                             I have read and I agree to the End User Agreement
                         </span>
@@ -162,23 +179,123 @@ const Setup = (props) => {
                                 background: "#FFF",
                                 "border-radius": "5px",
                                 padding: "0.6rem 0",
-                                border: "1px solid #000000"
+                                border: "1px solid #000000",
                             }}
                             content="Cancel"
                         ></Button>
 
+                        {!isBoxChecked && (
+                            <Button
+                                styles={{
+                                    height: "1rem",
+                                    width: "5rem",
+                                    background: "#828282",
+                                    padding: "0.6rem 0",
+                                    color: "#ffffff",
+                                }}
+                                content="Save"
+                                customedClass="unclickable"
+                            ></Button>
+                        )}
+
+                        {isBoxChecked && (
+                            <Button
+                                styles={{
+                                    height: "1rem",
+                                    width: "5rem",
+                                    background: "#828282",
+                                    padding: "0.6rem 0",
+                                    color: "#ffffff",
+                                }}
+                                content="Save"
+                                handleClick={() => nextState()}
+                            ></Button>
+                        )}
+                    </div>
+                    {/* Tung ends here */}
+                </div>
+            )}
+
+            {regState === 2 && (
+                <div className="main">
+                    <div className="main--header">Create Profile</div>
+
+                    <div className="outer-box">
+                        <div className="header-box">
+                            <span>Identify</span>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">First Name *</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">Last Name *</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">Contact Telephone</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">Language *</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div className="outer-box">
+                        <div className="header-box">
+                            <span>Security</span>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">Password *</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+
+                        <div className="box-item">
+                            <div className="text">Retype to confirm *</div>
+
+                            <div className="box-input">
+                                <input type="text"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="complete-button">
                         <Button
                             styles={{
-                                height: "1rem",
-                                width: "5rem",
+                                height: "1.5rem",
+                                width: "13rem",
+                                "border-radius": "5px",
                                 background: "#828282",
                                 padding: "0.6rem 0",
                                 color: "#ffffff",
                             }}
-                            content="Save"
+                            content="Complete Registration"
+                            handleClick={() => nextState()}
                         ></Button>
                     </div>
-                    {/* Tung ends here */}
                 </div>
             )}
 

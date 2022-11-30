@@ -17,3 +17,10 @@
         margin-right: 0.5rem;
     }
 }
+
+.unclickable{
+    &:hover{
+        cursor: auto;
+        opacity: 1;
+    }
+}
