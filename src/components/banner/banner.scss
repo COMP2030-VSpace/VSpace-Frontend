@@ -20,19 +20,36 @@
         flex-direction: column;
 
         .top{
-            font-size: 3.7rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-
-            // font-family: 'Montserrat';
+            font-size: 4.5rem;
+            letter-spacing: 0rem;
+            line-height: 2.5rem;
+            text-align: center;
+            position: absolute;
+            width: 33.625rem;
+            height: 2.5rem;
+            // left: 2.4375rem;
+            top: 3.75rem;
         }
         
         .bottom{
-            font-size: 3.1rem;
-            font-weight: 400;
+            position: absolute;
+            width: 19.0625rem;
+            height: 2.5rem;
+            left: 9rem;
+            top: 9.1875rem;
+            font-family: 'Montserrat', sans-serif;
             font-style: italic;
+            font-weight: 300;
+            font-size: 4rem;
+            line-height: 2.5rem;
+            // letter-spacing: 0rem;
+            /* identical to box height, or 62% */
 
-            margin-left: 7rem;
-            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            text-align: center;
         }
     }
 }
