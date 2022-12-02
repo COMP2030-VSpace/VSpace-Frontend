@@ -20,7 +20,7 @@ const HomeV2 = (props) => {
                     <div className="left">
                         <div className="about item">
                             <div className="heading">
-                                <h1>VinSpace</h1>
+                                <h2>VinSpace</h2>
                             </div>
 
                             <div className="info">
@@ -31,7 +31,7 @@ const HomeV2 = (props) => {
 
                         <div className="community-list item">
                             <div className="heading">
-                                <h1>Communities in VinSpace</h1>
+                                <h2>Communities in VinSpace</h2>
                             </div>
 
                             <div className="list">
@@ -52,7 +52,7 @@ const HomeV2 = (props) => {
 
                         <div className="recent-add item">
                             <div className="heading">
-                                <h1>Recently Added</h1>
+                                <h2>Recently Added</h2>
                             </div>
 
                             <div className="item-list">
