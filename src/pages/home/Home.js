@@ -32,7 +32,7 @@ const Home = (props) => {
                       <h3>Submit your contribution</h3>
                   </div>
                   <div className="item-main">
-                      <p>Sumbit your document, research paper, image, data set and more into VinUni's digital respository.</p>
+                      <p>Submit your document, research paper, image, data set and more into VinUni's digital respository.</p>
                   </div>
                   <div>
                       <button className="submit-button">Submit your work</button>
@@ -66,7 +66,7 @@ const Home = (props) => {
                       <h3>Browse Collections</h3>
                   </div>
 
-                  <div className="item-main">
+                  <div className="item-main base">
                       <ul> 
                           <li>College of Business & Management</li>
                           <li>College of Engineering & Computer Science</li>

@@ -12,7 +12,7 @@
 
     &:before{
         content: "";
-        top: -8px;
+        top: -0.5rem;
         bottom: 0;
         height: 5rem;
         background: $primary-red;
@@ -48,7 +48,7 @@
             cursor: pointer;
             position: absolute;
             top: 50%;
-            left: 5px;
+            left: 0.3125rem;
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
         }

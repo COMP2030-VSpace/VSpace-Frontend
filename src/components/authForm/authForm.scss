@@ -2,7 +2,7 @@
 
 .auth-form{
     height: 30rem;
-    width: 40vw;
+    width: 31rem;
 
     // background-color: red;
 
@@ -12,6 +12,17 @@
     flex-direction: column;
     align-items: center;
 
+    .register--text_1 {
+        font-size: 1rem;
+        font-weight: 400;
+        width: 100%;
+    }
+    .register--text_2 {
+        padding-top: 1rem;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+    }
 
     .header{
         font-style: normal;
@@ -19,21 +30,24 @@
         font-size: 2rem;
         line-height: 2.5rem;
         color: #000000;
-        margin-bottom: 3rem;
+        margin-bottom: 1rem;
     }
 
     .form-input{
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        width: 100%;
 
         &:nth-child(2){
             margin-top: 0;
         }
 
         input{
-            width: 25.5rem;
-            height: 2rem;
+            // width: 29.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            height: 3.3rem;
 
-            border: 1px solid #3D3D3D;
+            border: 0.0625rem solid #3D3D3D;
             border-radius: 0.25rem;
 
             padding: 0.3rem 0 0.3rem 1.5rem;
@@ -47,14 +61,9 @@
     }
 
     .auth-help{
-        width: 27rem;
-        border-top: 1px solid #000000;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        .item{
-            margin-top: 0.7rem;
-        }
     }
 }

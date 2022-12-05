@@ -51,7 +51,7 @@ const SideMenu = (props)=>{
                 },
                 {
                     "title": "Item",
-                    "link":""
+                    "link":"/admin/item/add"
                 }
                 
             ]

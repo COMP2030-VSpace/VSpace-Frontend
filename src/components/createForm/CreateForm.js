@@ -102,6 +102,35 @@ const CreateForm = (props)=>{
                         </div>
                     </>
                 }
+
+
+                {props.createType === "item" &&
+                    <>
+                        {/* Thao starts here */}
+                        <div className='header'>
+                            <div className='text'>New collection</div>
+                        </div>
+
+                        <div className='community-search'>
+                            <div className='text'>
+                                Create a new collection in
+                            </div>
+
+                            <div className='form-input'>
+                                <input type = "text" placeholder='Search for a community'></input>
+                            </div>
+                        </div>
+
+                        <div className='community-list'>
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+
+                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+                        </div>
+                        {/* Thao ends here */}
+                    </>
+                }
             </div>
         );
     }
@@ -361,6 +390,143 @@ const CreateForm = (props)=>{
                             ></Button>
                         </div>
 
+                    </>
+                }
+
+
+                {props.createType === "item" &&
+                    <>
+                        {/* Thao starts here */}
+                        <div className='header'>
+                            <div className='text'>Create a collection for Community U0J7</div>
+                        </div>
+
+                        
+
+                        <div className='form'>
+                            <div className="form-item">
+                                <div className='text'>
+                                    Logo
+                                </div>
+
+                                <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                                
+                                <label for="logo-upload">
+                                    <div className='label-div'>
+                                        <img src = {upload_icon} alt = "add_images"/>
+                                        <div className='label-text'>Upload a logo</div>
+                                    </div>
+                                </label>
+                                {/* <img src={libraryIcon}></img> */}
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Name*
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Introductory text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Short description
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Copyright text (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    News (HTML)
+                                </div>
+
+                                <div className='form-input'>
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    License
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Entity type
+                                </div>
+
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='form-submit'>
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "7rem",
+                                    "background": "#ffffff",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "color": "#000000",
+                                    "border": "1.5px solid #000000",
+                                }}
+
+                                content = "Back"
+                                icon = {arrow_left_icon}
+                                
+
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+
+                            <Button 
+                                styles = {{
+                                    "height": "2.6rem",
+                                    "width": "7rem",
+                                    "background": "#2D5288",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "color": "#ffffff"
+                                }}
+
+                                content = "Save"
+                                icon = {save_icon}
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
+                        </div>
+                        {/* Thao starts here */}
                     </>
                 }
             </div>

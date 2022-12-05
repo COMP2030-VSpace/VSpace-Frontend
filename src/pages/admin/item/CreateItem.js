@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, createRef, useContext, useState } from "react";
-import "./createCollection.scss";
+import "./createItem.scss";
 // import { Container } from "reactstrap";
 
 // import components
@@ -11,7 +11,7 @@ import CreateForm from "../../../components/createForm/CreateForm";
 
 
 
-const CreateCollection = (props) => {
+const CreateItem = (props) => {
 
     // const [createState, setCreateState] = useState(1);
 
@@ -20,7 +20,7 @@ const CreateCollection = (props) => {
     // }
 
     return (
-        <div className="admin-create-collection">
+        <div className="admin-create-community">
             <Navbar></Navbar>
 
             <div className="main">
@@ -49,4 +49,4 @@ const CreateCollection = (props) => {
     );
 };
 
-export default CreateCollection;
+export default CreateItem;
