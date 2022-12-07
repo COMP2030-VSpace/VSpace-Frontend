@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, createRef, useContext, useState } from "react";
 import "./authForm.scss";
+import { AuthContext } from "../../contexts/AuthContext";
 
 // import assets
 // import sample_banner from "../../assets/sample/banner/banner.png";
@@ -8,7 +9,51 @@ import "./authForm.scss";
 // import components;
 import Button from "../button/Button";
 
+
+
 const AuthForm = (props) => {
+    // import contexts
+    const { registerUser } = useContext(AuthContext);
+
+    // import states
+    const [email, setEmail] = useState("");
+
+
+    const submitRegisterForm = async () => {
+        console.log("submitting...");
+
+        const data = {
+            "email": email,
+            "type": "registration"
+        }
+
+        const res = await registerUser(data);
+
+        console.log(res.data);
+
+
+        if(res.data.success){
+            setEmail("");
+
+            return;
+        }
+
+        return;
+    }
+
+
+    const handleOnKeyDown = (event) => {
+        if (event.keyCode === 13) {
+            // console.log('enter');
+            submitRegisterForm();
+        }
+    }
+
+    const handleChange = (event) => {
+        // console.log(event.target.value);
+        setEmail(event.target.value);
+    }
+
     return (
         <div className="auth-form">
             {props.authType === "register" && (
@@ -20,7 +65,13 @@ const AuthForm = (props) => {
                     </span>
 
                     <div className="form-input">
-                        <input type="text" placeholder="Email Address"></input>
+                        <input 
+                            type="text" 
+                            placeholder="Email Address"
+                            value = {email} 
+                            onChange = {(e) => handleChange(e)}
+                            onKeyDown={(e) => handleOnKeyDown(e)}
+                        ></input>
                     </div>
                     
                     <div className="register--text_2">
@@ -37,6 +88,7 @@ const AuthForm = (props) => {
                             "color": "#ffffff",
                         }}
                         content="Create Account"
+                        handleClick = {() => submitRegisterForm()}
                     ></Button>
 
                     <div className="auth-help">
