@@ -177,16 +177,20 @@
                 border: 1px solid #000000;
                 border-radius: 5px;
                 background: #FFFFFF;
+                gap: 0.5rem;
+
+                justify-content: center;
+                align-items: center;
 
                 &:hover{
                     cursor: pointer;
                 }
             }
     
-            .more::after{
-                content: url('../../assets/admin/Polygon.png');
-                height: 20px;
-            }
+            // .more::after{
+            //     content: url('../../assets/admin/Polygon.png');
+            //     height: 20px;
+            // }
         }
 
         .right{
@@ -206,21 +210,28 @@
                 padding: 0.5rem 1rem;
                 border: 1px solid #000000;
                 border-radius: 5px;
-                // justify-content: center;
-                // align-items: center;
+                gap: 0.5rem;
+
+                justify-content: center;
+                align-items: center;
+
                 &:hover{
                     cursor: pointer;
                 }
             }
 
-            .add-more::after{
-                content: '';
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                background-image: url('../../assets/admin/plus-black.png');
-                background-size: 20px;
-            }
+            // .add-more{
+            //     // content: '';
+            //     // display: inline-block;
+            //     width: 20px;
+            //     height: 16px;
+            //     background-image: url('../../assets/admin/plus-black.png');
+            //     background-repeat: no-repeat;  
+            //     background-position: 0px 0px;
+            //     // background-size: 20px;
+            //     padding-left: 16px;
+            //     vertical-align: middle;
+            // }
         }
     }
 

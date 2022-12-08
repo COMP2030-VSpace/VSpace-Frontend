@@ -10,6 +10,8 @@ import plusimg from "../../assets/admin/plus.png";
 import uparrow from "../../assets/admin/up-arrow-admin.png";
 import trash from "../../assets/admin/trash-can.png";
 import pluswhite from "../../assets/admin/plus-white.png";
+import plusblack from "../../assets/admin/plus-black.png"
+import polygon from '../../assets/admin/Polygon.png';
 
 // import components;
 import Button from '../button/Button';
@@ -432,12 +434,18 @@ const CreateForm = (props)=>{
                             <div className='button-group'>
                                 <div className='left'>
                                     <button className="collection">Collection</button>
-                                    <button className="more">B.Lib l.sc</button>
+
+                                    <button className="more">
+                                        B.Lib l.sc
+                                        <img src={polygon} height="10px"/>
+                                    </button>
                                 </div>
 
                                 <div className='right'>
-                                    <button className='add-more'>Add more</button>
-                                    
+                                    <button className='add-more'>
+                                        Add more
+                                        <img src={plusblack} height="16px"/>
+                                    </button>                                   
                                 </div>
                             </div>
 
