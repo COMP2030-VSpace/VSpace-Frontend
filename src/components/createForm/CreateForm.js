@@ -12,6 +12,7 @@ import trash from "../../assets/admin/trash-can.png";
 import pluswhite from "../../assets/admin/plus-white.png";
 import plusblack from "../../assets/admin/plus-black.png"
 import polygon from '../../assets/admin/Polygon.png';
+import check from '../../assets/admin/check.png';
 
 // import components;
 import Button from '../button/Button';
@@ -829,6 +830,11 @@ const CreateForm = (props)=>{
                                     handleClick = {() => nextCreateState()}
                                 ></Button>
                             </div>
+
+                            <span class="dot">
+                                <img src={check}/>
+                            </span>
+                            <p className='text'>Saved</p>
                             
                             <Button 
                                 styles = {{
