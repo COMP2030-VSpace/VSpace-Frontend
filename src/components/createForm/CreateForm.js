@@ -15,7 +15,13 @@ import pluswhite from "../../assets/admin/plus-white.png";
 import Button from '../button/Button';
 import CommunityItem from '../communityItem/CommunityItem';
 
-import { AiOutlinePlus } from 'react-icons/ai';
+//  saved done
+// function myDonn() {
+//     document.getElementById("saved").innerHTML = "Saved";
+//     document.getElementById("saved").style.background = "#F6F9F9";
+//     document.getElementById("trs").innerHTML = "Translate";
+//   }
+  
 
 
 const CreateForm = (props)=>{
@@ -511,12 +517,12 @@ const CreateForm = (props)=>{
                             </div>
 
                             <div className='input-group'>
-                                <div className='form-item'>
+                                <div className='form-item-left'>
                                     <div className='text'>
                                         Date of Issue *
                                     </div>
 
-                                    <div className='form-input'>
+                                    <div className='date-input'>
                                         <div className='year'>
                                             <input type = "text" placeholder='Year'></input>
                                         </div>
@@ -823,7 +829,9 @@ const CreateForm = (props)=>{
                                     "background": "#828282",
                                     "margin-right": "0",
                                     "margin-bottom": "0",
-                                    "color": "#ffffff"
+                                    "color": "#ffffff",
+                                    // "id": "saved",
+                                    // "onClick": "myDonn()",
                                 }}
 
                                 content = "Save"
