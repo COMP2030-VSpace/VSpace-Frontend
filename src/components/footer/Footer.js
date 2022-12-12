@@ -25,7 +25,7 @@ const Footer = (props) => {
 
                     <div className="footer--content">
                         <div className="wrapper">
-                            <h5>VinSpace@Vinuni</h5>
+                            <h5>VinSpace@VinUni</h5>
                             <ul>
                                 <li>Vinhomes Ocean Park</li>
                                 <li>Contact us</li>
