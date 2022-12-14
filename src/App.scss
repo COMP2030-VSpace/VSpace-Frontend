@@ -8,6 +8,63 @@ html {
     position: relative;
 }
 
+@media screen and (max-width: 412px) {
+    // responsive for smaller than 13 in screens
+    html{
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 413px) {
+    // responsive for smaller than 13 in screens
+    html{
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1210px) {
+    // responsive for 13 in screens
+    html{
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (min-width: 1285px) {
+    // responsive for 14 in screens
+    html{
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (min-width: 1400px) {
+    // responsive for 15 in screens
+    html{
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 3640px) {
+    // responsive for 43 in screens
+    html{
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 4160px) {
+    // responsive for 49 in screens
+    html{
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 4670px) {
+    // responsive for 55 in screens
+    html{
+        font-size: 40px;
+    }
+}
 /* 
 
 h3{
