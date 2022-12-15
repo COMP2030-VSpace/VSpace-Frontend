@@ -24,7 +24,7 @@
             display: flex;
             height: 80.263%;
             padding-top: 1.25rem;
-            padding: 0 $primary-padding;
+            padding: 0 var(--primary-padding);
 
             .footer--image {
                 display: flex;
@@ -64,7 +64,7 @@
         }
 
         .footer--bottom {
-            padding: 0 $primary-padding;
+            padding: 0 var(--primary-padding);
             height: 19.737%;
             background-color: #cd3c3f;
             color: white;

@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 // import assets
 import logo from "../../assets/navbar/logo.png";
 import dropdown from "../../assets/navbar/Polygon 4.png";
+import hamburgerMenu from "../../assets/navbar/hamburger-menu.png"
 
 // import functions
 import { moveTo } from "../../utils/helperFunctions";
@@ -57,22 +58,7 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="right">
-                    <div className="wrapper">
-                        {/* <div className="item" onClick={() => moveTo("/")}>
-                            Home
-                        </div>
-
-                        <div
-                            className="item"
-                            onClick={() => moveTo("/register")}
-                        >
-                            Register
-                        </div>
-
-                        <div className="item">My account</div>
-
-                        <div className="item">Contact</div> */}
-
+                    <div className="wrapper desktop">
                         <div>
                             <Button 
                                 styles = {{
@@ -111,10 +97,25 @@ const Navbar = (props) => {
                             ></Button>
                         </div>
                     </div>
+
+                    <div className="wrapper mobile">
+                        <div className="ham-menu">
+                            <img src={hamburgerMenu} alt = "menu"></img>
+                        </div>
+
+                        
+                        {/* Tung starts here */}
+
+
+
+                        {/* Tung ends here */}
+
+
+                    </div>
                 </div>
             </div>
 
-            <div className="navbar-footer">
+            <div className="navbar-footer desktop">
                 <NavbarFooterItem
                     content = "About us"
                     items = {[
@@ -207,6 +208,13 @@ const Navbar = (props) => {
                 ></NavbarFooterItem>
 
                 {/* <div></div> */}
+            </div>
+
+
+            <div className="navbar-footer mobile">
+                <div className="ham-menu">
+                    <img src={hamburgerMenu} alt = "menu"></img>
+                </div>
             </div>
         </div>
     );

@@ -19,7 +19,7 @@
             padding-top: 0.625rem;
             padding-right: 0.9375rem;
             padding-bottom: 2.5rem;
-            padding-left: $primary-padding;
+            padding-left: var(--primary-padding);
             
             h2 {
                 color: #cd3c3f;

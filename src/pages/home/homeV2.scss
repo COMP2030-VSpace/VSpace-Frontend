@@ -12,7 +12,7 @@
 
     .main{
         margin-top: 1.5rem;
-        padding: 0 $primary-padding;
+        padding: 0 var(--primary-padding);
         // width: 100%;
         // height: 70vh;
         display: flex;
@@ -36,7 +36,6 @@
 
         .left{
             // background: red;
-
             flex-basis: 70%;
             box-sizing: border-box;
 
@@ -76,6 +75,15 @@
 
             }
         }
+
+        // responsive for mobile
+        @media screen and (max-width: 1024px) {
+            .left{
+                flex-basis: 100%;
+            }
+        }
+
+
 
         .right{
             // background: blue;

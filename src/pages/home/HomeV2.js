@@ -63,7 +63,7 @@ const HomeV2 = (props) => {
                         </div>
                     </div>
 
-                    <div className="right">
+                    <div className="right desktop">
                         <div className="item mb2">
                             <HomeSearch></HomeSearch>
                         </div>

@@ -1,5 +1,28 @@
 @import './scss/variables.scss';
 
+/* Variable declarations */
+:root {
+    --primary-padding: 6rem
+}
+@media screen and (max-width: 1024px) {
+    :root {
+        --primary-padding: 4rem
+    }
+}
+
+@media screen and (max-width: 672px) {
+    :root {
+        --primary-padding: 1rem
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --primary-padding: 0.8rem
+    }
+}
+
+
 body {
     overflow-x: hidden;
 }
@@ -8,24 +31,34 @@ html {
     position: relative;
 }
 
-@media screen and (max-width: 412px) {
-    // responsive for smaller than 13 in screens
+@media screen and (max-width: 1024px) {
+    // mobile
     html{
-        font-size: 10px;
+        font-size: 14px;
+        // background: red;
+    }
+
+    .desktop{
+        display: none !important;
+    }
+
+    .mobile{
+        display: block;
     }
 }
 
-@media screen and (min-width: 413px) {
-    // responsive for smaller than 13 in screens
+@media screen and (min-width: 1024px) {
+    // responsive for bigger than ipad
     html{
         font-size: 14px;
     }
-}
 
-@media screen and (min-width: 1210px) {
-    // responsive for 13 in screens
-    html{
-        font-size: 14px;
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
     }
 }
 
@@ -35,6 +68,14 @@ html {
     html{
         font-size: 16px;
     }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
+    }
 }
 
 
@@ -43,12 +84,28 @@ html {
     html{
         font-size: 16px;
     }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 3640px) {
     // responsive for 43 in screens
     html{
         font-size: 24px;
+    }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
     }
 }
 
@@ -57,12 +114,28 @@ html {
     html{
         font-size: 32px;
     }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 4670px) {
     // responsive for 55 in screens
     html{
         font-size: 40px;
+    }
+
+    .desktop{
+        display: block;
+    }
+
+    .mobile{
+        display: none !important;
     }
 }
 /* 
