@@ -27,19 +27,37 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-    // useEffect(() => {
-    //     // loadUser();
-    //     if (localStorage.getItem('login'))
-    //         loadUser();
-    // }, []);
+    useEffect(() => {
+        getCsrfToken();
+    }, []);
+
+
+    // get csrf token
+    const getCsrfToken = async () => {
+        try{
+            // const url = apiUrl + "/eperson";
+            const url = "https://vinspace.online/server/api/authn/status"
+
+            const response = await axios.get(url)
+
+            // console.log((getMeta(response.data)));
+            
+
+        } catch (error){
+            // console.log("check cookie", document.cookie)
+            // console.log(error.response)
+            // console.log("check response headers", error);
+            return {success: false};
+        }
+    }
 
 
 
     // Register
     const registerUser = async (userForm) => {
         try {
-            const url = apiUrl + "/eperson/registrations";
-            console.log("check url", url);
+            const url = "https://vinspace.online/server/api" + "/eperson/registrations";
+            // console.log("check url", url);
             const response = await axios.post(url, userForm, {
                 headers:{
                     'Content-Type': 'application/json'
