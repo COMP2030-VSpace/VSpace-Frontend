@@ -1,12 +1,12 @@
 import { createContext, useReducer, useEffect } from 'react'
-import axios from 'axios'
 import { authReducer } from '../reducers/authReducer'
 // import { useHistory } from 'react-router-dom'
 import { apiUrl } from "../contexts/constants";
+import instance from '../axiosConfig/config';
 
 export const AuthContext = createContext()
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
@@ -38,14 +38,14 @@ const AuthContextProvider = ({ children }) => {
             // const url = apiUrl + "/eperson";
             const url = "https://vinspace.online/server/api/authn/status"
 
-            const response = await axios.get(url)
+            const response = await instance.get(url)
 
-            // console.log((getMeta(response.data)));
+            console.log(response);
             
 
         } catch (error){
             // console.log("check cookie", document.cookie)
-            // console.log(error.response)
+            console.log(error)
             // console.log("check response headers", error);
             return {success: false};
         }
@@ -58,7 +58,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             const url = "https://vinspace.online/server/api" + "/eperson/registrations";
             // console.log("check url", url);
-            const response = await axios.post(url, userForm, {
+            const response = await instance.post(url, userForm, {
                 headers:{
                     'Content-Type': 'application/json'
                 }
@@ -86,7 +86,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             const url = process.env.API_URL + "/auth/login";
 
-            const response = await axios.post(url, userForm)
+            const response = await instance.post(url, userForm)
 
             if (response.data.success)
                 localStorage.setItem('login', true);
