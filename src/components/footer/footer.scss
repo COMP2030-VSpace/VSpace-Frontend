@@ -22,9 +22,10 @@
         .footer--top {
             background-color: #313131;
             display: flex;
-            height: 80.263%;
+            // height: 80.263%;
             padding-top: 1.25rem;
-            padding: 0 var(--primary-padding);
+            padding: 2rem var(--primary-padding);
+            padding-bottom: 3rem;
 
             .footer--image {
                 display: flex;
@@ -39,6 +40,104 @@
                 display: flex;
                 justify-content: center;
             }
+
+
+
+            @media screen and (max-width: 1024px) {
+                .wrapper-left{
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    height: 30rem;
+
+                    box-sizing: border-box;
+                }
+
+                .wrapper-right{
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    height: 30rem;
+
+                    box-sizing: border-box;
+                }
+
+                // responsive for 14 in screens
+                .footer--image {
+                    flex-basis: 50%;
+
+                    box-sizing: border-box;
+                }
+                
+                .footer--content {
+                    flex-basis: 50%;
+
+                    box-sizing: border-box;
+                    
+                    .wrapper{
+                        width: 15rem;
+                    }
+
+                    .no-width{
+                        width: auto;
+                    }
+                }
+            }
+
+
+
+            @media screen and (max-width: 672px) {
+                .wrapper-left{
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    height: 30rem;
+
+                    box-sizing: border-box;
+
+                    // padding-left: 2rem;
+                }
+
+                .wrapper-right{
+                    flex-basis: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    height: 30rem;
+
+                    box-sizing: border-box;
+
+                    // padding-right: 2rem;
+                }
+
+                // responsive for 14 in screens
+                .footer--image {
+                    flex-basis: 50%;
+
+                    box-sizing: border-box;
+
+                    justify-content: left;
+
+                    width: 10rem;
+                }
+                
+                .footer--content {
+                    flex-basis: 50%;
+
+                    box-sizing: border-box;
+                    
+                    justify-content: right;
+                    
+                    width: 10rem;
+
+                }
+
+                .force-left{
+                    justify-content: left;
+                }
+            }
+
+
+            
 
             h5 {
                 font-family: 'Montserrat';
