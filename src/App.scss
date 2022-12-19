@@ -4,6 +4,7 @@
 :root {
     --primary-padding: 6rem
 }
+
 @media screen and (max-width: 1024px) {
     :root {
         --primary-padding: 4rem
@@ -44,6 +45,11 @@ html {
 
     .mobile{
         display: block;
+    }
+
+
+    .main{
+        margin-bottom: 2rem !important;
     }
 
     h1 {
@@ -195,7 +201,6 @@ html {
     // }
 }
 
-
 @media screen and (min-width: 1285px) {
     // responsive for 14 in screens
     html{
@@ -274,7 +279,6 @@ html {
     }
     
 }
-
 
 @media screen and (min-width: 1400px) {
     // responsive for 15 in screens
@@ -403,6 +407,7 @@ html {
     }
 }
 
+
 /* global margin */
 .mb1 {
     margin-bottom: 1rem;
@@ -444,3 +449,5 @@ html {
 .main{
     margin-bottom: 10rem;
 }
+
+
