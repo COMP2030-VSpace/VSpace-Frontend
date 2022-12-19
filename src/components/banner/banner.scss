@@ -142,5 +142,45 @@
     }
 
 
+    @media screen and (max-width: 672px) {
+        .welcome{
+            left: 4rem;
+
+            .top{
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 3rem;
+                letter-spacing: 0rem;
+                line-height: 2.5rem;
+                text-align: left;
+                position: absolute;
+                width: 33.625rem;
+                height: 2.5rem;
+                left: 0rem;
+                top: 3.75rem;
+            }
+            
+            .bottom{
+                position: absolute;
+                width: 19.0625rem;
+                height: 2.5rem;
+                left: 7rem;
+                top: 9.1875rem;
+                font-family: 'Montserrat', sans-serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 2rem;
+                line-height: 2.5rem;
+                // letter-spacing: 0rem;
+                /* identical to box height, or 62% */
+        
+                display: flex;
+                align-items: center;
+                text-align: left;
+            }
+        }
+    }
+
+
 }
 
