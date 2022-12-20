@@ -7,6 +7,7 @@
 
 
         .main-right {
+            width: 1rem;
             flex-grow: 1;
 
             // padding: 0 10rem;
@@ -29,7 +30,7 @@
                     font-size: 40px;
                     font-weight: 500;
                     margin-bottom: 0;
-                    margin-top: 1.5rem;
+                    margin-top: 2.5rem;
                 }
                 
                 .search {
@@ -73,6 +74,7 @@
                         margin: 1rem 0 1.5rem 0;
                         font-size: 28px;
                         font-weight: 400;
+                        padding-left: 0;
                     }
 
                     .header__ul {
@@ -92,6 +94,11 @@
                         font-weight: 400;
                         color: #2e5288;
                         margin-bottom: 0.7rem;
+
+                        &:hover{
+                            cursor: pointer;
+                            text-decoration: underline;
+                        }
                     }
                 }
 
@@ -161,7 +168,10 @@
 
                         .thumb{
                             // float: left;
-                            flex-grow: 1;
+                            // flex-grow: 1;
+                            
+                            width: 60rem;
+
                             height: 278px;
 
                             img{
@@ -177,7 +187,9 @@
                         .thumb-info{
                             // float: right;
 
-                            flex-basis: 70%;
+                            flex-grow: 1;
+                            // box-sizing: border-box;
+                            // padding-left: 7rem;
 
 
 
@@ -221,7 +233,7 @@
                             }
 
                             .item-main{
-                                width: 25rem;
+                                width: 100%;
                                 box-sizing: border-box;
                                 // margin-right: 9rem;
                                 font-size: 1rem;

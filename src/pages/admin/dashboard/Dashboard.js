@@ -9,7 +9,8 @@ import Footer from "../../../components/footer/Footer";
 import SideMenu from "../../../components/sideMenu/SideMenu";
 import Banner from "../../../components/banner/Banner";
 
-
+// import functions
+import { moveTo } from "../../../utils/helperFunctions";
 
 // import assets
 import thumb from "../..//../assets/admin/thumbnail.png";
@@ -59,7 +60,7 @@ const Dashboard = (props) => {
                             <h3 className="text__secondheader">Select a community to browse its collections.</h3>
                             <p className="header__ul">Now showing 1 - 5 of 547</p>
                             <ul>
-                                <li>000_Vectino Natalia</li>
+                                <li onClick={() => moveTo("/admin/community")}>College of Engineering & Computer Science</li>
                                 <li>000AgusGuarez</li>
                                 <li>000AliciaAM</li>
                                 <li>000_Vectino Natalia</li>

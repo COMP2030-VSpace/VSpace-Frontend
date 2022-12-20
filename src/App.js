@@ -9,6 +9,7 @@ import CreateCommunity from './pages/admin/community/CreateCommunity';
 import CreateCollection from './pages/admin/collection/CreateCollection';
 import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
+import Community from './pages/admin/community/Community';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path='/admin/collection/add' element={<CreateCollection/>} />
       <Route path='/register/setup' element={<Setup/>} />
       <Route path='/admin/item/add' element={<Item/>} />
+      <Route path='/admin/community/:id' element={<Community/>} />
     </Routes>
   );
 }
