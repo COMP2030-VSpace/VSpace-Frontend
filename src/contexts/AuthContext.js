@@ -3,6 +3,7 @@ import { authReducer } from '../reducers/authReducer'
 // import { useHistory } from 'react-router-dom'
 import { apiUrl } from "../contexts/constants";
 import instance from '../axiosConfig/config';
+import Cookies from 'js-cookie'
 
 export const AuthContext = createContext()
 
@@ -28,20 +29,62 @@ const AuthContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        getCsrfToken();
+        const getToken = async () => {
+            await getCsrfTokenFetch();
+            // await getCsrfTokenAxios();
+        }
+
+
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("GET", "https://vinspace.online/server/api/authn/status", [true])
+
+        getToken();
     }, []);
 
 
     // get csrf token
-    const getCsrfToken = async () => {
+    const getCsrfTokenFetch = async () => {
+        try{
+
+            const csrf = Cookies.get('X-XSRF-TOKEN');
+
+            if(!csrf){
+                const url = "https://vinspace.online/server/api/authn/status"
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", url, [true])
+
+                await xhr.send()
+
+
+                xhr.onload = () => {
+                    const csrf = xhr.getResponseHeader("DSPACE-XSRF-TOKEN");
+                    console.log("hope hope", csrf);
+                    // let d = new Date();
+                    // d.setTime(d.getTime() + (minutes*60*1000));
+                    Cookies.set("X-XSRF-TOKEN", csrf, {path: "/"});
+                }
+
+            }
+    
+            
+        } catch (error){
+            // console.log("check cookie", document.cookie)
+            console.log(error)
+            // console.log("check response headers", error);
+            return {success: false};
+        }
+    }
+
+
+
+    const getCsrfTokenAxios = async () => {
         try{
             // const url = apiUrl + "/eperson";
             const url = "https://vinspace.online/server/api/authn/status"
 
             const response = await instance.get(url)
 
-            console.log(response);
-            
+            console.log("check response", response);
 
         } catch (error){
             // console.log("check cookie", document.cookie)

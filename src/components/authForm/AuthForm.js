@@ -27,7 +27,6 @@ const AuthForm = (props) => {
             "type": "registration"
         }
 
-        console.log("debug cookie", document.cookie.split(';'));
 
         const res = await registerUser(data);
 

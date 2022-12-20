@@ -7,7 +7,9 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
+    "axios-cookiejar-support": "^4.0.3",
     "bootstrap": "^5.2.2",
+    "js-cookie": "^3.0.1",
     "lets-get-meta": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -15,6 +17,7 @@
     "react-scripts": "5.0.1",
     "reactstrap": "^9.1.5",
     "sass": "^1.55.0",
+    "tough-cookie": "^4.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
