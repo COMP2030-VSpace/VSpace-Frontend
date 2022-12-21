@@ -1,0 +1,163 @@
+// authForm.scss
+
+
+// for both state
+.item-view{
+    width: 66vw;
+
+    // border-top: 1px solid #F7F8FC;
+    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    // background-color: red;
+
+    margin-top: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header{
+        width: 100%;
+
+        border-bottom: 1px solid #CDD4DE;
+
+        .text{
+            padding: 1rem 0.5rem;
+            font-size: 2rem;
+        }
+    }
+
+    .form{
+        width: 100%;
+        padding-left: 1.5rem;
+        box-sizing: border-box;
+
+        border-bottom: 1px solid #CDD4DE;
+        padding-bottom: 2.5rem;
+
+        .form-item{
+            .text{
+                margin: 1.5rem 0 0.5rem 0;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+    
+            }
+    
+            .form-input{
+                margin-top: 2rem;
+                // display: flex;
+                // justify-content: center;
+        
+                &:nth-child(2){
+                    margin-top: 0;
+                }
+        
+                input{
+                    width: 100%;
+                    box-sizing: border-box;
+                    height: 3rem;
+        
+                    border: 1px solid rgba(49, 49, 49, 0.7);
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 5px;
+        
+                    padding: 0.3rem 0 0.3rem 1.5rem;
+        
+                    font-size: 0.9rem;
+                }
+        
+                input[type=text]{
+                    outline: none;
+                }
+
+
+
+                textarea{
+                    height: 5rem;
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    padding: 0.9rem 0 0.3rem 1.5rem;
+                    font-size: 0.9rem;
+                    resize: none;
+                    word-spacing: -1px;
+                    /* text-align: justify; */
+
+                    border: 1px solid rgba(49, 49, 49, 0.7);
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 5px;
+                
+                    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+                    scrollbar-width: none; /* for Firefox */
+                    overflow-y: hidden; 
+
+
+                    &:-webkit-scrollbar {
+                        display: none; /* for Chrome, Safari, and Opera */
+                    }
+                }
+            }
+
+
+            .label-div{
+                // width: 100%;
+                box-sizing: border-box;
+
+                height: 3rem;
+    
+                border: 1px solid rgba(49, 49, 49, 0.7);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 5px;
+    
+                padding: 0.3rem 0 0.3rem 1.5rem;
+    
+                font-size: 0.9rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img{
+                    height: 50%;
+                    margin-right: 0.8rem;
+                }
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .form-submit{
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+// state = general
+.general{ 
+    // Thao starts here
+
+
+
+
+    // Thao ends here
+}
+
+
+
+
+
+// state detail
+.detail{
+    // Thao starts here    
+
+    // Thao ends here
+
+}

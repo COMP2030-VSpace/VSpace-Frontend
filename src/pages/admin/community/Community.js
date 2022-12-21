@@ -7,7 +7,7 @@ import "./community.scss";
 import Navbar from "../../../components/navbar/Navbar";
 import Footer from "../../../components/footer/Footer";
 import SideMenu from "../../../components/sideMenu/SideMenu";
-import CreateForm from "../../../components/createForm/CreateForm";
+import ItemView from "../../../components/itemView/ItemView";
 
 
 
@@ -27,7 +27,9 @@ const Community = (props) => {
                 <SideMenu></SideMenu>
 
                 <div className="main-right">
-                    
+                    <ItemView
+                    >
+                    </ItemView>
                 </div>
             </div>
 
