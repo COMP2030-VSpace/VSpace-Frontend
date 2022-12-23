@@ -21,7 +21,7 @@ import { ButtonGroup } from 'reactstrap';
 
 const ItemView = (props)=>{
 
-    const [itemViewType, setItemViewType] = useState(ItemViewType.DETAIL);
+    const [itemViewType, setItemViewType] = useState(ItemViewType.GENERAL);
 
     const moveToDetail = () => {
         setItemViewType(ItemViewType.DETAIL);
