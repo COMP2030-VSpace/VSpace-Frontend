@@ -6,17 +6,22 @@ import './itemView.scss';
 import upload_icon from "../../assets/upload/upload.png";
 import save_icon from "../../assets/save/save.png";
 import arrow_left_icon from "../../assets/arrows/left.png";
+import thumb from "../../assets/admin/thumbnail.png";
+import book from "../../assets/admin/book.png";
+import info from "../../assets/admin/info.png";
 
 // import components;
 import Button from '../button/Button';
 import CommunityItem from '../communityItem/CommunityItem';
 
+
 // import enums
 import { ItemViewType } from '../../enums/enum';
+import { ButtonGroup } from 'reactstrap';
 
 const ItemView = (props)=>{
 
-    const [itemViewType, setItemViewType] = useState(ItemViewType.GENERAL);
+    const [itemViewType, setItemViewType] = useState(ItemViewType.DETAIL);
 
     const moveToDetail = () => {
         setItemViewType(ItemViewType.DETAIL);
@@ -34,84 +39,113 @@ const ItemView = (props)=>{
             <div className = 'item-view general'>
                 {/* Thao starts here */}
 
-
-
-                {/* Resoures, can reuse */}
                 <div className='header'>
-                    <div className='text'>Create a community</div>
+                    <div className='text'>College of Engineering & Computer Science</div>
+                    <div className='description'>Permanent URI for this community <a href="https://vinspace.online/handle/123456789/1">https://vinspace.online/handle/123456789/1</a> </div>
                 </div>
-
-                
 
                 <div className='form'>
                     <div className="form-item">
                         <div className='text'>
-                            Logo
+                            Browse
                         </div>
 
-                        <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                        {/* <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
                         
                         <label for="logo-upload">
                             <div className='label-div'>
                                 <img src = {upload_icon} alt = "add_images"/>
                                 <div className='label-text'>Upload a logo</div>
                             </div>
-                        </label>
+                        </label> */}
                         {/* <img src={libraryIcon}></img> */}
+
+                        <div className='btn-group'>
+                            <button>Subcommunities and Collections</button>
+                            <button>By Issue Date</button>
+                            <button>By Author</button>
+                            <button>By Title</button>
+                            <button>By Subject</button>
+                        </div>
                     </div>
 
                     <div className='form-item'>
                         <div className='text'>
-                            Name*
+                            Filter results by year or month
                         </div>
 
+                        <div className='select-group'>
+                            <select className='dropdown'>
+                                <option value="0">(Choose year)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+
+                            <select className='dropdown'>
+                                <option value="0">(Choose month)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+
+                            <div className='filter-button'>
+                                <div className='text-btn'>
+                                    <p>Filter results by date</p>
+                                </div>
+
+                                <div className='icon-btn'>
+                                    <img src = {book}/>
+                                    <p>Browse</p>
+                                </div>
+                            </div>
+                        </div>
+        
+
+                        <div className='show-text'>
+                            Now showing 1 - 1 of 1
+                        </div>
+                        
+                        {/* 
                         <div className='form-input'>
                             <input type = "text"></input>
-                        </div>
+                        </div> */}
                     </div>
+                </div>
 
-                    <div className='form-item'>
-                        <div className='text'>
-                            Introductory text (HTML)
-                        </div>
+                <div className='bottom'>
+                    <div className='item'>
+                        <div className='item-content'>
+                            <div className="thumb">
+                                <img src= {thumb} alt="Thumbnail"/>
+                            </div>
 
-                        <div className='form-input'>
-                            <textarea></textarea>
-                        </div>
-                    </div>
+                            <div className='thumb-info'>
+                                <div className="tag">
+                                    <span className="tag1">datafile.listelement.badge</span>
+                                    <span className="tag2">Open Access</span>
+                                    </div>
 
-                    <div className='form-item'>
-                        <div className='text'>
-                            Short description
-                        </div>
+                                <div className="item-header">
+                                    <p>TITLE TOP-LEVEL TEST SAMPLE</p>
+                                </div>
 
-                        <div className='form-input'>
-                            <textarea></textarea>
-                        </div>
-                    </div>
+                                <div className="item-sub">
+                                    <p>(VinSpace, 2022-11-15) Doe, John</p>
+                                </div>
 
-                    <div className='form-item'>
-                        <div className='text'>
-                            Copyright text (HTML)
-                        </div>
-
-                        <div className='form-input'>
-                            <textarea></textarea>
-                        </div>
-                    </div>
-
-                    <div className='form-item'>
-                        <div className='text'>
-                            News (HTML)
-                        </div>
-
-                        <div className='form-input'>
-                            <textarea></textarea>
+                                <div className="item-main">
+                                    <div className="content">
+                                        Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
+                                        respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
+                                        En efecto, si la identidad femenina expresa la diferencia absoluta, 
+                                        lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className='form-submit'>
+                {/* <div className='form-submit'>
                     <Button 
                         styles = {{
                             "height": "2.6rem",
@@ -129,23 +163,7 @@ const ItemView = (props)=>{
 
                         handleClick = {() => backToGeneral()}
                     ></Button>
-
-                    <Button 
-                        styles = {{
-                            "height": "2.6rem",
-                            "width": "7rem",
-                            "background": "#2D5288",
-                            "margin-right": "0",
-                            "margin-bottom": "0",
-                            "color": "#ffffff"
-                        }}
-
-                        content = "Save"
-                        icon = {save_icon}
-
-                        handleClick = {() => moveToDetail()}
-                    ></Button>
-                </div>
+                </div> */}
 
 
 
@@ -157,7 +175,68 @@ const ItemView = (props)=>{
         return(
             <div className = 'item-view detail'>
                 {/* Thao starts here */}
+                <div className='header-detail'>
+                    <div className='text'>Test Title</div>
+                </div>
 
+                <div className='detail'>
+                    <div className='left'>
+                        <img src= {thumb} alt="Thumbnail"/>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Files</div>
+                            <div className='item-content'><a href='ample-social-white-01.jpeg (59.61 KB)'>ample-social-white-01.jpeg (59.61 KB)</a></div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Date</div>
+                            <div className='item-content'>2020 - 10 - 17</div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Authors</div>
+                            <div className='item-content'>Tuan</div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Publisher</div>
+                            <div className='item-content'>Test publisher</div>
+                        </div>
+                    </div>
+
+                    <div className='right'>
+                        <div className='item-detail'>
+                            <div className='item-header'>Abstract</div>
+                            <div className='item-content'>Test abstract</div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Description</div>
+                            <div className='item-content'>Test description</div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Citation</div>
+                            <div className='item-content'>APA</div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>URI</div>
+                            <div className='item-content'><a href ='https://vinspace.online/handle/1224534543/7'>https://vinspace.online/handle/1224534543/7</a></div>
+                        </div>
+
+                        <div className='item-detail'>
+                            <div className='item-header'>Collections</div>
+                            <div className='item-content'><a href ='lmao'>lmao</a></div>
+                        </div>
+
+                        <div className='info-btn'>
+                            <img src = {info}/>
+                            <p>Full item page</p>
+                        </div>
+                    </div>
+
+                </div>
 
                 {/* Thao ends here */}
             </div>
