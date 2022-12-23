@@ -60,7 +60,7 @@ const Dashboard = (props) => {
                             <h3 className="text__secondheader">Select a community to browse its collections.</h3>
                             <p className="header__ul">Now showing 1 - 5 of 547</p>
                             <ul>
-                                <li onClick={() => moveTo("/admin/community")}>College of Engineering & Computer Science</li>
+                                <li onClick={() => moveTo("/admin/community/CECS")}>College of Engineering & Computer Science</li>
                                 <li>000AgusGuarez</li>
                                 <li>000AliciaAM</li>
                                 <li>000_Vectino Natalia</li>
