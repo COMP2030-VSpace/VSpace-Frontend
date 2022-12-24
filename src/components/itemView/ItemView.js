@@ -69,15 +69,33 @@ const ItemView = (props)=>{
                         <div className='btn-group'>
                             <button 
                                 className={searchType === 1 ? "active" : ""}
-                                onClick={() => changeSearchType(1)}
-                            >Subcommunities and Collections</button>
-                            <button className={searchType === 2 ? "active" : ""}>By Issue Date</button>
+                                onClick={() => changeSearchType(1)}>
+                                    Subcommunities and Collections
+                            </button>
+
+                            <button 
+                            className={searchType === 2 ? "active" : ""}
+                            onClick={() => changeSearchType(2)}>
+                                By Issue Date
+                            </button>
+                            
                             <button 
                                 className={searchType === 3 ? "active" : ""}
-                                onClick={() => changeSearchType(3)}
-                            >By Author</button>
-                            <button>By Title</button>
-                            <button>By Subject</button>
+                                onClick={() => changeSearchType(3)}>
+                                    By Author
+                            </button>
+
+                            <button 
+                                className={searchType === 4 ? "active" : ""}
+                                onClick={() => changeSearchType(4)}>
+                                    By Title
+                            </button>
+
+                            <button  
+                                className={searchType === 5 ? "active" : ""}
+                                onClick={() => changeSearchType(5)}>
+                                    By Subject
+                            </button>
                         </div>
                     </div>
                     
@@ -172,13 +190,73 @@ const ItemView = (props)=>{
                     }
 
                     {/* search type = 3 */}
+                    {searchType === 3 &&
+                    <>
+                        <div className='form-item'>
+                            <div className='filter-button'>
+                                <div className='text-btn'>
+                                    <p>Filter results by typing the first few letters</p>
+                                </div>
+
+                                <div className='icon-btn'>
+                                    <img src = {book}/>
+                                    <p>Browse</p>
+                                </div>
+                            </div>
+            
+
+                            <div className='no-result'>
+                                No items to show.
+                            </div>
+                        </div>
+                    </>
+                    }
 
                     {/* search type = 4 */}
+                    {searchType == 4 &&
+                    <>
+                        <div className='form-item'>
+                            <div className='filter-button'>
+                                <div className='text-btn'>
+                                    <p>Filter results by typing the first few letters</p>
+                                </div>
+
+                                <div className='icon-btn'>
+                                    <img src = {book}/>
+                                    <p>Browse</p>
+                                </div>
+                            </div>
+            
+
+                            <div className='no-result'>
+                                No items to show.
+                            </div>
+                        </div>
+                    </>
+                    }
 
                     {/* search type = 5 */}
+                    {searchType == 5 &&
+                    <>
+                        <div className='form-item'>
+                            <div className='filter-button'>
+                                <div className='text-btn'>
+                                    <p>Filter results by typing the first few letters</p>
+                                </div>
 
-                
-                    
+                                <div className='icon-btn'>
+                                    <img src = {book}/>
+                                    <p>Browse</p>
+                                </div>
+                            </div>
+            
+
+                            <div className='no-result'>
+                                No items to show.
+                            </div>
+                        </div>
+                    </>
+                    }
                 </div>
                 
                 {/* search type = 1 */}
@@ -222,10 +300,37 @@ const ItemView = (props)=>{
                 }
 
                 {/* search type = 3 */}
+                {searchType === 3 &&
+                    <>
+                    <div className='bottom'>
+                        <div className='test'>
+                            Test
+                        </div>
+                    </div>
+                    </>
+                }
 
                 {/* search type = 4 */}
+                {searchType === 4 &&
+                    <>
+                    <div className='bottom'>
+                        <div className='test'>
+                            Test
+                        </div>
+                    </div>
+                    </>
+                }
 
                 {/* search type = 5 */}
+                {searchType === 5 &&
+                    <>
+                    <div className='bottom'>
+                        <div className='test'>
+                            Test
+                        </div>
+                    </div>
+                    </>
+                }
 
                 
 
