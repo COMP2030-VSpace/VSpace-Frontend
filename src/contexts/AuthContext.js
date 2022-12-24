@@ -27,68 +27,39 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-
+    let flag = false;
     useEffect(() => {
-        const getToken = async () => {
-            await getCsrfTokenFetch();
-            // await getCsrfTokenAxios();
+        if(!flag){
+            const csrf = Cookies.get('X-XSRF-TOKEN');
+            
+            if(!csrf){
+                getCsrfTokenFetch();
+                flag = true;
+            }
         }
 
-
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("GET", "https://vinspace.online/server/api/authn/status", [true])
-
-        getToken();
+        return;
     }, []);
 
 
     // get csrf token
     const getCsrfTokenFetch = async () => {
-        try{
-
-            const csrf = Cookies.get('X-XSRF-TOKEN');
-
-            if(!csrf){
-                const url = "https://vinspace.online/server/api/authn/status"
-                let xhr = new XMLHttpRequest();
-                xhr.open("GET", url, [true])
-
-                await xhr.send()
-
-
-                xhr.onload = () => {
-                    const csrf = xhr.getResponseHeader("DSPACE-XSRF-TOKEN");
-                    console.log("hope hope", csrf);
-                    // let d = new Date();
-                    // d.setTime(d.getTime() + (minutes*60*1000));
-                    Cookies.set("X-XSRF-TOKEN", csrf, {path: "/"});
+        try{            
+            const url = "https://vinspace.online/server/api" + "/eperson/registrations";
+            console.log("debug 1");
+            const response = await instance.post(url, {
+                "email": "",
+                "type": "registration"
+            },{
+                headers:{
+                    'Content-Type': 'application/json'
                 }
-
-            }
+            })
     
             
         } catch (error){
             // console.log("check cookie", document.cookie)
-            console.log(error)
-            // console.log("check response headers", error);
-            return {success: false};
-        }
-    }
-
-
-
-    const getCsrfTokenAxios = async () => {
-        try{
-            // const url = apiUrl + "/eperson";
-            const url = "https://vinspace.online/server/api/authn/status"
-
-            const response = await instance.get(url)
-
-            console.log("check response", response);
-
-        } catch (error){
-            // console.log("check cookie", document.cookie)
-            console.log(error)
+            // console.log(error)
             // console.log("check response headers", error);
             return {success: false};
         }
@@ -124,19 +95,22 @@ const AuthContextProvider = ({ children }) => {
     }
 
 
-    // Login 
+    // login
     const loginUser = async (userForm) => {
         try {
-            const url = process.env.API_URL + "/auth/login";
+            const url = "https://vinspace.online/server/api" + "/authn/login";
+            // console.log("check url", url);
+            const response = await instance.post(url, userForm, {
+                headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
 
-            const response = await instance.post(url, userForm)
 
-            if (response.data.success)
-                localStorage.setItem('login', true);
-                // setAuthToken(response.headers.authorization)
+
+            console.log(response);
 
             return response.data;
-
         } catch (error) {
             if (error.response.data)
                 return error.response.data;
