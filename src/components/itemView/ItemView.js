@@ -22,6 +22,7 @@ import { ButtonGroup } from 'reactstrap';
 const ItemView = (props)=>{
 
     const [itemViewType, setItemViewType] = useState(ItemViewType.GENERAL);
+    const [searchType, setSearchType] = useState(2);
 
     const moveToDetail = () => {
         setItemViewType(ItemViewType.DETAIL);
@@ -30,6 +31,11 @@ const ItemView = (props)=>{
 
     const backToGeneral = () => {
         setItemViewType(ItemViewType.GENERAL);
+        return;
+    }
+
+    const changeSearchType = (type) => {
+        setSearchType(type);
         return;
     }
 
@@ -61,89 +67,167 @@ const ItemView = (props)=>{
                         {/* <img src={libraryIcon}></img> */}
 
                         <div className='btn-group'>
-                            <button>Subcommunities and Collections</button>
-                            <button>By Issue Date</button>
-                            <button>By Author</button>
+                            <button 
+                                className={searchType === 1 ? "active" : ""}
+                                onClick={() => changeSearchType(1)}
+                            >Subcommunities and Collections</button>
+                            <button className={searchType === 2 ? "active" : ""}>By Issue Date</button>
+                            <button 
+                                className={searchType === 3 ? "active" : ""}
+                                onClick={() => changeSearchType(3)}
+                            >By Author</button>
                             <button>By Title</button>
                             <button>By Subject</button>
                         </div>
                     </div>
-
-                    <div className='form-item'>
-                        <div className='text'>
-                            Filter results by year or month
-                        </div>
-
-                        <div className='select-group'>
-                            <select className='dropdown'>
-                                <option value="0">(Choose year)</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-
-                            <select className='dropdown'>
-                                <option value="0">(Choose month)</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-
-                            <div className='filter-button'>
-                                <div className='text-btn'>
-                                    <p>Filter results by date</p>
+                    
+                    {searchType === 1 &&
+                        <>
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Filter results by year or month
                                 </div>
 
-                                <div className='icon-btn'>
-                                    <img src = {book}/>
-                                    <p>Browse</p>
-                                </div>
-                            </div>
-                        </div>
-        
+                                <div className='select-group'>
+                                    <select className='dropdown'>
+                                        <option value="0">(Choose year)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
 
-                        <div className='show-text'>
-                            Now showing 1 - 1 of 1
-                        </div>
-                        
-                        {/* 
-                        <div className='form-input'>
-                            <input type = "text"></input>
-                        </div> */}
-                    </div>
-                </div>
+                                    <select className='dropdown'>
+                                        <option value="0">(Choose month)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
 
-                <div className='bottom'>
-                    <div className='item'>
-                        <div className='item-content'>
-                            <div className="thumb">
-                                <img src= {thumb} alt="Thumbnail"/>
-                            </div>
+                                    <div className='filter-button'>
+                                        <div className='text-btn'>
+                                            <p>Filter results by date</p>
+                                        </div>
 
-                            <div className='thumb-info'>
-                                <div className="tag">
-                                    <span className="tag1">datafile.listelement.badge</span>
-                                    <span className="tag2">Open Access</span>
-                                    </div>
-
-                                <div className="item-header">
-                                    <p>TITLE TOP-LEVEL TEST SAMPLE</p>
-                                </div>
-
-                                <div className="item-sub">
-                                    <p>(VinSpace, 2022-11-15) Doe, John</p>
-                                </div>
-
-                                <div className="item-main">
-                                    <div className="content">
-                                        Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
-                                        respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
-                                        En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                        lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                        <div className='icon-btn'>
+                                            <img src = {book}/>
+                                            <p>Browse</p>
+                                        </div>
                                     </div>
                                 </div>
+                
+
+                                <div className='show-text'>
+                                    Now showing 1 - 1 of 1
+                                </div>
+                                
+                                {/* 
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div> */}
+                            </div>
+                        </>
+                    }
+
+                    {searchType === 2 &&
+                        <>
+                            <div className='form-item'>
+                                <div className='text'>
+                                    Filter results by year or month
+                                </div>
+
+                                <div className='select-group'>
+                                    <select className='dropdown'>
+                                        <option value="0">(Choose year)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+
+                                    <select className='dropdown'>
+                                        <option value="0">(Choose month)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+
+                                    <div className='filter-button'>
+                                        <div className='text-btn'>
+                                            <p>Filter results by date</p>
+                                        </div>
+
+                                        <div className='icon-btn'>
+                                            <img src = {book}/>
+                                            <p>Browse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                
+
+                                <div className='show-text'>
+                                    Now showing 1 - 1 of 1
+                                </div>
+                                
+                                {/* 
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div> */}
+                            </div>
+                        </>
+                    }
+
+                    {/* search type = 3 */}
+
+                    {/* search type = 4 */}
+
+                    {/* search type = 5 */}
+
+                
+                    
+                </div>
+                
+                {/* search type = 1 */}
+
+                {searchType === 2 &&
+                    <>
+                        <div className='bottom'>
+                            <div className='item'>
+                                <div className='item-content'>
+                                    <div className="thumb">
+                                        <img src= {thumb} alt="Thumbnail"/>
+                                    </div>
+
+                                    <div className='thumb-info'>
+                                        <div className="tag">
+                                            <span className="tag1">datafile.listelement.badge</span>
+                                            <span className="tag2">Open Access</span>
+                                            </div>
+
+                                        <div className="item-header">
+                                            <p>TITLE TOP-LEVEL TEST SAMPLE</p>
+                                        </div>
+
+                                        <div className="item-sub">
+                                            <p>(VinSpace, 2022-11-15) Doe, John</p>
+                                        </div>
+
+                                        <div className="item-main">
+                                            <div className="content">
+                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
+                                                respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
+                                                En efecto, si la identidad femenina expresa la diferencia absoluta, 
+                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </>
+                }
+
+                {/* search type = 3 */}
+
+                {/* search type = 4 */}
+
+                {/* search type = 5 */}
+
+                
 
                 {/* <div className='form-submit'>
                     <Button 

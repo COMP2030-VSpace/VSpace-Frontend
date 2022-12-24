@@ -152,42 +152,93 @@
                 }
             }
 
-            .btn-group button{
-                padding: 1.125rem 2rem;
-                background-color: rgba(255, 255, 255, 0.7);
-                border: 1px solid rgba(49, 49, 49, 0.4);
-                //border-radius: 10px;
-
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 20px;
-                float: left;
-
-                color: #159DFF;
-                cursor: pointer; 
-                
-            }
-
             .btn-group{
                 margin-bottom: 4rem;
+
+                button{
+                    padding: 1.125rem 2rem;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    border: 1px solid rgba(49, 49, 49, 0.4);
+                    //border-radius: 10px;
+    
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 20px;
+                    float: left;
+    
+                    color: #159DFF;
+                    cursor: pointer; 
+
+
+
+                    &:not(:last-child) {
+                        border-right: none; /* Prevent double borders */
+                    }
+
+
+
+                    &:hover {
+                        background-color: #3E3E3E;
+                        color: #FFFFFF;
+                    }
+                    
+                }
+
+
+
+
+                &:after {
+                    content: "";
+                    clear: both;
+                    display: table;
+                }
+
+
+
+                .active{
+                    background-color: #3E3E3E;
+                    color: #FFFFFF;
+                }
             }
 
-            .btn-group:after {
-                content: "";
-                clear: both;
-                display: table;
-            }
+            // .btn-group button{
+            //     padding: 1.125rem 2rem;
+            //     background-color: rgba(255, 255, 255, 0.7);
+            //     border: 1px solid rgba(49, 49, 49, 0.4);
+            //     //border-radius: 10px;
 
-            .btn-group button:not(:last-child) {
-                border-right: none; /* Prevent double borders */
-            }
+            //     font-family: 'Montserrat';
+            //     font-style: normal;
+            //     font-weight: 500;
+            //     font-size: 16px;
+            //     line-height: 20px;
+            //     float: left;
+
+            //     color: #159DFF;
+            //     cursor: pointer; 
+                
+            // }
+
+            // .btn-group{
+            //     margin-bottom: 4rem;
+            // }
+
+            // .btn-group:after {
+            //     content: "";
+            //     clear: both;
+            //     display: table;
+            // }
+
+            // .btn-group button:not(:last-child) {
+            //     border-right: none; /* Prevent double borders */
+            // }
             
-            /* Add a background color on hover */
-            .btn-group button:hover {
-                background-color: #3E3E3E;;
-            }
+            // /* Add a background color on hover */
+            // .btn-group button:hover {
+            //     background-color: #3E3E3E;;
+            // }
     
             // .form-input{
             //     margin-top: 2rem;
