@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, createRef, useContext, useState } from "react";
 import "./authForm.scss";
+import { AuthContext } from "../../contexts/AuthContext";
 
 // import assets
 // import sample_banner from "../../assets/sample/banner/banner.png";
@@ -8,7 +9,93 @@ import "./authForm.scss";
 // import components;
 import Button from "../button/Button";
 
+
+
 const AuthForm = (props) => {
+    // import contexts
+    const { registerUser, loginUser } = useContext(AuthContext);
+
+    // import states
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+    const submitRegisterForm = async () => {
+        console.log("submitting...");
+
+        const data = {
+            "email": email,
+            "type": "registration"
+        }
+
+
+        const res = await registerUser(data);
+
+        console.log(res);
+
+
+        if(res.data.success){
+            setEmail("");
+
+            return;
+        }
+
+        return;
+    }
+
+
+    const submitLoginForm = async () => {
+        console.log("submitting...");
+
+        const data = {
+            "user": email,
+            "password": password
+        }
+
+
+        const res = await loginUser(data);
+
+        console.log(res);
+
+
+        if(res.data.success){
+            setEmail("");
+            setPassword("")
+
+            return;
+        }
+
+        return;
+    }
+
+
+    const handleOnKeyDown = (event, type) => {
+        if (event.keyCode === 13) {
+            // console.log('enter');
+            if(type === "register"){
+                console.log("debug 3");
+                submitRegisterForm();
+            }
+            else if(type === "login"){
+                console.log("debug 4");
+                submitLoginForm();
+            }
+            
+        }
+    }
+
+    const handleChange = (event, type) => {
+        // console.log(event.target.value);
+        if(type === "email"){
+            console.log("debug 1");
+            setEmail(event.target.value);
+        }
+        else if(type === "password"){
+            console.log("debug 2");
+            setPassword(event.target.value);
+        }
+    }
+
     return (
         <div className="auth-form">
             {props.authType === "register" && (
@@ -20,7 +107,13 @@ const AuthForm = (props) => {
                     </span>
 
                     <div className="form-input">
-                        <input type="text" placeholder="Email Address"></input>
+                        <input 
+                            type="text" 
+                            placeholder="Email Address"
+                            value = {email} 
+                            onChange = {(e) => handleChange(e, "email")}
+                            onKeyDown={(e) => handleOnKeyDown(e, "register")}
+                        ></input>
                     </div>
                     
                     <div className="register--text_2">
@@ -37,6 +130,7 @@ const AuthForm = (props) => {
                             "color": "#ffffff",
                         }}
                         content="Create Account"
+                        handleClick = {() => submitRegisterForm()}
                     ></Button>
 
                     <div className="auth-help">
@@ -53,11 +147,22 @@ const AuthForm = (props) => {
                     <div className="header">Login your account</div>
 
                     <div className="form-input">
-                        <input type="text" placeholder="Email Address"></input>
+                        <input 
+                            type="text" 
+                            placeholder="Email Address"
+                            value = {email} 
+                            onChange = {(e) => handleChange(e, "email")}
+                        ></input>
                     </div>
 
                     <div className="form-input">
-                        <input type="password" placeholder="Password"></input>
+                        <input 
+                            type="password" 
+                            placeholder="Password"
+                            value = {password} 
+                            onChange = {(e) => handleChange(e, "password")}
+                            onKeyDown={(e) => handleOnKeyDown(e, "login")}
+                        ></input>
                     </div>
 
                     <Button
@@ -70,6 +175,7 @@ const AuthForm = (props) => {
                             "color": "#ffffff",
                         }}
                         content="Login your account"
+                        handleClick = {() => submitLoginForm()}
                     ></Button>
 
                     <div className="auth-help">
