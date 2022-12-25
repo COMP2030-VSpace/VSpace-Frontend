@@ -24,12 +24,12 @@
         .text{
             font-family: 'Montserrat';
             font-style: normal;
-            padding: 1rem 0.5rem;
+            padding: 1rem 0;
             font-size: 2rem;
         }
 
         .description{
-            padding: 0rem 0.5rem 2rem 0.5rem;
+            padding: 0rem 0.5rem 2rem 0rem;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 500;
@@ -54,7 +54,7 @@
 
     .form{
         width: 100%;
-        padding-left: 1.5rem;
+        padding-left: 0rem;
         // box-sizing: border-box;
 
         padding-bottom: 2.5rem;
@@ -400,7 +400,7 @@
 
     .bottom{
         width: 100%;
-        padding-left: 1.5rem;
+        //padding-left: 1.5rem;
         box-sizing: border-box;
         padding-bottom: 2.5rem;
 
