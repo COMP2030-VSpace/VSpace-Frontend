@@ -20,39 +20,41 @@ const About = (props) => {
             <Banner></Banner>
 
             <div className="main">
-                <div className="grey-background"></div>
-                
-                <div className="gen-intro">
-                    <div className="content">
-                        <h2>LIBRARY</h2>
-                        <br />
-                        <span>
-                            VinUni Library seeks to advance the intellectual
-                            life of the University community through resources
-                            and services that support faculty research as well
-                            as students’ successful learning outcomes and
-                            personal development.
-                        </span>
+                <div className="grey-background">
+                    <div className="gen-intro">
+                        <div className="content">
+                            <h2>LIBRARY</h2>
+                            <br />
+                            <span>
+                                VinUni Library seeks to advance the intellectual
+                                life of the University community through resources
+                                and services that support faculty research as well
+                                as students’ successful learning outcomes and
+                                personal development.
+                            </span>
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <span>
-                            The library offers 4 main types of spaces to support
-                            learning, teaching, research, innovation, and
-                            entrepreneurial activities.
-                        </span>
-                    </div>
+                            <span>
+                                The library offers 4 main types of spaces to support
+                                learning, teaching, research, innovation, and
+                                entrepreneurial activities.
+                            </span>
+                        </div>
 
-                    <div className="button-div">
-                        <button className="button">
-                            <div className="button-content">
-                                <span>SEARCH THE LIBRARY</span>
-                                <img src={arrow} style={{ width: "1.25rem" }} />
-                            </div>
-                        </button>
+                        <div className="button-div">
+                            <button className="button">
+                                <div className="button-content">
+                                    <span>SEARCH THE LIBRARY</span>
+                                    <img src={arrow} style={{ width: "1.25rem" }} />
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                
 
                 <div className="two-col">
                     {/* Thao works here */}
@@ -150,23 +152,23 @@ const About = (props) => {
                 </div>
 
                 <div className="about-bottom">
-                    <div className="desktop">
+                    <div className="img-row-wrapper">
                         <div className="img-row">
-                            <div>
+                            <div className="image-item">
                                 <img src={library1} alt="Library1" />
                             </div>
 
-                            <div>
+                            <div className="image-item">
                                 <img src={library2} alt="Library2" />
                             </div>
 
-                            <div className="img-col">
+                            <div className="image-item">
                                 <img src={library3} alt="Library3" />
                             </div>
                         </div>
                     </div>
 
-                    <div className="mobile">
+                    {/* <div className="mobile">
                         <div className="img-row">
                             <div>
                                 <img src={library1} alt="Library1" />
@@ -176,7 +178,7 @@ const About = (props) => {
                                 <img src={library2} alt="Library2" />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="item">
                         <p>

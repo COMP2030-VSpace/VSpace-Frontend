@@ -11,6 +11,13 @@
         height: 15.625rem;
     }
 
+
+    @media screen and (max-width: 1024px) {
+        .padding {
+            height: 23rem;
+        }
+    }
+
     .outer-wrapper {
         position: absolute;
         z-index: 2;
