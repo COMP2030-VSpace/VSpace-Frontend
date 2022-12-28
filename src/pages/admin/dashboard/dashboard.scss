@@ -23,7 +23,7 @@
             .wrapper{
                 // margin-top: 25rem;
 
-                padding: 0 15rem;
+                padding: 0 var(--primary-padding);
 
 
                 .text__header {
@@ -71,14 +71,14 @@
 
 
                     .text__secondheader {
-                        margin: 1rem 0 1.5rem 0;
+                        margin: 2rem 0 2.5rem 0;
                         font-size: 28px;
                         font-weight: 400;
                         padding-left: 0;
                     }
 
                     .header__ul {
-                        margin-bottom: 25px;
+                        margin-bottom: 2rem;
                         margin-top: 0;
                     }
                     // top: 10rem;
