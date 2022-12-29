@@ -13,7 +13,7 @@ import Button from "../button/Button";
 
 const AuthForm = (props) => {
     // import contexts
-    const { registerUser, loginUser } = useContext(AuthContext);
+    const { registerUser, loginUser, authUser } = useContext(AuthContext);
 
     // import states
     const [email, setEmail] = useState("");
@@ -55,12 +55,15 @@ const AuthForm = (props) => {
 
         const res = await loginUser(data);
 
-        console.log(res);
+        // console.log("debug res", res);
 
 
-        if(res.data.success){
+        if(res.success){
             setEmail("");
             setPassword("")
+
+            // check role
+            const res2 =  await authUser();
 
             return;
         }
