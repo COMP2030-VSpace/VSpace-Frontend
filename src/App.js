@@ -12,6 +12,8 @@ import CreateCollection from './pages/admin/collection/CreateCollection';
 import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
+import ImportMetaData from './pages/admin/import/ImportMetaData';
+import ImportBatch from "./pages/admin/import/ImportBatch";
 
 
 
@@ -32,6 +34,8 @@ function App() {
         <Route path='/register/setup' element={<Setup/>} />
         <Route path='/admin/item/add' element={<Item/>} />
         <Route path='/admin/community/:id' element={<Community/>} />
+        <Route path='/admin/import/metadata' element={<ImportMetaData/>} />
+        <Route path='/admin/import/batch' element={<ImportBatch/>} />
       </Routes>
     </AuthContextProvider>
   );

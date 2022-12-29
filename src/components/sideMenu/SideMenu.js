@@ -62,7 +62,7 @@ const SideMenu = (props)=>{
             "sub_menu_list":
             [
                 {
-                    "title": "community",
+                    "title": "Community",
                     "link":""
                 },
                 {
@@ -82,16 +82,12 @@ const SideMenu = (props)=>{
             "sub_menu_list":
             [
                 {
-                    "title": "community",
-                    "link":""
+                    "title": "Metadata",
+                    "link":"/admin/import/metadata"
                 },
                 {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
+                    "title": "Batch Import (ZIP)",
+                    "link":"/admin/import/batch"
                 }
                 
             ]
