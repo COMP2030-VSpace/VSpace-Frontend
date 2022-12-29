@@ -13,8 +13,7 @@ const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
         authLoading: true,
         isAuthenticated: false,
-        user: null,
-        flagShowLoginPanel: false
+        role: null
     })
 
     // const history = useHistory();
@@ -25,17 +24,11 @@ const AuthContextProvider = ({ children }) => {
         // history.replace('/login')
     }
 
-
-
     let flag = false;
     useEffect(() => {
         if(!flag){
-            const csrf = Cookies.get('X-XSRF-TOKEN');
-            
-            if(!csrf){
-                getCsrfTokenFetch();
-                flag = true;
-            }
+            getCsrfTokenFetch();
+            flag = true;
         }
 
         return;
@@ -46,7 +39,7 @@ const AuthContextProvider = ({ children }) => {
     const getCsrfTokenFetch = async () => {
         try{            
             const url = "https://vinspace.online/server/api" + "/eperson/registrations";
-            console.log("debug 1");
+        
             const response = await instance.post(url, {
                 "email": "",
                 "type": "registration"
@@ -64,6 +57,38 @@ const AuthContextProvider = ({ children }) => {
             return {success: false};
         }
     }
+
+    // auth => return role
+    const authUser = async () => {
+        try {
+            // get administratorOf feature first
+            const url = "https://vinspace.online/server/api/authz/features"
+            
+            let response = await instance.get(url);
+
+            console.log("view features", response);
+            
+            const adminFeature = response.data["_embedded"].features[0].id;
+            console.log(adminFeature);
+
+            // instance.get(url)
+            // .then((resp) => {
+            //     console.log("view fet", resp);
+            // })
+
+            return {
+                success: true
+            };
+
+        } catch (error) {
+            if (error.response.data)
+                return error.response.data;
+            else
+                return { success: false, message: error.message };
+        }
+
+    }
+
 
 
 
@@ -106,11 +131,10 @@ const AuthContextProvider = ({ children }) => {
                 }
             })
 
+            return {
+                success: true
+            };
 
-
-            console.log(response);
-
-            return response.data;
         } catch (error) {
             if (error.response.data)
                 return error.response.data;
@@ -130,7 +154,7 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-    const authContextData = { redirectToLogin, loginUser, registerUser, authState }
+    const authContextData = { redirectToLogin, loginUser, registerUser, authUser, authState }
 
     return (<AuthContext.Provider value={authContextData}>{children}</AuthContext.Provider>)
 
