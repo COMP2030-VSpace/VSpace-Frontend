@@ -30,18 +30,22 @@ const CreateForm = (props)=>{
             <div className = 'import-form'>
                 {props.importType === "metadata" &&
                     <>
+                        {/* Thao starts here */}
                         <div className='header'>
                             <h2>Import Metadata</h2>
                         </div>
+                        {/* Thao ends here */}
                     </>
                 }
 
 
                 {props.importType === "batch" &&
                     <>
+                        {/* Thao starts here */}
                         <div className='header'>
                             <h2>Import Batch</h2>
                         </div>
+                        {/* Thao ends here */}
                     </>
                 }
 
