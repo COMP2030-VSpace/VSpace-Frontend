@@ -62,7 +62,7 @@ const AuthContextProvider = ({ children }) => {
     const authUser = async () => {
         try {
             // get administratorOf feature first
-            const url = "https://vinspace.online/server/api/authz/features"
+            let url = "https://vinspace.online/server/api/authz/features"
             
             let response = await instance.get(url);
 
@@ -71,10 +71,16 @@ const AuthContextProvider = ({ children }) => {
             const adminFeature = response.data["_embedded"].features[0].id;
             console.log(adminFeature);
 
-            // instance.get(url)
-            // .then((resp) => {
-            //     console.log("view fet", resp);
-            // })
+
+            // check admin
+            let url_head =  "https://vinspace.online/server/api/authz/authorizations/search/object?";
+            let url_middle = "uri=https://vinspace.online/server/api/core/sites/";
+            let url_tail = "f459d178-2540-4048-ae2e-26e41dcbc6c1&feature="
+            url = url_head + url_middle + url_tail + adminFeature;
+
+            response = await instance.get(url);
+
+            console.log("view features", response);
 
             return {
                 success: true
