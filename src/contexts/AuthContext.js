@@ -93,7 +93,7 @@ const AuthContextProvider = ({ children }) => {
                 };
             }
             else{
-                Cookies.set("role", "user", {path: "/"});
+                Cookies.set("role", userRole.USER, {path: "/"});
 
                 return {
                     success: false
