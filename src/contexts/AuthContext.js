@@ -92,6 +92,13 @@ const AuthContextProvider = ({ children }) => {
                     success: true
                 };
             }
+            else{
+                Cookies.set("role", "user", {path: "/"});
+
+                return {
+                    success: false
+                };
+            }
 
             return {
                 success: false
