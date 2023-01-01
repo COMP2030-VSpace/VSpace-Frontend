@@ -65,6 +65,11 @@ const AuthForm = (props) => {
             // check role
             const res2 =  await authUser();
 
+            if(res2.success){
+                // redirect to admin
+                window.location.href = "/admin";
+            }
+
             return;
         }
 
