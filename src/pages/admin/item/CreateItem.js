@@ -20,7 +20,7 @@ const CreateItem = (props) => {
     // }
 
     return (
-        <div className="admin-create-community">
+        <div className="admin-create-item">
             <Navbar></Navbar>
 
             <div className="main">
@@ -30,14 +30,14 @@ const CreateItem = (props) => {
                 <div className="main-right">
                     {/* {createState === 1 &&
                         <CreateForm
-                            createType = "community"
+                            createType = "item"
                             // nextState = {() => nextState()}
                         >
                         </CreateForm>
                     } */}
 
                     <CreateForm
-                        createType = "collection"
+                        createType = "item"
                         // nextState = {() => nextState()}
                     >
                     </CreateForm>
