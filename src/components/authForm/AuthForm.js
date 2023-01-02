@@ -131,6 +131,7 @@ const AuthForm = (props) => {
                     <Button
                         styles={{
                             "border-radius": "5px",
+                            "height": "1.8rem",
                             "width": "100%",
                             "background": "#2D5288",
                             "margin-right": "0",
@@ -175,7 +176,8 @@ const AuthForm = (props) => {
 
                     <Button
                         styles={{
-                            "height": "2.6rem",
+                            "border-radius": "5px",
+                            "height": "1.8rem",
                             "width": "100%",
                             "background": "#2D5288",
                             "margin-right": "0",
