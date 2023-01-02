@@ -2,6 +2,7 @@
 import { useEffect, createRef, useContext, useState } from "react";
 import "./authForm.scss";
 import { AuthContext } from "../../contexts/AuthContext";
+import { userRole } from "../../enums/enum";
 
 // import assets
 // import sample_banner from "../../assets/sample/banner/banner.png";
@@ -21,7 +22,7 @@ const AuthForm = (props) => {
 
 
     const submitRegisterForm = async () => {
-        console.log("submitting...");
+        // console.log("submitting...");
 
         const data = {
             "email": email,
@@ -31,12 +32,9 @@ const AuthForm = (props) => {
 
         const res = await registerUser(data);
 
-        console.log(res);
-
-
         if(res.data.success){
             setEmail("");
-
+            window.location.href = "/login";
             return;
         }
 
@@ -65,9 +63,12 @@ const AuthForm = (props) => {
             // check role
             const res2 =  await authUser();
 
-            if(res2.success){
+            if(res2.role === userRole.SITE_ADMIN){
                 // redirect to admin
                 window.location.href = "/admin";
+            }
+            else if(res2.role === userRole.LOGIN_USER){
+                window.location.href = "/";
             }
 
             return;
@@ -81,11 +82,11 @@ const AuthForm = (props) => {
         if (event.keyCode === 13) {
             // console.log('enter');
             if(type === "register"){
-                console.log("debug 3");
+                // console.log("debug 3");
                 submitRegisterForm();
             }
             else if(type === "login"){
-                console.log("debug 4");
+                // console.log("debug 4");
                 submitLoginForm();
             }
             
@@ -95,11 +96,11 @@ const AuthForm = (props) => {
     const handleChange = (event, type) => {
         // console.log(event.target.value);
         if(type === "email"){
-            console.log("debug 1");
+            // console.log("debug 1");
             setEmail(event.target.value);
         }
         else if(type === "password"){
-            console.log("debug 2");
+            // console.log("debug 2");
             setPassword(event.target.value);
         }
     }

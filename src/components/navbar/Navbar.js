@@ -22,8 +22,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 
 const Navbar = (props) => {
-    let isAuthenticated = (Cookies.get("role")  !== userRole.USER);
     const { logout } = useContext(AuthContext);
+    const [isAuthenticated, setAuthenticate] = useState(false);
+
+    useEffect(() => {
+        let checkLogin = (Cookies.get("role") && (Cookies.get("role")  !== userRole.USER));
+        setAuthenticate(checkLogin);
+    }, []);
 
     return (
         <div className="navbar-container">

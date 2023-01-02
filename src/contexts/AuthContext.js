@@ -1,13 +1,13 @@
 import { createContext, useReducer, useEffect } from 'react'
+import { useNavigate  } from 'react-router-dom'
+
 import { authReducer } from '../reducers/authReducer'
-// import { useHistory } from 'react-router-dom'
 import { apiUrl } from "../contexts/constants";
 import instance from '../axiosConfig/config';
 
 import { userRole } from '../enums/enum';
 
 import Cookies from 'js-cookie';
-
 export const AuthContext = createContext()
 
 // axios.defaults.withCredentials = true;
@@ -19,12 +19,14 @@ const AuthContextProvider = ({ children }) => {
         role: userRole.USER
     })
 
-    // const history = useHistory();
+    const navigate = useNavigate();
 
 
     const redirectToLogin = () => {
-        // window.location.href = "/login";
+        window.location.href = "/login";
         // history.replace('/login')
+        // navigate("/login");
+        // window.location.reload(true);
     }
 
     let flag = false;
@@ -79,22 +81,41 @@ const AuthContextProvider = ({ children }) => {
             // console.log("view admin auth", response);
             let numberOfElements = response.data.page.totalElements;
 
-            console.log(numberOfElements);
+            // console.log(numberOfElements);
 
-            if(numberOfElements === 1){
-                // update global state: role
-                
-                Cookies.set("role", userRole.SITE_ADMIN, {path: "/"});
+            const userToken = Cookies.get('user-token');
 
-                return {
-                    success: true
-                };
+            if(userToken){
+                if(numberOfElements === 1){
+                    // update global state: role
+                    
+                    Cookies.set("role", userRole.SITE_ADMIN, {path: "/"});
+
+                    return {
+                        success: true,
+                        role: userRole.SITE_ADMIN
+                    };
+                }
+                else{
+                    url = "https://vinspace.online/server/api/authn/status";
+                    response = await instance.get(url);
+
+                    if(response.data.authenticated){
+                        Cookies.set("role", userRole.LOGIN_USER, {path: "/"});
+                    }
+
+                    return {
+                        success: true,
+                        role: userRole.LOGIN_USER
+                    };
+                }
             }
             
 
             Cookies.set("role", userRole.USER, {path: "/"});
             return {
-                success: false
+                success: false,
+                role: userRole.USER
             };
 
         } catch (error) {
@@ -120,13 +141,13 @@ const AuthContextProvider = ({ children }) => {
                 }
             })
 
+            console.log("debug register user", response);
 
+            // if (response.data.success){
+            //     console.log("login successfully", response.data);
+            // }
 
-            if (response.data.success){
-                console.log("login successfully", response.data);
-            }
-
-            return response.data;
+            return response;
         } catch (error) {
             if (error.response.data)
                 return error.response.data;
@@ -174,7 +195,7 @@ const AuthContextProvider = ({ children }) => {
             Cookies.remove("user-token", {path: "/"});
         }
         
-        window.location.href = "/login"
+        window.location.href = "/";
     }
 
 

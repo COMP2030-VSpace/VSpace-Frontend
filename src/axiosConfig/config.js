@@ -62,7 +62,8 @@ instance.interceptors.request.use(
         // if(userToken){
         //     config.headers['Authorization'] = userToken;
         // }
-        console.log(userToken);
+
+        // console.log(userToken);
 
         config.headers['Authorization'] = userToken;
 
@@ -86,10 +87,20 @@ instance.interceptors.response.use(
         // console.log("debug token", token);
 
         if(token){
-            console.log("debug token", token);
+            // console.log("debug token", token);
             // instance.defaults.headers.common['Authorization'] = token;
             refreshUserToken(token);
         }
+
+        if(resp.data === ""){
+            resp.data = {
+                success: true
+            }
+        }
+        else{
+            resp.data.success = true;
+        }
+        
 
         return resp;
         
@@ -97,7 +108,7 @@ instance.interceptors.response.use(
     (error) => {
         // Do something with request error
         if(error.response.status === 403){
-            console.log("in here");
+            // console.log("in here");
             
             const newCsrf = error.response.headers["dspace-xsrf-token"];
             refreshToken(newCsrf);
