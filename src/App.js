@@ -25,6 +25,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<HomeV2 />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/register/setup' element={<Setup />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/admin' element={
@@ -32,11 +33,27 @@ function App() {
                         <Dashboard />
                     </Protected>
                 } />
-                <Route path='/admin/community/add' element={<CreateCommunity />} />
-                <Route path='/admin/collection/add' element={<CreateCollection />} />
-                <Route path='/register/setup' element={<Setup />} />
-                <Route path='/admin/item/add' element={<Item />} />
-                <Route path='/admin/community/:id' element={<Community />} />
+                <Route path='/admin/community/add' element={
+                    <Protected>
+                        <CreateCommunity />
+                    </Protected>
+                } />
+                <Route path='/admin/collection/add' element={
+                    <Protected>
+                        <CreateCollection />
+                    </Protected>
+                } />
+                
+                <Route path='/admin/item/add' element={
+                    <Protected>
+                        <Item />
+                    </Protected>
+                } />
+                <Route path='/admin/community/:id' element={
+                    <Protected>
+                        <Community />
+                    </Protected>
+                } />
             </Routes>
         </AuthContextProvider>
     );
