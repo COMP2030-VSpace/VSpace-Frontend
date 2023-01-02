@@ -16,7 +16,7 @@ const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, {
         authLoading: true,
         isAuthenticated: false,
-        role: null
+        role: userRole.USER
     })
 
     // const history = useHistory();
@@ -163,15 +163,23 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-    // const logout = async () => {
-    //     localStorage.removeItem('login');
-    //     await axios.post(`${apiUrl}/auth/logout`, {});
-    //     window.location.href = "/login"
-    // }
+    const logout = async () => {
+        const url = "https://vinspace.online/server/api/authn/logout"
+        const response = await instance.post(url)
+
+        const status = response.status;
+        if(status === 204){
+            // delete token
+            Cookies.remove("role", {path: "/"});
+            Cookies.remove("user-token", {path: "/"});
+        }
+        
+        window.location.href = "/login"
+    }
 
 
 
-    const authContextData = { redirectToLogin, loginUser, registerUser, authUser, authState }
+    const authContextData = { redirectToLogin, loginUser, registerUser, logout, authUser, authState }
 
     return (<AuthContext.Provider value={authContextData}>{children}</AuthContext.Provider>)
 
