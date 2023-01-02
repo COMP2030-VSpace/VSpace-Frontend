@@ -83,8 +83,6 @@ const AuthContextProvider = ({ children }) => {
 
             if(numberOfElements === 1){
                 // update global state: role
-
-                // console.log("in here set auth")
                 
                 Cookies.set("role", userRole.SITE_ADMIN, {path: "/"});
 
@@ -92,14 +90,9 @@ const AuthContextProvider = ({ children }) => {
                     success: true
                 };
             }
-            else{
-                Cookies.set("role", userRole.USER, {path: "/"});
+            
 
-                return {
-                    success: false
-                };
-            }
-
+            Cookies.set("role", userRole.USER, {path: "/"});
             return {
                 success: false
             };
