@@ -3,7 +3,10 @@ import { authReducer } from '../reducers/authReducer'
 // import { useHistory } from 'react-router-dom'
 import { apiUrl } from "../contexts/constants";
 import instance from '../axiosConfig/config';
-import Cookies from 'js-cookie'
+
+import { userRole } from '../enums/enum';
+
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext()
 
@@ -30,6 +33,8 @@ const AuthContextProvider = ({ children }) => {
             getCsrfTokenFetch();
             flag = true;
         }
+
+        authUser();
 
         return;
     }, []);
@@ -61,23 +66,35 @@ const AuthContextProvider = ({ children }) => {
     // auth => return role
     const authUser = async () => {
         try {
-            // get administratorOf feature first
-            const url = "https://vinspace.online/server/api/authz/features"
+            // check admin
             
+            let url_head =  "https://vinspace.online/server/api/authz/authorizations/search/object?";
+            let url_middle = "uri=https://vinspace.online/server/api/core/sites/";
+            let url_tail = "390e5010-e1b0-42ce-ab2e-09d94c00bc84&feature=administratorOf&embed=feature"
+
+            let url = url_head + url_middle + url_tail;
+
             let response = await instance.get(url);
 
-            console.log("view features", response);
+            // console.log("view admin auth", response);
+            let numberOfElements = response.data.page.totalElements;
+
+            console.log(numberOfElements);
+
+            if(numberOfElements === 1){
+                // update global state: role
+                
+                Cookies.set("role", userRole.SITE_ADMIN, {path: "/"});
+
+                return {
+                    success: true
+                };
+            }
             
-            const adminFeature = response.data["_embedded"].features[0].id;
-            console.log(adminFeature);
 
-            // instance.get(url)
-            // .then((resp) => {
-            //     console.log("view fet", resp);
-            // })
-
+            Cookies.set("role", userRole.USER, {path: "/"});
             return {
-                success: true
+                success: false
             };
 
         } catch (error) {

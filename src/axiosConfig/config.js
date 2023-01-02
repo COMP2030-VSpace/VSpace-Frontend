@@ -22,25 +22,29 @@ const refreshToken = (newCsrf) => {
     Cookies.set("X-XSRF-TOKEN", newCsrf, {path: "/"});
 }
 
+const refreshUserToken = (newToken) => {
+    Cookies.set("user-token", newToken, {path: "/"});
+}
 
-instance.interceptors.request.use(
-    (config) => {
 
-        // Do something before request is sent
-        const csrf = Cookies.get('X-XSRF-TOKEN');
-        console.log("debug", csrf);
+// instance.interceptors.request.use(
+//     (config) => {
+
+//         // Do something before request is sent
+//         const csrf = Cookies.get('X-XSRF-TOKEN');
+//         // console.log("debug", csrf);
         
-        if(csrf){
-            config.headers['X-XSRF-TOKEN'] = csrf;
-        }
+//         if(csrf){
+//             config.headers['X-XSRF-TOKEN'] = csrf;
+//         }
 
-        return config;
+//         return config;
 
-    }, (error) => {
-        console.log("debug 4")
-        return Promise.reject(error);
-    }
-)
+//     }, (error) => {
+//         console.log("debug 4")
+//         return Promise.reject(error);
+//     }
+// )
 
 
 instance.interceptors.request.use(
@@ -48,11 +52,19 @@ instance.interceptors.request.use(
 
         // Do something before request is sent
         const csrf = Cookies.get('X-XSRF-TOKEN');
+        const userToken = Cookies.get('user-token');
         // console.log("debug", csrf);
         
         if(csrf){
             config.headers['X-XSRF-TOKEN'] = csrf;
         }
+
+        // if(userToken){
+        //     config.headers['Authorization'] = userToken;
+        // }
+        console.log(userToken);
+
+        config.headers['Authorization'] = userToken;
 
         return config;
 
@@ -71,8 +83,12 @@ instance.interceptors.response.use(
 
 
         const token = resp.headers.authorization
+        // console.log("debug token", token);
+
         if(token){
-            instance.defaults.headers.common['Authorization'] = token;
+            console.log("debug token", token);
+            // instance.defaults.headers.common['Authorization'] = token;
+            refreshUserToken(token);
         }
 
         return resp;

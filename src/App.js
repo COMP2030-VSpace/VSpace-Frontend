@@ -12,6 +12,7 @@ import CreateCollection from './pages/admin/collection/CreateCollection';
 import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
+import Protected from './pages/protected/Protected';
 
 
 
@@ -19,22 +20,26 @@ import Community from './pages/admin/community/Community';
 import AuthContextProvider from './contexts/AuthContext';
 
 function App() {
-  return (
-    <AuthContextProvider>
-      <Routes>
-        <Route path='/' element={<HomeV2/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/admin' element={<Dashboard/>} />
-        <Route path='/admin/community/add' element={<CreateCommunity/>} />
-        <Route path='/admin/collection/add' element={<CreateCollection/>} />
-        <Route path='/register/setup' element={<Setup/>} />
-        <Route path='/admin/item/add' element={<Item/>} />
-        <Route path='/admin/community/:id' element={<Community/>} />
-      </Routes>
-    </AuthContextProvider>
-  );
+    return (
+        <AuthContextProvider>
+            <Routes>
+                <Route path='/' element={<HomeV2 />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/admin' element={
+                    <Protected>
+                        <Dashboard />
+                    </Protected>
+                } />
+                <Route path='/admin/community/add' element={<CreateCommunity />} />
+                <Route path='/admin/collection/add' element={<CreateCollection />} />
+                <Route path='/register/setup' element={<Setup />} />
+                <Route path='/admin/item/add' element={<Item />} />
+                <Route path='/admin/community/:id' element={<Community />} />
+            </Routes>
+        </AuthContextProvider>
+    );
 }
 
 export default App;
