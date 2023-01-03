@@ -34,6 +34,82 @@ const CreateForm = (props)=>{
                         <div className='header'>
                             <h2>Import Metadata</h2>
                         </div>
+
+                        <div className = 'txt'>
+                            You can drop or browse CSV files that contain batch metadata operations on files here
+                        </div>
+
+                        <label class="form-control">
+                            <input type="checkbox" name="checkbox" />
+                            Validate Only
+                        </label>
+
+                        <div className='subtext'>
+                            When selected, the uploaded CSV will be validated. You will receive a report of detected changes, but no changes will be saved.
+                        </div>
+
+                        <div className="form-item">
+                            <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                            
+                            <label for="logo-upload">
+                                <div className='label-div'>
+                                    {/* <img src = {upload_icon} alt = "add_images"/> */}
+                                    <div className='label-text'>Drop a metadata CSV to import, or <a href="url">browse</a></div>
+                                </div>
+                            </label>
+                                {/* <img src={libraryIcon}></img> */}
+                        </div>
+
+                        <div className='form-submit'>
+                            <Button 
+                                styles = {{
+                                    "height": "3.5rem",
+                                    "width": "7rem",
+                                    "background": "#828282",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "margin-top": "3rem",
+                                    "color": "#FFFFFF",
+                                    "border": "1px solid #000000",
+                                    "border-radius": "0.6rem",
+                                    "font-family": 'Montserrat',
+                                    "font-style": "normal",
+                                    "font-weight": "500",
+                                    "font-size": "22px",
+                                    "line-height": "27px",
+                                }}
+
+                                content = "Back"
+                                // icon = {arrow_left_icon}
+                                
+
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+
+                            <Button 
+                                styles = {{
+                                    "height": "3.5rem",
+                                    "width": "7rem",
+                                    "background": "#3E3E3E",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "margin-top": "3rem",
+                                    "color": "#ffffff",
+                                    "border": "1px solid #000000",
+                                    "font-family": 'Montserrat',
+                                    "font-style": "normal",
+                                    "font-weight": "500",
+                                    "font-size": "22px",
+                                    "line-height": "27px",
+                                }}
+
+                                content = "Proceed"
+                                // icon = {save_icon}
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
+                        </div>
+                    
                         {/* Thao ends here */}
                     </>
                 }
@@ -44,6 +120,107 @@ const CreateForm = (props)=>{
                         {/* Thao starts here */}
                         <div className='header'>
                             <h2>Import Batch</h2>
+                        </div>
+
+                        <div className = 'txt'>
+                            Select the Collection to import into. Then, drop or browse to a Simple Archive Format (SAF) zip file that includes the Items to import
+                        </div>
+
+                        <div className='form-submit'>
+                            <Button 
+                                styles = {{
+                                    "height": "2.75rem",
+                                    "width": "14.6rem",
+                                    "background": "#3E3E3E",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "color": "#FFFFFF",
+                                    "border": "1px solid #000000",
+                                    "border-radius": "5px",
+                                    "font-family": 'Montserrat',
+                                    "font-style": "normal",
+                                    "font-weight": "500",
+                                    "font-size": "22px",
+                                    "margin-top": "2rem",
+                                }}
+
+                                content = "Select Collection"
+                                // icon = {arrow_left_icon}
+                                
+
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+                        </div>
+
+                        <label class="form-control">
+                            <input type="checkbox" name="checkbox" />
+                            Validate Only
+                        </label>
+
+                        <div className='subtext'>
+                            When selected, the uploaded CSV will be validated. You will receive a report of detected changes, but no changes will be saved.
+                        </div>
+
+                        <div className="form-item">
+                            <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                            
+                            <label for="logo-upload">
+                                <div className='label-div'>
+                                    {/* <img src = {upload_icon} alt = "add_images"/> */}
+                                    <div className='label-text'>Drop a batch ZIP to import, or <a href="url">browse</a></div>
+                                </div>
+                            </label>
+                                {/* <img src={libraryIcon}></img> */}
+                        </div>
+
+                        <div className='form-submit'>
+                            <Button 
+                                styles = {{
+                                    "height": "3.5rem",
+                                    "width": "7rem",
+                                    "background": "#828282",
+                                    "margin-right": "1rem",
+                                    "margin-bottom": "0",
+                                    "margin-top": "3rem",
+                                    "color": "#FFFFFF",
+                                    "border": "1px solid #000000",
+                                    "border-radius": "0.6rem",
+                                    "font-family": 'Montserrat',
+                                    "font-style": "normal",
+                                    "font-weight": "500",
+                                    "font-size": "22px",
+                                    "line-height": "27px",
+                                }}
+
+                                content = "Back"
+                                // icon = {arrow_left_icon}
+                                
+
+                                handleClick = {() => lastCreateState()}
+                            ></Button>
+
+                            <Button 
+                                styles = {{
+                                    "height": "3.5rem",
+                                    "width": "7rem",
+                                    "background": "#3E3E3E",
+                                    "margin-right": "0",
+                                    "margin-bottom": "0",
+                                    "margin-top": "3rem",
+                                    "color": "#ffffff",
+                                    "border": "1px solid #000000",
+                                    "font-family": 'Montserrat',
+                                    "font-style": "normal",
+                                    "font-weight": "500",
+                                    "font-size": "22px",
+                                    "line-height": "27px",
+                                }}
+
+                                content = "Proceed"
+                                // icon = {save_icon}
+
+                                handleClick = {() => nextCreateState()}
+                            ></Button>
                         </div>
                         {/* Thao ends here */}
                     </>

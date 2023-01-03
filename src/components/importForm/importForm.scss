@@ -6,19 +6,131 @@
 
     // background-color: red;
 
-    margin-top: 7rem;
+    margin-top: 3rem;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    //align-items: center;
 
     .header{
         width: 100%;
+        
         // border-bottom: 1px solid #CDD4DE;
 
         // .text{
         //     padding: 1rem 2rem;
         // }
+    }
+
+    .txt{
+        //padding: 1rem 2rem;
+        //margin-top: 1rem;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        color: #000000;
+
+    }
+
+    .form-control{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 1.2rem;
+        display: flex;
+
+        color: #000000;
+    }
+
+    .subtext{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 1rem;
+
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .form-submit{
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        //margin-top: 3rem;
+    }
+
+    .form-item{
+        margin-top: 2rem;
+        .form-input{
+            margin-top: 2rem;
+            // display: flex;
+            // justify-content: center;
+    
+            &:nth-child(2){
+                margin-top: 0;
+            }
+    
+            input{
+                width: 100%;
+                box-sizing: border-box;
+                height: 3rem;
+    
+                border: 1px solid rgba(49, 49, 49, 0.7);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 5px;
+    
+                padding: 0.3rem 0 0.3rem 1.5rem;
+    
+                font-size: 0.9rem;
+            }
+    
+            input[type=text]{
+                outline: none;
+            }
+        }
+
+
+        .label-div{
+            // width: 100%;
+            .label-text{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+
+                color: rgba(0, 0, 0, 0.7);
+
+            }
+            box-sizing: border-box;
+
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px dashed rgba(49, 49, 49, 0.7);
+
+            height: 3rem;
+
+            //box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+            padding: 0.3rem 0 0.3rem 1.5rem;
+
+            //font-size: 0.9rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                height: 50%;
+                margin-right: 0.8rem;
+            }
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
     }
 }
