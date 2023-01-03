@@ -21,6 +21,7 @@ import NavbarSearch from "../search/navbarSearch/NavbarSearch";
 import NavbarFooterItem from "./NavbarFooterItem";
 import Button from "../button/Button";
 import HamMenu from "../mobile/dropdownHamMenu/HamMenu";
+import SideMenu from "../mobile/sideMenu/SideMenu";
 
 
 const Navbar = (props) => {
@@ -112,18 +113,7 @@ const Navbar = (props) => {
                     }
 
                     <div className="wrapper mobile">
-                        <div className="ham-menu">
-                            <img src={hamburgerMenu} alt = "menu"></img>
-                        </div>
-
-                        
-                        {/* Tung starts here */}
-
-
-
-                        {/* Tung ends here */}
-
-
+                        <SideMenu></SideMenu>
                     </div>
                 </div>
             </div>
