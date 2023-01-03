@@ -13,7 +13,7 @@
     
     .gen-intro {
         margin-top: 5.3125rem;
-        padding: 0 var(--primary-padding);
+        padding: 3rem var(--primary-padding);
         
         display: flex;
         
@@ -24,7 +24,7 @@
 
         .content {
             // width: 170%;
-            height: 17.8125rem;
+            // height: 17.8125rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -170,6 +170,10 @@
 
             .button-div{
                 justify-content: flex-end;
+
+                button{
+                    margin-top: 3rem;
+                }
             }
         }
 

@@ -11,14 +11,16 @@ import hamburgerMenu from "../../assets/navbar/hamburger-menu.png"
 
 // import functions
 import { moveTo } from "../../utils/helperFunctions";
+import Cookies from 'js-cookie';
+import { userRole } from "../../enums/enum";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 // import components
 import NavbarSearch from "../search/navbarSearch/NavbarSearch";
 import NavbarFooterItem from "./NavbarFooterItem";
 import Button from "../button/Button";
-import Cookies from 'js-cookie';
-import { userRole } from "../../enums/enum";
-import { AuthContext } from "../../contexts/AuthContext";
+import HamMenu from "../mobile/dropdownHamMenu/HamMenu";
 
 
 const Navbar = (props) => {
@@ -223,9 +225,30 @@ const Navbar = (props) => {
 
 
             <div className="navbar-footer mobile">
-                <div className="ham-menu">
-                    <img src={hamburgerMenu} alt = "menu"></img>
-                </div>
+                    <HamMenu
+                        items = {[
+                            {
+                                "title":"About Us",
+                                "link":"/about"
+                            },
+                            {
+                                "title":"Browse",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Resources",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Help",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Contact",
+                                "link":"/"
+                            }
+                        ]}
+                    ></HamMenu>
             </div>
         </div>
     );
