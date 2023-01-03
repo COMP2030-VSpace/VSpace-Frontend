@@ -16,33 +16,19 @@ import { moveTo } from "../../utils/helperFunctions";
 import NavbarSearch from "../search/navbarSearch/NavbarSearch";
 import NavbarFooterItem from "./NavbarFooterItem";
 import Button from "../button/Button";
+import Cookies from 'js-cookie';
+import { userRole } from "../../enums/enum";
+import { AuthContext } from "../../contexts/AuthContext";
+
 
 const Navbar = (props) => {
-    // const { authState: { authLoading, isAuthenticated, user }, redirectToLogin } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
+    const [isAuthenticated, setAuthenticate] = useState(false);
 
-    // const { controllerState: {
-    //     displayMessage, isOpenNavbar, isOpenCreatePost,
-    //     isOpenProfile, landing, displayNotification,
-    //     displayGallery, isProfileSetting
-    // },
-    //     showMessage, showHome, showNotification,
-    //     hideNotification, showGallery, hideGallery,
-    //     closeNavbar, openNavbar, openCreatePost,
-    //     closeCreatePost, openProfile
-
-    // } = useContext(ControllerContext);
-
-    // const [curHover, setCurHover] = useState(0);
-
-    // const hover = (type) => {
-    //     setCurHover(type);
-    // }
-
-    // const closeHover = () => {
-    //     setCurHover(0);
-    // }
-
-
+    useEffect(() => {
+        let checkLogin = (Cookies.get("role") && (Cookies.get("role")  !== userRole.USER));
+        setAuthenticate(checkLogin);
+    }, []);
 
     return (
         <div className="navbar-container">
@@ -58,45 +44,70 @@ const Navbar = (props) => {
                 </div>
 
                 <div className="right">
-                    <div className="wrapper desktop">
-                        <div>
-                            <Button 
-                                styles = {{
-                                    "height": "2.6rem",
-                                    // "width": "3rem",
-                                    "background": " #CD3C3F",
-                                    "margin-right": "0",
-                                    "margin-bottom": "0",
-                                    "color": "#ffffff",
-                                    "padding": "0.05rem 1.2rem",
-                                    "margin": "0"
-                                }}
+                    {!isAuthenticated &&
+                        <div className="wrapper desktop">
+                            <div>
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        // "width": "3rem",
+                                        "background": " #CD3C3F",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff",
+                                        "padding": "0.05rem 1.2rem",
+                                        "margin": "0"
+                                    }}
 
-                                content = "Register"
+                                    content = "Register"
 
-                                handleClick = {() => moveTo("/register")}
-                            ></Button>
+                                    handleClick = {() => moveTo("/register")}
+                                ></Button>
+                            </div>
+
+                            <div className="ml2">
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        // "width": "90%",
+                                        "background": " #CD3C3F",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff",
+                                        "padding": "0.05rem 1.5rem",
+                                        "margin": "0"
+                                    }}
+
+                                    content = "Login"
+
+                                    handleClick = {() => moveTo("/login")}
+                                ></Button>
+                            </div>
                         </div>
+                    }
 
-                        <div className="ml2">
-                            <Button 
-                                styles = {{
-                                    "height": "2.6rem",
-                                    // "width": "90%",
-                                    "background": " #CD3C3F",
-                                    "margin-right": "0",
-                                    "margin-bottom": "0",
-                                    "color": "#ffffff",
-                                    "padding": "0.05rem 1.5rem",
-                                    "margin": "0"
-                                }}
+                    {isAuthenticated &&
+                        <div className="wrapper desktop">
+                            <div>
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        // "width": "3rem",
+                                        "background": " #CD3C3F",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff",
+                                        "padding": "0.05rem 1.2rem",
+                                        "margin": "0"
+                                    }}
 
-                                content = "Login"
+                                    content = "Logout"
 
-                                handleClick = {() => moveTo("/login")}
-                            ></Button>
+                                    handleClick = {() => logout()}
+                                ></Button>
+                            </div>
                         </div>
-                    </div>
+                    }
 
                     <div className="wrapper mobile">
                         <div className="ham-menu">

@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "vspace-frontend-prod",
+            "cwd": "/var/lib/jenkins/workspace/vinspace-frontend-prod",
+            "script": "npm",
+            "args": "start",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}

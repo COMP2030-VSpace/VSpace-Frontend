@@ -31,7 +31,7 @@ import { moveTo } from '../../utils/helperFunctions';
 
 const SideMenu = (props)=>{
     // states
-    const [menuIsCollapsed, setMenuIsCollapsed] = useState(false);
+    const [menuIsCollapsed, setMenuIsCollapsed] = useState(true);
     const [curMenuItem, setCurMenuItem] = useState(-1);
 
     // realtime data
