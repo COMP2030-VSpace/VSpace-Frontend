@@ -16,9 +16,25 @@ const CommunityContextProvider = ({ children }) => {
     //     role: userRole.USER
     // })
 
+    const createCommunity = async (data) => {
+        const url = "https://vinspace.online/server/api/core/communities";
+
+        const response = await instance.post(url, data);
+
+        return response
+    }
+
+    const getCommunities = async () => {
+        const url = "https://vinspace.online/server/api/core/communities";
+        
+        const response = await instance.get(url);
+
+        return response;
+    }
+
  
 
-    const communityContextData = {  }
+    const communityContextData = { createCommunity, getCommunities }
 
     return (<CommunityContext.Provider value={communityContextData}>{children}</CommunityContext.Provider>)
 

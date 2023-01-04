@@ -18,8 +18,30 @@ import arrow from "../..//../assets/admin/up-arrow.png";
 import search from "../../../assets/admin/search-admin.png";
 import pagination_arrow from "../../../assets/admin/arrow-admin.png"
 
+// import context
+import { CommunityContext } from "../../../contexts/CommunityContext";
 
 const Dashboard = (props) => {
+
+    const { getCommunities } = useContext(CommunityContext);
+    const [communities, setCommunities] = useState([])
+    const [curPage, setCurPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+    const itemsPerPage = 5;
+
+    useEffect(() => {
+        const loadCommunities = async () => {
+            const response = await getCommunities();
+            const data = response.data["_embedded"].communities
+            setCommunities(data);
+            setTotalPage( Math.floor((data.length-1) / itemsPerPage) + 1);
+        }
+
+        loadCommunities();
+    }, [])
+
+
+
     return (
         <div className="dashboard">
             <Navbar></Navbar>
@@ -58,32 +80,45 @@ const Dashboard = (props) => {
                         <div className="text">
                             <h2 className="text__header">Community in DSpace</h2>
                             <h3 className="text__secondheader">Select a community to browse its collections.</h3>
-                            <p className="header__ul">Now showing 1 - 5 of 547</p>
+                            <p className="header__ul">Now showing {itemsPerPage * (curPage-1) + 1} - {itemsPerPage * curPage} of {communities.length}</p>
                             <ul>
-                                <li onClick={() => moveTo("/admin/community/CECS")}>College of Engineering & Computer Science</li>
-                                <li>000AgusGuarez</li>
-                                <li>000AliciaAM</li>
-                                <li>000_Vectino Natalia</li>
-                                <li>000AgusGuarez</li>
-                                <li>000AliciaAM</li>
+                                {communities.slice(itemsPerPage * (curPage-1), itemsPerPage * curPage).map((community, key) => {
+                                    return <li onClick={() => moveTo("/admin/community/CECS")}>{community.name}</li> 
+                                })}
+                                
+                                
                             </ul>
                         </div>
 
                         <div className="blocklist">
-                            <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
-                                <img src={pagination_arrow} alt="" />
-                            </div>
-                            <div className="block">1</div>
-                            <div className="block active">2</div>
-                            <div className="block">3</div>
-                            <div className="block">4</div>
-                            <div className="block">5</div>
-                            <div className="block">6</div>
-                            <div className="block">7</div>
-                            <div className="block">8</div>
-                            <div className="block">9</div>
-                            <div className="block">...</div>
-                            <div className="block" style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>20</div>
+                            {curPage > 1 &&
+                                <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+                                    <img 
+                                        src={pagination_arrow} 
+                                        alt="" 
+                                        onClick={() => {setCurPage(curPage - 1)}}
+                                    />
+                                </div>
+                            }
+                            {[...Array(totalPage)].map((page, i) => {
+                                if(i+1 === curPage){
+                                    return <div 
+                                                className="block active" 
+                                                key = {i}
+                                                onClick = {() => {setCurPage(i+1)}}
+                                            >{i+1}</div>
+                                }
+                                
+                                return <div 
+                                            className="block" 
+                                            key = {i}
+                                            onClick = {() => {setCurPage(i+1)}}
+                                        >{i+1}</div>
+                            })}
+
+                            {/* <div className="block">...</div>
+                            <div className="block" style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>20</div> */}
+                        
                         </div>
                     </div>
                     {/* Tung ends here */}

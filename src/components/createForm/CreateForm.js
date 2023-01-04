@@ -18,16 +18,14 @@ import check from '../../assets/admin/check.png';
 import Button from '../button/Button';
 import CommunityItem from '../communityItem/CommunityItem';
 
-//  saved done
-// function myDonn() {
-//     document.getElementById("saved").innerHTML = "Saved";
-//     document.getElementById("saved").style.background = "#F6F9F9";
-//     document.getElementById("trs").innerHTML = "Translate";
-//   }
-  
+//import context
+import { CommunityContext } from '../../contexts/CommunityContext';
 
 
 const CreateForm = (props)=>{
+
+
+    const { createCommunity } = useContext(CommunityContext);
 
     const [createState, setCreateState] = useState(1);
     const [topLevelTitle, setTopLevelTitle] = useState("");
@@ -74,14 +72,14 @@ const CreateForm = (props)=>{
             }
         }
 
-        // const response = await createUser(token, data);
+        const response = await createCommunity(data);
 
-        // console.log(response);
+        console.log(response);
         
         // redirect to home
-        // if(response.data.success){
-        //     window.location.href = "/admin";
-        // }
+        if(response.data.success){
+            window.location.href = "/admin";
+        }
 
 
     }
