@@ -2,9 +2,8 @@
     
     height: 100%;
 
-    // position: relative;
-    display: flex;
     position: relative;
+    display: flex;
     align-items: center;
 
     .wrapper{
@@ -18,14 +17,20 @@
     }
 
     
-    .right{
-        background-color: white;
-        display: flex;
-        flex-direction: column;
+    .ham-side-menu-right{
+        width: 100vw;
+        height: 30rem;
+
+        top: 3.5rem;
+        right: 52vw;
+
+        background: red;
+        
         position: absolute;
-        flex-grow: 1;
+        z-index: 1;
+
         box-sizing: border-box;
-        margin-top: 20rem;
+        // margin-top: 20rem;
 
         .browse{
             .text{
