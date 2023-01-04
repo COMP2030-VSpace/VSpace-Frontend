@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, createRef, useContext, useState } from "react";
 import "./setup.scss";
+import { AuthContext } from "../../contexts/AuthContext";
 
 // import components
 import Navbar from "../../components/navbar/Navbar";
@@ -10,8 +11,20 @@ import Button from "../../components/button/Button";
 import Footer from "../../components/footer/Footer";
 
 const Setup = (props) => {
+    // import contexts
+    const { getEmailFromToken, createUser } = useContext(AuthContext);
+
+    // import states
     const [regState, setRegState] = useState(1);
     const [isBoxChecked, setIsBoxChecked] = useState(false);
+
+    const [email, setEmail] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [contact, setContact] = useState("");
+    const [language, setLanguage] = useState("");
+    const [password, setPassword] = useState("");
+    const [retypePassword, setRetypePassword] = useState("");
 
     // functions
     const setChecked = (newBoxState) => {
@@ -22,9 +35,91 @@ const Setup = (props) => {
         setRegState(regState + 1);
     };
 
-    // const backState = () => {
-    //     setRegState(regState - 1);
-    // }
+    const handleChange = (event, type) => {
+        // console.log(event.target.value);
+        if(type === "firstname"){
+            // console.log("debug 1");
+            setFirstname(event.target.value);
+        }
+        else if(type === "lastname"){
+            // console.log("debug 2");
+            setLastname(event.target.value);
+        }
+        else if(type === "contact"){
+            // console.log("debug 2");
+            setContact(event.target.value);
+        }
+        else if(type === "language"){
+            // console.log("debug 2");
+            setLanguage(event.target.value);
+        }
+        else if(type === "password"){
+            // console.log("debug 2");
+            setPassword(event.target.value);
+        }
+        else if(type === "retypePassword"){
+            // console.log("debug 2");
+            setRetypePassword(event.target.value);
+        }
+    }
+
+    const submitForm = async () => {
+        // verify input
+
+        // 
+        const path = window.location.pathname;
+        const token = path.split("/").pop();
+
+        const data = {
+            "metadata": {
+              "eperson.firstname": [
+                {
+                  "value": firstname,
+                  "language": null,
+                  "authority": "",
+                  "confidence": -1
+                }
+              ],
+              "eperson.lastname": [
+                {
+                  "value": lastname,
+                  "language": null,
+                  "authority": "",
+                  "confidence": -1
+                }
+              ]
+            },
+            "email": email,
+            "password": password,
+            "canLogIn": true,
+            "requireCertificate": false,
+            "type": "eperson"
+        }
+
+        const response = await createUser(token, data);
+
+        // console.log(response);
+        
+        // redirect to home
+        if(response.data.success && response.data.email === email){
+            window.location.href = "/"
+        }
+
+
+    }
+
+    useEffect(() => {
+        const path = window.location.pathname;
+        const token = path.split("/").pop();
+
+        const loadEmail = async (token) => {
+            const responseEmail = await getEmailFromToken(token);
+            setEmail(responseEmail)
+        }
+
+        loadEmail(token);
+    }, [])
+    
 
     return (
         <div className="register-setup mb10">
@@ -225,11 +320,17 @@ const Setup = (props) => {
                             <span>Identify</span>
                         </div>
 
+                        <div className="email-box">Email: {email}</div>
+
                         <div className="box-item">
                             <div className="text">First Name *</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    type="text"
+                                    value={firstname}
+                                    onChange = {(e) => handleChange(e, "firstname")}
+                                ></input>
                             </div>
                         </div>
 
@@ -237,7 +338,11 @@ const Setup = (props) => {
                             <div className="text">Last Name *</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    type="text"
+                                    value={lastname}
+                                    onChange = {(e) => handleChange(e, "lastname")}
+                                ></input>
                             </div>
                         </div>
 
@@ -245,17 +350,26 @@ const Setup = (props) => {
                             <div className="text">Contact Telephone</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    type="text"
+                                    value={contact}
+                                    onChange = {(e) => handleChange(e, "contact")}
+                                ></input>
                             </div>
                         </div>
 
-                        <div className="box-item">
+                        {/* <div className="box-item">
                             <div className="text">Language *</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    // placeholder="only en is supp"
+                                    type="text"
+                                    value={language}
+                                    onChange = {(e) => handleChange(e, "language")}
+                                ></input>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     <br />
@@ -269,7 +383,11 @@ const Setup = (props) => {
                             <div className="text">Password *</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    type="password"
+                                    value={password}
+                                    onChange = {(e) => handleChange(e, "password")}
+                                ></input>
                             </div>
                         </div>
 
@@ -277,7 +395,11 @@ const Setup = (props) => {
                             <div className="text">Retype to confirm *</div>
 
                             <div className="box-input">
-                                <input type="text"></input>
+                                <input 
+                                    type="password"
+                                    value={retypePassword}
+                                    onChange = {(e) => handleChange(e, "retypePassword")}
+                                ></input>
                             </div>
                         </div>
                     </div>
@@ -293,7 +415,7 @@ const Setup = (props) => {
                                 color: "#ffffff",
                             }}
                             content="Complete Registration"
-                            handleClick={() => nextState()}
+                            handleClick={() => submitForm()}
                         ></Button>
                     </div>
                 </div>

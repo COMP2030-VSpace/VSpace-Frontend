@@ -8,6 +8,7 @@ import instance from '../axiosConfig/config';
 import { userRole } from '../enums/enum';
 
 import Cookies from 'js-cookie';
+import { async } from 'q';
 export const AuthContext = createContext()
 
 // axios.defaults.withCredentials = true;
@@ -154,7 +155,33 @@ const AuthContextProvider = ({ children }) => {
             else
                 return { success: false, message: error.message };
         }
+    }
 
+
+    const getEmailFromToken = async (token) => {
+        const url = "https://vinspace.online/server/api/eperson/registrations/search/findByToken"
+        const response = await instance.get(url, {
+            params: { 
+                token: token
+            }
+        })
+
+        // console.log(response);
+        return response.data.email;
+    }
+
+    const createUser = async (token, data) => {
+        const url = "https://vinspace.online/server/api/eperson/epersons";
+        const response = await instance.post(url, data, {
+            params: {
+                token: token
+            }
+        })
+
+        // console.log(response);
+
+
+        return response;
     }
 
 
@@ -200,7 +227,7 @@ const AuthContextProvider = ({ children }) => {
 
 
 
-    const authContextData = { redirectToLogin, loginUser, registerUser, logout, authUser, authState }
+    const authContextData = { redirectToLogin, loginUser, registerUser, getEmailFromToken, createUser, logout, authUser, authState }
 
     return (<AuthContext.Provider value={authContextData}>{children}</AuthContext.Provider>)
 
