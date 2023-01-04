@@ -2,7 +2,8 @@
 
 /* Variable declarations */
 :root {
-    --primary-padding: 6rem
+    --primary-padding: 6rem;
+    --navbar-height: 12rem;
 }
 
 
@@ -28,7 +29,8 @@
 
 @media screen and (max-width: 1024px) {
     :root {
-        --primary-padding: 4rem
+        --primary-padding: 4rem;
+        --navbar-height: 10rem;
     }
 }
 

@@ -39,7 +39,7 @@ const Navbar = (props) => {
                 <div className="left" onClick={() => moveTo("/")}>
                     <div className="wrapper">
                         <img src={logo} alt="logo"></img>
-                        <div className="address">VinSpace@VinUni</div>
+                        <div className="address desktop">VinSpace@VinUni</div>
                     </div>
                 </div>
 
