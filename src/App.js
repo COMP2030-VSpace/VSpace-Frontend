@@ -18,43 +18,46 @@ import Protected from './pages/protected/Protected';
 
 // import contexts
 import AuthContextProvider from './contexts/AuthContext';
+import CommunityContextProvider from './contexts/CommunityContext';
 
 function App() {
     return (
         <AuthContextProvider>
-            <Routes>
-                <Route path='/' element={<HomeV2 />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/register/:id' element={<Setup />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/admin' element={
-                    <Protected>
-                        <Dashboard />
-                    </Protected>
-                } />
-                <Route path='/admin/community/add' element={
-                    <Protected>
-                        <CreateCommunity />
-                    </Protected>
-                } />
-                <Route path='/admin/collection/add' element={
-                    <Protected>
-                        <CreateCollection />
-                    </Protected>
-                } />
-                
-                <Route path='/admin/item/add' element={
-                    <Protected>
-                        <Item />
-                    </Protected>
-                } />
-                <Route path='/admin/community/:id' element={
-                    <Protected>
-                        <Community />
-                    </Protected>
-                } />
-            </Routes>
+            <CommunityContextProvider>
+                <Routes>
+                    <Route path='/' element={<HomeV2 />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/register/:id' element={<Setup />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/about' element={<About />} />
+                    <Route path='/admin' element={
+                        <Protected>
+                            <Dashboard />
+                        </Protected>
+                    } />
+                    <Route path='/admin/community/add' element={
+                        <Protected>
+                            <CreateCommunity />
+                        </Protected>
+                    } />
+                    <Route path='/admin/collection/add' element={
+                        <Protected>
+                            <CreateCollection />
+                        </Protected>
+                    } />
+                    
+                    <Route path='/admin/item/add' element={
+                        <Protected>
+                            <Item />
+                        </Protected>
+                    } />
+                    <Route path='/admin/community/:id' element={
+                        <Protected>
+                            <Community />
+                        </Protected>
+                    } />
+                </Routes>
+            </CommunityContextProvider>
         </AuthContextProvider>
     );
 }

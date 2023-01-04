@@ -30,6 +30,7 @@ import CommunityItem from '../communityItem/CommunityItem';
 const CreateForm = (props)=>{
 
     const [createState, setCreateState] = useState(1);
+    const [topLevelTitle, setTopLevelTitle] = useState("");
 
     const nextCreateState = () => {
         setCreateState(createState + 1);
@@ -39,6 +40,50 @@ const CreateForm = (props)=>{
     const lastCreateState = () => {
         setCreateState(createState - 1);
         return;
+    }
+
+    const handleChange = (event, type) => {
+        // console.log(event.target.value);
+        if(type === "toplevel-title"){
+            // console.log("debug 1");
+            setTopLevelTitle(event.target.value);
+        }
+        // else if(type === "lastname"){
+        //     // console.log("debug 2");
+        //     setLastname(event.target.value);
+        // }
+
+    }
+
+    const submitForm = async () => {
+        // verify input
+
+        // 
+
+        const data = {
+            "name": topLevelTitle,
+            "metadata": {
+              "dc.title": [
+                {
+                  "value": topLevelTitle,
+                  "language": null,
+                  "authority": null,
+                  "confidence": -1
+                }
+              ]
+            }
+        }
+
+        // const response = await createUser(token, data);
+
+        // console.log(response);
+        
+        // redirect to home
+        // if(response.data.success){
+        //     window.location.href = "/admin";
+        // }
+
+
     }
 
 
@@ -183,7 +228,11 @@ const CreateForm = (props)=>{
                                 </div>
 
                                 <div className='form-input'>
-                                    <input type = "text"></input>
+                                    <input 
+                                        type = "text"
+                                        value={topLevelTitle}
+                                        onChange = {(e) => handleChange(e, "toplevel-title")}
+                                    ></input>
                                 </div>
                             </div>
 
@@ -260,7 +309,7 @@ const CreateForm = (props)=>{
                                 content = "Save"
                                 icon = {save_icon}
 
-                                handleClick = {() => nextCreateState()}
+                                handleClick = {() => submitForm()}
                             ></Button>
                         </div>
 
