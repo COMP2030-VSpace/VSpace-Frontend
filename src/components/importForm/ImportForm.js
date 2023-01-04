@@ -63,8 +63,8 @@ const CreateForm = (props)=>{
                         <div className='form-submit'>
                             <Button 
                                 styles = {{
-                                    "height": "3.5rem",
-                                    "width": "7rem",
+                                    // "height": "3.5rem",
+                                    // "width": "7rem",
                                     "background": "#828282",
                                     "margin-right": "1rem",
                                     "margin-bottom": "0",
@@ -75,8 +75,9 @@ const CreateForm = (props)=>{
                                     "font-family": 'Montserrat',
                                     "font-style": "normal",
                                     "font-weight": "500",
-                                    "font-size": "22px",
-                                    "line-height": "27px",
+                                    "font-size": "1.2rem",
+                                    // "line-height": "27px",
+                                    "padding": "0.7rem 1.7rem"
                                 }}
 
                                 content = "Back"
@@ -88,8 +89,8 @@ const CreateForm = (props)=>{
 
                             <Button 
                                 styles = {{
-                                    "height": "3.5rem",
-                                    "width": "7rem",
+                                    // "height": "3.5rem",
+                                    // "width": "7rem",
                                     "background": "#3E3E3E",
                                     "margin-right": "0",
                                     "margin-bottom": "0",
@@ -99,8 +100,9 @@ const CreateForm = (props)=>{
                                     "font-family": 'Montserrat',
                                     "font-style": "normal",
                                     "font-weight": "500",
-                                    "font-size": "22px",
-                                    "line-height": "27px",
+                                    "font-size": "1.2rem",
+                                    // "line-height": "27px",
+                                    "padding": "0.7rem 1.7rem"
                                 }}
 
                                 content = "Proceed"
@@ -129,8 +131,8 @@ const CreateForm = (props)=>{
                         <div className='form-submit'>
                             <Button 
                                 styles = {{
-                                    "height": "2.75rem",
-                                    "width": "14.6rem",
+                                    // "height": "2.75rem",
+                                    // "width": "14.6rem",
                                     "background": "#3E3E3E",
                                     "margin-right": "1rem",
                                     "margin-bottom": "0",
@@ -140,8 +142,9 @@ const CreateForm = (props)=>{
                                     "font-family": 'Montserrat',
                                     "font-style": "normal",
                                     "font-weight": "500",
-                                    "font-size": "22px",
+                                    "font-size": "1.2rem",
                                     "margin-top": "2rem",
+                                    "padding": "0.7rem 1.7rem"
                                 }}
 
                                 content = "Select Collection"
@@ -176,8 +179,8 @@ const CreateForm = (props)=>{
                         <div className='form-submit'>
                             <Button 
                                 styles = {{
-                                    "height": "3.5rem",
-                                    "width": "7rem",
+                                    // "height": "3.5rem",
+                                    // "width": "7rem",
                                     "background": "#828282",
                                     "margin-right": "1rem",
                                     "margin-bottom": "0",
@@ -188,8 +191,9 @@ const CreateForm = (props)=>{
                                     "font-family": 'Montserrat',
                                     "font-style": "normal",
                                     "font-weight": "500",
-                                    "font-size": "22px",
-                                    "line-height": "27px",
+                                    "font-size": "1.2rem",
+                                    // "line-height": "27px",
+                                    "padding": "0.7rem 1.7rem"
                                 }}
 
                                 content = "Back"
@@ -201,8 +205,8 @@ const CreateForm = (props)=>{
 
                             <Button 
                                 styles = {{
-                                    "height": "3.5rem",
-                                    "width": "7rem",
+                                    // "height": "3.5rem",
+                                    // "width": "7rem",
                                     "background": "#3E3E3E",
                                     "margin-right": "0",
                                     "margin-bottom": "0",
@@ -212,8 +216,9 @@ const CreateForm = (props)=>{
                                     "font-family": 'Montserrat',
                                     "font-style": "normal",
                                     "font-weight": "500",
-                                    "font-size": "22px",
-                                    "line-height": "27px",
+                                    "font-size": "1.2rem",
+                                    // "line-height": "27px",
+                                    "padding": "0.7rem 1.7rem"
                                 }}
 
                                 content = "Proceed"
