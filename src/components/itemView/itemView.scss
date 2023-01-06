@@ -60,6 +60,21 @@
         padding-bottom: 2.5rem;
 
         .form-item{
+            .title{
+                width: 100%;
+
+                .text{
+                    //margin-bottom: 1rem;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 30px;
+
+                    color: #000000;
+
+                }
+            }
+
             .text{
                 margin: 1.5rem 0 1.5rem 0;
                 font-family: 'Montserrat';
@@ -120,6 +135,8 @@
             }
 
             .show-text{
+               //margin-bottom: 6rem;
+               margin-top: 1.5rem;
                 font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 500;
@@ -128,6 +145,17 @@
 
                 color: #000000;
 
+            }
+
+            .show-item{
+                margin-top: 3rem;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 24px;
+                
+                color: #2E5288;
             }
 
             .no-result{
