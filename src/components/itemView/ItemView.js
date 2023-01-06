@@ -19,10 +19,37 @@ import CommunityItem from '../communityItem/CommunityItem';
 import { ItemViewType } from '../../enums/enum';
 import { ButtonGroup } from 'reactstrap';
 
+// import context
+import { CommunityContext } from '../../contexts/CommunityContext';
+import { CollectionContext } from '../../contexts/CollectionContext';
+
 const ItemView = (props)=>{
+    const { getSubCommunities } = useContext(CommunityContext);
+    const { getCollections } = useContext(CollectionContext);
 
     const [itemViewType, setItemViewType] = useState(ItemViewType.GENERAL);
-    const [searchType, setSearchType] = useState(2);
+    const [searchType, setSearchType] = useState(1);
+
+    const [itemId, setItemId] = useState("");
+
+    useEffect(() => {
+        const id = window.location.pathname.split("/").pop();
+        setItemId(id);
+
+        console.log(id);
+
+        const loadData = async (id) => {
+            // get sub communities
+            const response1 = await getSubCommunities(id);
+            console.log(response1);
+
+            // get collections
+            const response2 = await getCollections(id);
+            console.log(response2);
+        }
+
+        loadData(id);
+    }, []);
 
     const moveToDetail = () => {
         setItemViewType(ItemViewType.DETAIL);
@@ -47,7 +74,7 @@ const ItemView = (props)=>{
 
                 <div className='header'>
                     <div className='text'>College of Engineering & Computer Science</div>
-                    <div className='description'>Permanent URI for this community <a href="https://vinspace.online/handle/123456789/1">https://vinspace.online/handle/123456789/1</a> </div>
+                    <div className='description'>Permanent URI for this community <a href={window.location.pathname}>https://vinspace.online{window.location.pathname}</a> </div>
                 </div>
 
                 <div className='form'>

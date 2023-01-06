@@ -33,6 +33,9 @@ const Dashboard = (props) => {
         const loadCommunities = async () => {
             const response = await getCommunities();
             const data = response.data["_embedded"].communities
+
+            console.log(data);
+
             setCommunities(data);
             setTotalPage( Math.floor((data.length-1) / itemsPerPage) + 1);
         }
@@ -83,7 +86,7 @@ const Dashboard = (props) => {
                             <p className="header__ul">Now showing {itemsPerPage * (curPage-1) + 1} - {itemsPerPage * curPage} of {communities.length}</p>
                             <ul>
                                 {communities.slice(itemsPerPage * (curPage-1), itemsPerPage * curPage).map((community, key) => {
-                                    return <li onClick={() => moveTo("/admin/community/CECS")}>{community.name}</li> 
+                                    return <li onClick={() => moveTo("/admin/community/" + community.uuid)}>{community.name}</li> 
                                 })}
                                 
                                 

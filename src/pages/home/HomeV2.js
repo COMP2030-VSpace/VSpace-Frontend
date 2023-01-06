@@ -9,7 +9,28 @@ import HomeSearch from "../../components/search/homeSearch/HomeSearchV2";
 import Footer from "../../components/footer/Footer";
 import Item from "../../components/item/Item";
 
+import { moveTo } from "../../utils/helperFunctions";
+
+// import context
+import { CommunityContext } from "../../contexts/CommunityContext";
+
 const HomeV2 = (props) => {
+    const { getCommunities } = useContext(CommunityContext);
+    const [communities, setCommunities] = useState([])
+
+    useEffect(() => {
+        const loadCommunities = async () => {
+            const response = await getCommunities();
+            const data = response.data["_embedded"].communities
+
+            console.log(data);
+
+            setCommunities(data);
+        }
+
+        loadCommunities();
+    }, [])
+
     return (
         <div className="home">
             <div className="pageContentWrapper">
@@ -40,10 +61,9 @@ const HomeV2 = (props) => {
                                 </div>
                                 <div className="list-main">
                                     <ul>
-                                        <li>Athabasca River Basin Research Institute (ARBRI)</li>
-                                        <li>Athabasca River Basin Research Institute (ARBRI)</li>
-                                        <li>Athabasca River Basin Research Institute (ARBRI)</li>
-                                        <li>Athabasca River Basin Research Institute (ARBRI)</li>
+                                        {communities.map((community, key) => {
+                                            return <li onClick={() => moveTo("/community/" + community.uuid)}>{community.name}</li> 
+                                        })}
                                     </ul>
                                 </div>
                             </div>
