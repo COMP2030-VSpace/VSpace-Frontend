@@ -27,14 +27,6 @@ const SideMenu = (props) => {
                     onClick={() => showDropdownMenu()}
                 ></img>
             </div>
-
-            {isDisplay && (
-                // <div className="wrapper-right">
-                    <div className="hamright mobile">
-                        
-                    </div>
-                // </div>
-            )}
         </div>
     );
 };
