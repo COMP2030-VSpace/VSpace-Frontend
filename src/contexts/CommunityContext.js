@@ -24,10 +24,15 @@ const CommunityContextProvider = ({ children }) => {
         return response
     }
 
-    const getCommunities = async () => {
+    const getCommunities = async (page, size) => {
         const url = "https://vinspace.online/server/api/core/communities";
         
-        const response = await instance.get(url);
+        const response = await instance.get(url, {
+            params:{
+                "page": page,
+                "size": size
+            }
+        });
 
         return response;
     }

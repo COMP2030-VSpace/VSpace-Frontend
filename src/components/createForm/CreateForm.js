@@ -25,10 +25,31 @@ import { CommunityContext } from '../../contexts/CommunityContext';
 const CreateForm = (props)=>{
 
 
-    const { createCommunity } = useContext(CommunityContext);
+    const { createCommunity, getCommunities } = useContext(CommunityContext);
 
     const [createState, setCreateState] = useState(1);
     const [topLevelTitle, setTopLevelTitle] = useState("");
+    const [communities, setCommunities] = useState([])
+
+    const itemsPerPage = 25;
+
+    useEffect(() => {
+        const loadCommunities = async () => {
+            const page = 0;
+            const response = await getCommunities(page, itemsPerPage);
+            const data = response.data["_embedded"].communities
+
+            console.log(data);
+
+            setCommunities(data);
+            
+        }
+
+        loadCommunities();
+    }, [])
+
+
+
 
     const nextCreateState = () => {
         setCreateState(createState + 1);
@@ -126,11 +147,10 @@ const CreateForm = (props)=>{
                         </div>
 
                         <div className='community-list'>
-                            <CommunityItem></CommunityItem>
+                            {communities.map((community) => {
+                                return <CommunityItem data = {community}></CommunityItem>
+                            })}
 
-                            <CommunityItem></CommunityItem>
-
-                            <CommunityItem></CommunityItem>
                         </div>
                     </>
                 }
