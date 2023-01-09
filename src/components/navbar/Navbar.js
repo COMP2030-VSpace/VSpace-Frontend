@@ -8,22 +8,33 @@ import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/navbar/logo.png";
 import dropdown from "../../assets/navbar/Polygon 4.png";
 import hamburgerMenu from "../../assets/navbar/hamburger-menu.png"
+import SideInfo from "../mobile/sideInfo/SideInfo";
 
 // import functions
 import { moveTo } from "../../utils/helperFunctions";
-
-// import components
-import NavbarSearch from "../search/navbarSearch/NavbarSearch";
-import NavbarFooterItem from "./NavbarFooterItem";
-import Button from "../button/Button";
 import Cookies from 'js-cookie';
 import { userRole } from "../../enums/enum";
 import { AuthContext } from "../../contexts/AuthContext";
 
 
+// import components
+import NavbarSearch from "../search/navbarSearch/NavbarSearch";
+import NavbarFooterItem from "./NavbarFooterItem";
+import Button from "../button/Button";
+import HamMenu from "../mobile/dropdownHamMenu/HamMenu";
+import SideMenu from "../mobile/sideMenu/SideMenu";
+import HomeSearch from "../search/homeSearch/HomeSearchV2"
+
+
 const Navbar = (props) => {
     const { logout } = useContext(AuthContext);
     const [isAuthenticated, setAuthenticate] = useState(false);
+
+    const [isDisplay, setIsDisplay] = useState(false);
+
+    const showDropdownMenu = () => {
+        setIsDisplay(!isDisplay);
+    };
 
     useEffect(() => {
         let checkLogin = (Cookies.get("role") && (Cookies.get("role")  !== userRole.USER));
@@ -110,18 +121,15 @@ const Navbar = (props) => {
                     }
 
                     <div className="wrapper mobile">
-                        <div className="ham-menu">
-                            <img src={hamburgerMenu} alt = "menu"></img>
+                        <div className="ham-side-menu">
+                            <div className="wrapper">
+                                <img
+                                    src={hamburgerMenu}
+                                    alt="menu"
+                                    onClick={() => showDropdownMenu()}
+                                ></img>
+                            </div>
                         </div>
-
-                        
-                        {/* Tung starts here */}
-
-
-
-                        {/* Tung ends here */}
-
-
                     </div>
                 </div>
             </div>
@@ -223,9 +231,34 @@ const Navbar = (props) => {
 
 
             <div className="navbar-footer mobile">
-                <div className="ham-menu">
-                    <img src={hamburgerMenu} alt = "menu"></img>
-                </div>
+                    <HamMenu
+                        items = {[
+                            {
+                                "title":"About Us",
+                                "link":"/about"
+                            },
+                            {
+                                "title":"Browse",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Resources",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Help",
+                                "link":"/"
+                            },
+                            {
+                                "title":"Contact",
+                                "link":"/"
+                            }
+                        ]}
+                    ></HamMenu>
+
+                    {isDisplay &&
+                        <SideInfo></SideInfo>
+                    }
             </div>
         </div>
     );
