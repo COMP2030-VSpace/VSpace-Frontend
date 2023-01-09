@@ -16,7 +16,62 @@ import save_icon from "../../assets/save/save.png";
 // import components;
 import Button from '../button/Button';
 
+// import context
+import { ItemContext } from '../../contexts/ItemContext';
+
 const FormItem = (props) => {
+    const { startSubmission, uploadFiles } = useContext(ItemContext);
+    const [submissionId, setSubmissionId] = useState(0);
+
+    useEffect(() => {
+        const init = async () => {
+            // testing
+            const owningCollection = "2eda7407-f83e-4459-a468-36c9bd726fc9";
+
+            const response = await startSubmission(owningCollection)
+
+            setSubmissionId(response.data.id);
+        }
+
+        init();
+    }, [])
+
+
+    const handleUploadFiles = async (files) => {
+        console.log("Uploading file...");
+        const formData = new FormData();
+        
+        for (let i = 0; i < files.length; i++) {
+            // console.log("debug file", files[i].name, files[i]);
+            formData.append("file", files[i])
+        }
+
+        // call function with form data
+        console.log(formData);
+        const owningCollection = "2eda7407-f83e-4459-a468-36c9bd726fc9";
+
+        const response = await uploadFiles(formData, owningCollection);
+
+        console.log(response);
+    };
+
+
+    const handleSaveItem = () => {
+        
+    }
+
+
+    const handleInputChange = (event) => {
+        console.log(event);
+        const files = event.target.files;
+
+        // console.log(files);
+        handleUploadFiles(files);
+    }
+
+
+    
+
     return(
         <>
             {/* Thao starts here */}
@@ -29,7 +84,11 @@ const FormItem = (props) => {
                     <div className='text'>
                     </div>
 
-                    <input type="file" name="file" id = "logo-upload" style={{display:"none"}}/>
+                    <input 
+                        type="file" name="file" id = "logo-upload" 
+                        style={{display:"none"}} 
+                        multiple
+                        onChange={(event) => handleInputChange(event)}/>
                     
                     <label for="logo-upload">
                         <div className='label-div'>
@@ -439,10 +498,10 @@ const FormItem = (props) => {
                     ></Button>
                 </div>
 
-                <span class="dot">
+                {/* <span class="dot">
                     <img src={check}/>
                 </span>
-                <p className='text'>Saved</p>
+                <p className='text'>Saved</p> */}
                 
                 <Button 
                     styles = {{
@@ -459,7 +518,7 @@ const FormItem = (props) => {
                     content = "Save"
                     icon = {save_icon}
 
-                    handleClick = {() => props.nextCreateState()}
+                    handleClick = {() => handleSaveItem()}
                 ></Button>
 
             <Button 

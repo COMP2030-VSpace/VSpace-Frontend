@@ -20,48 +20,51 @@ import Protected from './pages/protected/Protected';
 import AuthContextProvider from './contexts/AuthContext';
 import CommunityContextProvider from './contexts/CommunityContext';
 import CollectionContextProvider from './contexts/CollectionContext';
+import ItemContextProvider from './contexts/ItemContext';
 
 function App() {
     return (
         <AuthContextProvider>
             <CommunityContextProvider>
                 <CollectionContextProvider>
-                    <Routes>
-                        <Route path='/' element={<HomeV2 />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/register/:id' element={<Setup />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/about' element={<About />} />
-                        <Route path='/admin' element={
-                            <Protected>
-                                <Dashboard />
-                            </Protected>
-                        } />
-                        <Route path='/admin/community/add' element={
-                            <Protected>
-                                <CreateCommunity />
-                            </Protected>
-                        } />
-                        <Route path='/admin/collection/add' element={
-                            <Protected>
-                                <CreateCollection />
-                            </Protected>
-                        } />
-                        
-                        <Route path='/admin/item/add' element={
-                            <Protected>
-                                <Item />
-                            </Protected>
-                        } />
-                        <Route path='/admin/community/:id' element={
-                            <Protected>
+                    <ItemContextProvider>
+                        <Routes>
+                            <Route path='/' element={<HomeV2 />} />
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/register/:id' element={<Setup />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/about' element={<About />} />
+                            <Route path='/admin' element={
+                                <Protected>
+                                    <Dashboard />
+                                </Protected>
+                            } />
+                            <Route path='/admin/community/add' element={
+                                <Protected>
+                                    <CreateCommunity />
+                                </Protected>
+                            } />
+                            <Route path='/admin/collection/add' element={
+                                <Protected>
+                                    <CreateCollection />
+                                </Protected>
+                            } />
+                            
+                            <Route path='/admin/item/add' element={
+                                <Protected>
+                                    <Item />
+                                </Protected>
+                            } />
+                            <Route path='/admin/community/:id' element={
+                                <Protected>
+                                    <Community />
+                                </Protected>
+                            } />
+                            <Route path='/community/:id' element={
                                 <Community />
-                            </Protected>
-                        } />
-                        <Route path='/community/:id' element={
-                            <Community />
-                        } />
-                    </Routes>
+                            } />
+                        </Routes>
+                    </ItemContextProvider>
                 </CollectionContextProvider>
             </CommunityContextProvider>
         </AuthContextProvider>
