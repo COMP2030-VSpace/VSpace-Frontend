@@ -23,13 +23,13 @@ const ItemContextProvider = ({ children }) => {
         return response;
     }
 
-    const uploadFiles = async (formData, owningCollection) => {
-        const url = "https://vinspace.online/server/api/submission/workspaceitems"
+    const uploadFiles = async (formData, workspaceId) => {
+        const url = `https://vinspace.online/server/api/submission/workspaceitems/${workspaceId}`;
 
         const response = await instance.post(url, formData, {
-            params: { 
-                owningCollection: owningCollection
-            },
+            // params: { 
+            //     owningCollection: owningCollection
+            // },
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -46,9 +46,42 @@ const ItemContextProvider = ({ children }) => {
         return response;
     }
 
+    const submitWorkspace = async (workspaceId) => {
+        
+        const url = "https://vinspace.online/server/api/workflow/workflowitems";
+        const uriData = `https://vinspace.online/server/api/submission/workspaceitems/${workspaceId}`
+
+        const response = await instance.post(url, uriData, {
+            headers: {
+                'Content-Type': 'text/uri-list'
+            }
+        });
+
+        return response;
+    }
+
+    // const getRecentItemsWithAuth = async () => {
+    //     await 
+    // }
+
+    const getRecentItemsFromSite = async () => {
+        const url = "https://vinspace.online/server/api/discover/search/objects"
+
+        const response = await instance.get(url, {
+            params: {
+                "dsoType": "item",
+                "sort": "dc.date.accessioned,desc",
+                "page": "0",
+                "size": "3"
+            }
+        })
+
+        return response
+    }
+
  
 
-    const itemContextData = { startSubmission, uploadFiles }
+    const itemContextData = { startSubmission, uploadFiles, saveWorkspace, submitWorkspace, getRecentItemsFromSite }
 
     return (<ItemContext.Provider value={itemContextData}>{children}</ItemContext.Provider>)
 

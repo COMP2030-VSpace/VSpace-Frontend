@@ -32,12 +32,26 @@ const AuthContextProvider = ({ children }) => {
 
     let flag = false;
     useEffect(() => {
+        const getRole = async () => {
+            const response = await authUser();
+            console.log(response);
+            const role = response.role;
+
+            if(role === userRole.SITE_ADMIN){
+                // check if path contains admin
+                const path = window.location.pathname;
+                if(!path.includes("admin")){
+                    window.location.href = "/admin";
+                }
+            }
+        }
+
+        getRole();
+        
         if(!flag){
             getCsrfTokenFetch();
             flag = true;
-        }
-
-        authUser();
+        }        
 
         return;
     }, []);

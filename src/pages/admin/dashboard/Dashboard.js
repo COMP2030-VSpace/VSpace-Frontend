@@ -20,27 +20,42 @@ import pagination_arrow from "../../../assets/admin/arrow-admin.png"
 
 // import context
 import { CommunityContext } from "../../../contexts/CommunityContext";
+import { ItemContext } from "../../../contexts/ItemContext";
 
 const Dashboard = (props) => {
 
     const { getCommunities } = useContext(CommunityContext);
+    const { getRecentItemsFromSite } = useContext(ItemContext);
+    
     const [communities, setCommunities] = useState([])
     const [curPage, setCurPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const itemsPerPage = 5;
+    const [recentItems, setRecentItems] = useState([]);
 
     useEffect(() => {
         const loadCommunities = async () => {
             const response = await getCommunities();
             const data = response.data["_embedded"].communities
 
-            console.log(data);
+            // console.log(data);
 
             setCommunities(data);
             setTotalPage( Math.floor((data.length-1) / itemsPerPage) + 1);
         }
 
+        const loadRecentItems = async () => {
+            const response = await getRecentItemsFromSite();
+
+            // console.log(response);
+
+            const data = response.data["_embedded"].searchResult["_embedded"].objects;
+
+            setRecentItems(data);
+        }
+
         loadCommunities();
+        loadRecentItems();
     }, [])
 
 
@@ -142,111 +157,47 @@ const Dashboard = (props) => {
                             </div>
 
                             <div className="item">
-                                <div className="item-content">
-                                    <div className="thumb">
-                                        <img src= {thumb} alt="Thumbnail"/>
-                                    </div>
+                                {recentItems.map((item) => {
+                                    const data = item["_embedded"].indexableObject;
+                                    return <div className="item-content">
+                                                <div className="thumb">
+                                                    <img src= {thumb} alt="Thumbnail"/>
+                                                </div>
 
-                                    <div className="thumb-info">
-                                        <div className="tag">
-                                            <span className="tag1">datafile.listelement.badge</span>
-                                            <span className="tag2">Open Access</span>
-                                        </div>
+                                                <div className="thumb-info">
+                                                    <div className="tag">
+                                                        <span className="tag1">datafile.listelement.badge</span>
+                                                        <span className="tag2">Open Access</span>
+                                                    </div>
 
-                                        <div className="item-header">
-                                            <h3>TITLE TOP-LEVEL TEST SAMPLE</h3>
-                                        </div>
+                                                    <div className="item-header">
+                                                        <h3>{data.metadata["dc.title"][0].value}</h3>
+                                                    </div>
 
-                                        <div className="item-sub">
-                                            <h4>(VinSpace, 2022-11-15) Doe, John</h4>
-                                        </div>
+                                                    <div className="item-sub">
+                                                        <h4>
+                                                            (VinSpace, 2022-11-15) {data.metadata["dc.contributor.author"].map((author, idx) => {
+                                                                return <>{author.value}{idx === data.metadata["dc.contributor.author"].length - 1 ? " " : ", "}</>
+                                                            })}
+                                                        </h4>
+                                                    </div>
 
-                                        <div className="item-main">
-                                            <div className="content">
-                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
-                                                respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
-                                                En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
-                                            </div>
-                                        </div>
+                                                    <div className="item-main">
+                                                        <div className="content">
+                                                            {data.metadata["dc.description.abstract"][0].value}
+                                                        </div>
+                                                    </div>
 
-                                        <label for="text-button" className="show-button">
-                                            <img src={arrow}/>
-                                            <p>Show more</p>
-                                        </label>
-                                    </div>
-                                </div> 
+                                                    <label for="text-button" className="show-button">
+                                                        <img src={arrow}/>
+                                                        <p>Show more</p>
+                                                    </label>
+                                                </div>
+                                            </div> 
+                                })}
 
-                                <div className="item-content">
-                                    <div className="thumb">
-                                        <img src= {thumb} alt="Thumbnail"/>
-                                    </div>
+                                
 
-                                    <div className="thumb-info">
-                                        <div className="tag">
-                                            <span className="tag1">datafile.listelement.badge</span>
-                                            <span className="tag2">Open Access</span>
-                                        </div>
-
-                                        <div className="item-header">
-                                            <h3>TITLE TOP-LEVEL TEST SAMPLE</h3>
-                                        </div>
-
-                                        <div className="item-sub">
-                                            <h4>(VinSpace, 2022-11-15) Doe, John</h4>
-                                        </div>
-
-                                        <div className="item-main">
-                                            <div className="content">
-                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
-                                                respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
-                                                En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
-                                            </div>
-                                        </div>
-
-                                        <label for="text-button" className="show-button">
-                                            <img src={arrow}/>
-                                            <p>Show more</p>
-                                        </label>
-                                    </div>
-                                </div> 
-
-
-                                <div className="item-content">
-                                    <div className="thumb">
-                                        <img src= {thumb} alt="Thumbnail"/>
-                                    </div>
-
-                                    <div className="thumb-info">
-                                        <div className="tag">
-                                            <span className="tag1">datafile.listelement.badge</span>
-                                            <span className="tag2">Open Access</span>
-                                        </div>
-
-                                        <div className="item-header">
-                                            <h3>TITLE TOP-LEVEL TEST SAMPLE</h3>
-                                        </div>
-
-                                        <div className="item-sub">
-                                            <h4>(VinSpace, 2022-11-15) Doe, John</h4>
-                                        </div>
-
-                                        <div className="item-main">
-                                            <div className="content">
-                                                Este trabajo se propone elaborar un paradigma diferencial o auto-diferencial no-dualista, 
-                                                respecto del cual la identidad femenina funcione como arquetipo de la existencia. 
-                                                En efecto, si la identidad femenina expresa la diferencia absoluta, 
-                                                lo hace por su capacidad autodiferenciante, o bien, por su energía
-                                            </div>
-                                        </div>
-
-                                        <label for="text-button" className="show-button">
-                                            <img src={arrow}/>
-                                            <p>Show more</p>
-                                        </label>
-                                    </div>
-                                </div> 
 
                             </div>
 

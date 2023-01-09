@@ -13,22 +13,37 @@ import { moveTo } from "../../utils/helperFunctions";
 
 // import context
 import { CommunityContext } from "../../contexts/CommunityContext";
+import { ItemContext } from "../../contexts/ItemContext";
 
 const HomeV2 = (props) => {
     const { getCommunities } = useContext(CommunityContext);
-    const [communities, setCommunities] = useState([])
+    const { getRecentItemsFromSite } = useContext(ItemContext);
+    
+    const [communities, setCommunities] = useState([]);
+    const [recentItems, setRecentItems] = useState([]);
 
     useEffect(() => {
         const loadCommunities = async () => {
             const response = await getCommunities();
             const data = response.data["_embedded"].communities
 
-            console.log(data);
+            // console.log(data);
 
             setCommunities(data);
         }
 
+        const loadRecentItems = async () => {
+            const response = await getRecentItemsFromSite();
+
+            // console.log(response);
+
+            const data = response.data["_embedded"].searchResult["_embedded"].objects;
+
+            setRecentItems(data);
+        }
+
         loadCommunities();
+        loadRecentItems();
     }, [])
 
     return (
@@ -76,9 +91,10 @@ const HomeV2 = (props) => {
                             </div>
 
                             <div className="item-list">
-                                <Item></Item>
-
-                                <Item></Item>
+                                {recentItems.map((item) => {
+                                    return <Item data = {item["_embedded"].indexableObject}></Item>
+                                })}
+                                
                             </div>
                         </div>
                     </div>

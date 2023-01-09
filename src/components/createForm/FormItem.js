@@ -20,8 +20,26 @@ import Button from '../button/Button';
 import { ItemContext } from '../../contexts/ItemContext';
 
 const FormItem = (props) => {
-    const { startSubmission, uploadFiles } = useContext(ItemContext);
+    const { startSubmission, uploadFiles, saveWorkspace, submitWorkspace } = useContext(ItemContext);
     const [submissionId, setSubmissionId] = useState(0);
+
+    const [author, setAuthor] = useState("");
+    const [title, setTitle] = useState("");
+    const [alternativeTitle, setAlternativeTitle] = useState("");
+    const [doiYear, setDoiYear] = useState(-1);
+    const [doiMonth, setDoiMonth] = useState(-1);
+    const [doiDay, setDoiDay] = useState(-1);
+    const [publisher, setPublisher] = useState("");
+    const [citationStyle, setCitationStyle] = useState("");
+    const [series, setSeries] = useState("");
+    const [reportNo, setReportNo] = useState("");
+    const [type, setType] = useState("");
+    const [language, setLanguage] = useState("");
+    const [abstract, setAbstract] = useState("");
+    const [sponsorship, setSponsorship] = useState("");
+    const [description, setDescription] = useState("");
+    const [isBoxChecked, setIsBoxChecked] = useState(false);
+
 
     useEffect(() => {
         const init = async () => {
@@ -36,6 +54,11 @@ const FormItem = (props) => {
         init();
     }, [])
 
+    // functions
+    const setChecked = (newBoxState) => {
+        console.log("changing checking...");
+        setIsBoxChecked(newBoxState);
+    };
 
     const handleUploadFiles = async (files) => {
         console.log("Uploading file...");
@@ -48,16 +71,268 @@ const FormItem = (props) => {
 
         // call function with form data
         console.log(formData);
-        const owningCollection = "2eda7407-f83e-4459-a468-36c9bd726fc9";
+        // const owningCollection = "2eda7407-f83e-4459-a468-36c9bd726fc9";
 
-        const response = await uploadFiles(formData, owningCollection);
-
-        console.log(response);
+        // const response = await uploadFiles(formData, owningCollection);
+        const response = await uploadFiles(formData, submissionId);
     };
 
 
-    const handleSaveItem = () => {
+    const handleChange = (event, type) => {
+        // console.log(event.target.value);
+        if(type === "author"){
+            // console.log("debug 1");
+            setAuthor(event.target.value);
+        }
+        else if(type === "title"){
+            // console.log("debug 2");
+            setTitle(event.target.value);
+        }
+        else if(type === "alternativeTitle"){
+            // console.log("debug 2");
+            setAlternativeTitle(event.target.value);
+        }
+        else if(type === "doiYear"){
+            // console.log("debug 2");
+            setDoiYear(event.target.value);
+        }
+        else if(type === "doiMonth"){
+            // console.log("debug 2");
+            setDoiMonth(event.target.value);
+        }
+        else if(type === "doiDay"){
+            // console.log("debug 2");
+            setDoiDay(event.target.value);
+        }
+        else if(type === "publisher"){
+            // console.log("debug 2");
+            setPublisher(event.target.value);
+        }
+        else if(type === "citationStyle"){
+            // console.log("debug 2");
+            setCitationStyle(event.target.value);
+        }
+        else if(type === "series"){
+            // console.log("debug 2");
+            setSeries(event.target.value);
+        }
+        else if(type === "reportNo"){
+            // console.log("debug 2");
+            setReportNo(event.target.value);
+        }
+        else if(type === "type"){
+            // console.log("debug 2");
+            setType(event.target.value);
+        }
+        else if(type === "language"){
+            // console.log("debug 2");
+            setLanguage(event.target.value);
+        }
+        else if(type === "abstract"){
+            // console.log("debug 2");
+            setAbstract(event.target.value);
+        }
+        else if(type === "sponsorship"){
+            // console.log("debug 2");
+            setSponsorship(event.target.value);
+        }
+        else if(type === "description"){
+            // console.log("debug 2");
+            setDescription(event.target.value);
+        }
+    }
+
+
+
+    const handleSaveItem = async () => {
+        console.log("saving...");
+
+        const data = [
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.title",
+                "value": [
+                    {
+                        "value": title
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.title.alternative",
+                "value": [
+                    {
+                        "value": alternativeTitle
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.contributor.author",
+                "value": [
+                    {
+                        "value": author
+                    },
+                    {
+                        "value": author
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.date.issued",
+                "value": [
+                    {
+                        "value": doiYear
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.publisher",
+                "value": [
+                    {
+                        "value": publisher
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.citation",
+                "value": [
+                    {
+                        "value": citationStyle
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.relation.ispartofseries",
+                "value": [
+                    {
+                        "value": series + "; " + reportNo
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.issn",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.other",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.ismn",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.govdoc",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.uri",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.identifier.isbn",
+                "value": [
+                    {
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.type",
+                "value": [
+                    {
+                        "value": "Article"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpageone/dc.language.iso",
+                "value": [
+                    {
+                        "value": "en"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpagetwo/dc.subject",
+                "value": [
+                    {
+                        "value": "Interview, resource"
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpagetwo/dc.description.abstract",
+                "value": [
+                    {
+                        "value": abstract
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpagetwo/dc.description.sponsorship",
+                "value": [
+                    {
+                        "value": sponsorship
+                    }
+                ]
+            },
+            {
+                "op": "add",
+                "path": "/sections/traditionalpagetwo/dc.description",
+                "value": [
+                    {
+                        "value": description
+                    }
+                ]
+            },
         
+            {
+                "op": "add",
+                "path": "/sections/license/granted",
+                "value": true
+            }
+        ]
+
+        const response = await saveWorkspace(data, submissionId);
+
+        console.log(response);
     }
 
 
@@ -67,6 +342,18 @@ const FormItem = (props) => {
 
         // console.log(files);
         handleUploadFiles(files);
+    }
+
+
+    const hanldeSubmitItem = async () => {
+        await handleSaveItem();
+
+        const response = await submitWorkspace(submissionId);
+
+        // console.log(response);
+        if(response.data.success){
+            window.location.href = "/admin";
+        }
     }
 
 
@@ -134,7 +421,12 @@ const FormItem = (props) => {
 
                     <div className='form-input-remove'>
                         <div className='form-input'>
-                            <input type = "text" placeholder='Author'></input>
+                            <input 
+                                type = "text" 
+                                placeholder='Author'
+                                value={author}
+                                onChange = {(e) => handleChange(e, "author")}
+                            ></input>
                         </div>
 
                         <label for="text-button" className="remove-button">
@@ -158,7 +450,12 @@ const FormItem = (props) => {
                     </div>
 
                     <div className='form-input'>
-                        <input type = "text" placeholder='Title'></input>
+                        <input 
+                            type = "text" 
+                            placeholder='Title'
+                            value={title}
+                            onChange = {(e) => handleChange(e, "title")}
+                        ></input>
                     </div>
 
                     <div className='description'>
@@ -173,7 +470,12 @@ const FormItem = (props) => {
 
                     <div className='form-input-remove'>
                         <div className='form-input'>
-                            <input type = "text" placeholder='Other titles'></input>
+                            <input 
+                                type = "text" 
+                                placeholder='Other titles'
+                                value={alternativeTitle}
+                                onChange = {(e) => handleChange(e, "alternativeTitle")}
+                            ></input>
                         </div>
 
                         <label for="text-button" className="remove-button">
@@ -200,15 +502,30 @@ const FormItem = (props) => {
 
                         <div className='date-input'>
                             <div className='year'>
-                                <input type = "text" placeholder='Year'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Year'
+                                    value={doiYear}
+                                    onChange = {(e) => handleChange(e, "doiYear")}
+                                ></input>
                             </div>
 
                             <div className='month'>
-                                <input type = "text" placeholder='Month'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Month'
+                                    value={doiMonth}
+                                    onChange = {(e) => handleChange(e, "doiMonth")}
+                                ></input>
                             </div>
 
                             <div className='day'>
-                                <input type = "text" placeholder='Day'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Day'
+                                    value={doiDay}
+                                    onChange = {(e) => handleChange(e, "doiDay")}
+                                ></input>
                             </div>
                         </div>
                         
@@ -246,7 +563,11 @@ const FormItem = (props) => {
                         </div>
 
                         <div className='form-input'>
-                            <input type = "text"></input>
+                            <input 
+                                type = "text" 
+                                value={publisher}
+                                onChange = {(e) => handleChange(e, "publisher")}
+                            ></input>
                         </div>
 
                         <div className='description'>
@@ -262,7 +583,12 @@ const FormItem = (props) => {
                     </div>
 
                     <div className='form-input'>
-                        <input type = "text" placeholder='Citation'></input>
+                        <input 
+                            type = "text" 
+                            placeholder='Citation'
+                            value={citationStyle}
+                            onChange = {(e) => handleChange(e, "citationStyle")}
+                        ></input>
                     </div>
 
                     <div className='description'>
@@ -278,11 +604,21 @@ const FormItem = (props) => {
                     <div className='form-input-remove'>
                         <div className='form-input'>
                             <div className='series'>
-                                <input type = "text" placeholder='Series'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Series'
+                                    value={series}
+                                    onChange = {(e) => handleChange(e, "series")}
+                                ></input>
                             </div>
 
                             <div className='report'>
-                                <input type = "text" placeholder='Report No.'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Report No.'
+                                    value={reportNo}
+                                    onChange = {(e) => handleChange(e, "reportNo")}
+                                ></input>
                             </div>
                         </div>
 
@@ -372,9 +708,8 @@ const FormItem = (props) => {
                         <div className='form-input'>
                             <select className='type-select'>
                                 <option value="language">Language</option>
-                                <option value="language1">language1</option>
-                                <option value="language2">language2</option>
-                                <option value="language3">language3</option>
+                                <option value="en">English</option>
+                                <option value="vi">Vietnamese</option>
                             </select>
                         </div>
 
@@ -415,7 +750,11 @@ const FormItem = (props) => {
                     </div>
 
                     <div className='form-input'>
-                        <textarea placeholder='Abstract'></textarea>
+                        <textarea 
+                            placeholder='Abstract'
+                            value={abstract}
+                            onChange = {(e) => handleChange(e, "abstract")}
+                        ></textarea>
                     </div>
 
                     <div className='description'>
@@ -429,7 +768,12 @@ const FormItem = (props) => {
                     </div>
 
                     <div className='form-input'>
-                        <textarea placeholder='Sponsors'></textarea>
+                        <textarea 
+                            placeholder='Sponsors'
+                            value={sponsorship}
+                            onChange = {(e) => handleChange(e, "sponsorship")}
+                        ></textarea>
+                        
                     </div>
 
                     <div className='description'>
@@ -443,7 +787,11 @@ const FormItem = (props) => {
                     </div>
 
                     <div className='form-input'>
-                        <textarea placeholder='Description'></textarea>
+                        <textarea 
+                            placeholder='Description'
+                            value={description}
+                            onChange = {(e) => handleChange(e, "description")}
+                        ></textarea>
                     </div>
 
                     <div className='description'>
@@ -474,7 +822,10 @@ const FormItem = (props) => {
                 </div>
 
                 <div className='checkbox'>
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
+                    <input
+                        type="checkbox"
+                        onChange={() => setChecked(!isBoxChecked)}
+                    ></input>
                     <label for="vehicle1"> I confirm the license above</label><br></br>
                 </div>
             </div>
@@ -521,24 +872,46 @@ const FormItem = (props) => {
                     handleClick = {() => handleSaveItem()}
                 ></Button>
 
-            <Button 
-                    styles = {{
-                        "height": "2.6rem",
-                        "width": "7rem",
-                        "background": "#2E5288",
-                        "margin-right": "1rem",
-                        "margin-bottom": "0",
-                        "color": "#FFFFFF",
-                        "border": "1.5px solid #000000",
-                        "margin-left": "1.8rem",
-                    }}
 
-                    content = "Deposit"
-                    icon = {pluswhite}
-                    
+                {!isBoxChecked && (
+                    <Button 
+                        styles = {{
+                            "height": "2.6rem",
+                            "width": "7rem",
+                            "background": "#2E5288",
+                            "margin-right": "1rem",
+                            "margin-bottom": "0",
+                            "color": "#FFFFFF",
+                            "border": "1.5px solid #000000",
+                            "margin-left": "1.8rem",
+                        }}
 
-                    handleClick = {() => props.lastCreateState()}
-                ></Button>
+                        content = "Deposit"
+                        icon = {pluswhite}
+                        
+                        customedClass="unclickable"
+                    ></Button>
+                )}
+
+                {isBoxChecked && (
+                    <Button 
+                        styles = {{
+                            "height": "2.6rem",
+                            "width": "7rem",
+                            "background": "#2E5288",
+                            "margin-right": "1rem",
+                            "margin-bottom": "0",
+                            "color": "#FFFFFF",
+                            "border": "1.5px solid #000000",
+                            "margin-left": "1.8rem",
+                        }}
+
+                        content = "Deposit"
+                        icon = {pluswhite}
+
+                        handleClick = {() => hanldeSubmitItem()}
+                    ></Button>
+                )}
 
             </div>
             {/* Thao starts here */}
