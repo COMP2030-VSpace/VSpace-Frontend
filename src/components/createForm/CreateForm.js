@@ -22,17 +22,24 @@ import FormItem from './FormItem';
 
 //import context
 import { CommunityContext } from '../../contexts/CommunityContext';
-
+import { SearchContext } from '../../contexts/SearchContext';
+import { CollectionContext } from '../../contexts/CollectionContext';
 
 const CreateForm = (props)=>{
 
 
     const { createCommunity, getCommunities } = useContext(CommunityContext);
+    const { getAllCollections } = useContext(CollectionContext);
+    const { searchCommunity } = useContext(SearchContext);
 
-    const [createState, setCreateState] = useState(1);
+    const [createState, setCreateState] = useState("begin");
     const [topLevelTitle, setTopLevelTitle] = useState("");
     const [communities, setCommunities] = useState([]);
+    const [collections, setCollections] = useState([]);
+
     const [searchValue, setSearchValue] = useState('');
+
+    const [topCommunity, setTopCommunity] = useState("");
 
     const itemsPerPage = 25;
 
@@ -48,25 +55,51 @@ const CreateForm = (props)=>{
             
         }
 
+        const loadCollections = async () => {
+            const page = 0;
+            const response = await getAllCollections(page, itemsPerPage);
+
+            console.log(response);
+            const data = response.data["_embedded"].collections
+
+            // console.log(data);
+
+            setCollections(data);
+            
+        }
+
         loadCommunities();
+        loadCollections();
     }, [])
 
     useEffect(() => {
-        const delayDebounceFn = setTimeout(() => {
-            console.log(searchValue)
-            // Send Axios request here
-            }, 2000)
+        const delayDebounceFn = setTimeout(async () => {
+                console.log(searchValue)
+                // Send Axios request here
+                const response = await searchCommunity(searchValue);
+                if(response.data.success){
+                    // console.log(response.data)
+                    const data = response.data["_embedded"].communities;
+                    setCommunities(data);
+                }
+            }, 3000)
 
             return () => clearTimeout(delayDebounceFn)
     }, [searchValue])
 
-    const nextCreateState = () => {
-        setCreateState(createState + 1);
+    const nextCreateState = (state, topCommunity) => {
+        if(state === "sub-community"){
+            console.log(topCommunity);
+            setTopCommunity(topCommunity);
+        }
+
+
+        setCreateState(state);
         return;
     }
 
     const lastCreateState = () => {
-        setCreateState(createState - 1);
+        setCreateState("begin");
         return;
     }
 
@@ -83,7 +116,7 @@ const CreateForm = (props)=>{
 
     }
 
-    const submitForm = async () => {
+    const submitForm = async (communityType) => {
         // verify input
 
         // 
@@ -102,7 +135,15 @@ const CreateForm = (props)=>{
             }
         }
 
-        const response = await createCommunity(data);
+        let response;
+
+        if(communityType === "top-community"){
+            response = await createCommunity(data);
+        } 
+        else if(communityType === "sub-community"){
+
+        }
+
 
         console.log(response);
         
@@ -115,7 +156,7 @@ const CreateForm = (props)=>{
     }
 
 
-    if(createState === 1){
+    if(createState === "begin"){
         return(
             <div className = 'create-form'>
                 {props.createType === "community" &&
@@ -137,7 +178,7 @@ const CreateForm = (props)=>{
 
                                 content = "Create a new top-level community"
 
-                                handleClick = {() => nextCreateState()}
+                                handleClick = {() => nextCreateState("top-community")}
                             ></Button>
                         </div>
 
@@ -162,7 +203,10 @@ const CreateForm = (props)=>{
 
                         <div className='community-list'>
                             {communities.map((community) => {
-                                return <CommunityItem data = {community}></CommunityItem>
+                                return <CommunityItem 
+                                            data = {community}
+                                            handleClick = {() => nextCreateState("sub-community", community)}
+                                        ></CommunityItem>
                             })}
 
                         </div>
@@ -182,16 +226,22 @@ const CreateForm = (props)=>{
                             </div>
 
                             <div className='form-input'>
-                                <input type = "text" placeholder='Search for a community'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Search for a community'
+                                    value = {searchValue}
+                                    onChange = {(event) => {handleChange(event, "subCommunity-title")}}
+                                ></input>
                             </div>
                         </div>
 
                         <div className='community-list'>
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
-
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
-
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+                            {communities.map((community) => {
+                                return <CommunityItem 
+                                            data = {community}
+                                            handleClick = {() => nextCreateState("sub-community", community)}
+                                        ></CommunityItem>
+                            })}
                         </div>
                     </>
                 }
@@ -210,16 +260,17 @@ const CreateForm = (props)=>{
                             </div>
 
                             <div className='form-input'>
-                                <input type = "text" placeholder='Search for an item'></input>
+                                <input type = "text" placeholder='Search for a collection'></input>
                             </div>
                         </div>
 
                         <div className='community-list'>
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
-
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
-
-                            <CommunityItem handleClick = {() => nextCreateState()}></CommunityItem>
+                            {collections.map((collection) => {
+                                return <CommunityItem 
+                                            data = {collection}
+                                            handleClick = {() => nextCreateState("item", collection)}
+                                        ></CommunityItem>
+                            })}
                         </div>
                         {/* Thao ends here */}
                     </>
@@ -227,13 +278,19 @@ const CreateForm = (props)=>{
             </div>
         );
     }
-    else if(createState === 2){
+    else if(createState === "top-community" || createState === "sub-community" || createState === "item"){
         return(
             <div className = 'create-form-2'>
                 {props.createType === "community" &&
                     <>
                         <div className='header'>
-                            <div className='text'>Create a community</div>
+                            {createState === "top-community" &&
+                                <div className='text'>Create a community</div>
+                            }
+
+                            {createState === "sub-community" &&
+                                <div className='text'>Create a Sub-Community for Community {topCommunity.metadata["dc.title"][0].value}</div>
+                            }
                         </div>
 
 
@@ -328,21 +385,42 @@ const CreateForm = (props)=>{
                                 handleClick = {() => lastCreateState()}
                             ></Button>
 
-                            <Button 
-                                styles = {{
-                                    "height": "2.6rem",
-                                    "width": "7rem",
-                                    "background": "#2D5288",
-                                    "margin-right": "0",
-                                    "margin-bottom": "0",
-                                    "color": "#ffffff"
-                                }}
+                            {createState === "top-community" &&
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        "width": "7rem",
+                                        "background": "#2D5288",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff"
+                                    }}
 
-                                content = "Save"
-                                icon = {save_icon}
+                                    content = "Save"
+                                    icon = {save_icon}
 
-                                handleClick = {() => submitForm()}
-                            ></Button>
+                                    handleClick = {() => submitForm("top-community")}
+                                ></Button>
+                            } 
+
+                            {createState === "sub-community" &&
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        "width": "7rem",
+                                        "background": "#2D5288",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff"
+                                    }}
+
+                                    content = "Save"
+                                    icon = {save_icon}
+
+                                    handleClick = {() => submitForm("sub-community")}
+                                ></Button>
+                            }
+                            
                         </div>
 
                     </>

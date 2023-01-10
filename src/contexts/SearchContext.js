@@ -35,10 +35,22 @@ const SearchContextProvider = ({ children }) => {
         return response;
     }
 
+    const searchCommunity = async (keyword) => {
+        const url = "https://vinspace.online/server/api/core/communities/search/findAdminAuthorized"
+
+        const response = await instance.get(url, {
+            params: {
+                "query": `dc.title:${keyword}`
+            }
+        })
+        
+        return response;
+    }
+
 
  
 
-    const searchContextData = { searchTopAuthors, searchTopSubjects, searchTopDateIssued }
+    const searchContextData = { searchTopAuthors, searchTopSubjects, searchTopDateIssued, searchCommunity }
 
     return (<SearchContext.Provider value={searchContextData}>{children}</SearchContext.Provider>)
 

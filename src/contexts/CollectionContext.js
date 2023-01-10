@@ -35,9 +35,22 @@ const CollectionContextProvider = ({ children }) => {
         return response;
     }
 
+    const getAllCollections = async (page, size) => {
+        const url = "https://vinspace.online/server/api/core/collections";
+
+        const response = await instance.get(url, {
+            params:{
+                "page": page,
+                "size": size
+            }
+        });
+
+        return response;
+    }
+
  
 
-    const collectionContextData = { getCollections }
+    const collectionContextData = { getCollections, getAllCollections }
 
     return (<CollectionContext.Provider value={collectionContextData}>{children}</CollectionContext.Provider>)
 
