@@ -17,6 +17,7 @@ import { CommunityContext } from "../../contexts/CommunityContext";
 const HomeV2 = (props) => {
     const { getCommunities } = useContext(CommunityContext);
     const [communities, setCommunities] = useState([])
+    const [isDisplayItem, setIsDisplayItem] = useState(false);
 
     useEffect(() => {
         const loadCommunities = async () => {
@@ -31,6 +32,12 @@ const HomeV2 = (props) => {
         loadCommunities();
     }, [])
 
+
+    const handleShowItemDetail = () => {
+        // set isDisplayItem to true
+        setIsDisplayItem(true);
+    }
+
     return (
         <div className="home">
             <div className="pageContentWrapper">
@@ -38,50 +45,64 @@ const HomeV2 = (props) => {
                 <Banner></Banner>
 
                 <div className="main">
-                    <div className="left">
-                        <div className="about item">
-                            <div className="heading">
-                                <h2>VinSpace</h2>
-                            </div>
-
-                            <div className="info">
-                                VinSpace is VinUniversity's institutional repository (IR). It is a digital service that collects, preserves, and distributes digital material. The collections and content in AUSpace can be browsed and searched. If you have any questions, please email auspace@athabascau.ca.
-                            </div>
-                        </div>
-
-
-                        <div className="community-list item">
-                            <div className="heading">
-                                <h2>Communities in VinSpace</h2>
-                            </div>
-
-                            <div className="list">
-                                <div className="list-heading">
-                                    Select a community to browse its collections.
+                    {!isDisplayItem &&
+                        <div className="left">
+                            <div className="about item">
+                                <div className="heading">
+                                    <h2>VinSpace</h2>
                                 </div>
-                                <div className="list-main">
-                                    <ul>
-                                        {communities.map((community, key) => {
-                                            return <li onClick={() => moveTo("/community/" + community.uuid)}>{community.name}</li> 
-                                        })}
-                                    </ul>
+
+                                <div className="info">
+                                    VinSpace is VinUniversity's institutional repository (IR). It is a digital service that collects, preserves, and distributes digital material. The collections and content in AUSpace can be browsed and searched. If you have any questions, please email auspace@athabascau.ca.
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div className="recent-add item">
-                            <div className="heading">
-                                <h2>Recently Added</h2>
+                            <div className="community-list item">
+                                <div className="heading">
+                                    <h2>Communities in VinSpace</h2>
+                                </div>
+
+                                <div className="list">
+                                    <div className="list-heading">
+                                        Select a community to browse its collections.
+                                    </div>
+                                    <div className="list-main">
+                                        <ul>
+                                            {communities.map((community, key) => {
+                                                return <li onClick={() => moveTo("/community/" + community.uuid)}>{community.name}</li> 
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="item-list">
-                                <Item></Item>
 
-                                <Item></Item>
+                            <div className="recent-add item">
+                                <div className="heading">
+                                    <h2>Recently Added</h2>
+                                </div>
+
+                                <div className="item-list">
+                                    <Item handleOnClick = {() => handleShowItemDetail()}></Item>
+
+                                    <Item></Item>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    
+
+
+                    {isDisplayItem &&
+                        <div className="left">
+                            {/* Tung starts here */}
+
+                            {/* Tung ends here */}
+                        </div>
+                    }
+
+
 
                     <div className="right desktop">
                         <div className="item mb2">
