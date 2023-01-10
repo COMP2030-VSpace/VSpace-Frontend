@@ -13,10 +13,17 @@ import { moveTo } from "../../utils/helperFunctions";
 
 // import context
 import { CommunityContext } from "../../contexts/CommunityContext";
+import { SearchContext } from "../../contexts/SearchContext";
 
 const HomeV2 = (props) => {
     const { getCommunities } = useContext(CommunityContext);
-    const [communities, setCommunities] = useState([])
+    const { searchTopAuthors, searchTopSubjects, searchTopDateIssued } = useContext(SearchContext);
+
+    const [communities, setCommunities] = useState([]);
+    const [topAuthors, setTopAuthors] = useState([]);
+    const [topSubjects, setTopSubjects] = useState([]);
+    const [topDateIssue, setTopDateIssued] = useState([]);
+
 
     useEffect(() => {
         const loadCommunities = async () => {
@@ -28,7 +35,43 @@ const HomeV2 = (props) => {
             setCommunities(data);
         }
 
+        const loadTopAuthors = async () => {
+            const response = await searchTopAuthors();
+            // console.log(response);
+
+            const data = response.data["_embedded"].values.slice(0,5);
+
+            // console.log(data);
+
+            setTopAuthors(data);
+        }
+
+        const loadTopSubjects = async () => {
+            const response = await searchTopSubjects();
+            // console.log(response);
+
+            const data = response.data["_embedded"].values.slice(0,5);
+
+            // console.log(data);
+
+            setTopSubjects(data);
+        }
+
+        const loadTopDateIssued = async () => {
+            const response = await searchTopDateIssued();
+            // console.log(response);
+
+            const data = response.data["_embedded"].values.slice(0,5);
+
+            // console.log(data);
+
+            setTopDateIssued(data);
+        }
+
         loadCommunities();
+        loadTopAuthors();
+        loadTopSubjects();
+        loadTopDateIssued();
     }, [])
 
     return (
@@ -118,11 +161,9 @@ const HomeV2 = (props) => {
 
                                 <div className="browse-list">
                                     <ul>
-                                        <li>Anderson, Terry (121)</li>
-                                        <li>McGreal, Rory (95)</li>
-                                        <li>Gismondy, Mike (82)</li>
-                                        <li>Temple Norman, J (22)</li>
-                                        <li>Holmberg, Robert G (35)</li> 
+                                        {topAuthors.map((author) => {
+                                            return <li>{author.label} ({author.count})</li> 
+                                        })}
                                     </ul>
                                 </div>
                             </div>
@@ -134,11 +175,9 @@ const HomeV2 = (props) => {
 
                                 <div className="browse-list">
                                     <ul>
-                                        <li>Holmberg, Robert G (35)</li>
-                                        <li>Distance Education</li>
-                                        <li>Mobile Learning</li>
-                                        <li>Social Enterprise</li>
-                                        <li>Research</li> 
+                                        {topSubjects.map((subject) => {
+                                            return <li>{subject.label} ({subject.count})</li> 
+                                        })}
                                     </ul>
                                 </div>
                             </div>
@@ -150,11 +189,9 @@ const HomeV2 = (props) => {
 
                                 <div className="browse-list">
                                     <ul>
-                                        <li>2020 - 2022 (33)</li>
-                                        <li>2010 - 2019 (19)</li>
-                                        <li>2000 - 2009 (22)</li>
-                                        <li>1990 - 1999 (14)</li>
-                                        <li>1980 - 1989 (12)</li> 
+                                        {topDateIssue.map((date) => {
+                                            return <li>{date.label} ({date.count})</li> 
+                                        })}
                                     </ul>
                                 </div>
                             </div>

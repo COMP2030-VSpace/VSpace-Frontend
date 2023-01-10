@@ -21,51 +21,54 @@ import Search from './pages/search/Search';
 import AuthContextProvider from './contexts/AuthContext';
 import CommunityContextProvider from './contexts/CommunityContext';
 import CollectionContextProvider from './contexts/CollectionContext';
+import SearchContextProvider from './contexts/SearchContext';
 
 function App() {
     return (
         <AuthContextProvider>
-            <CommunityContextProvider>
-                <CollectionContextProvider>
-                    <Routes>
-                        <Route path='/' element={<HomeV2 />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/register/:id' element={<Setup />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/about' element={<About />} />
-                        <Route path='/search' element={<Search />} />
-                        <Route path='/admin' element={
-                            <Protected>
-                                <Dashboard />
-                            </Protected>
-                        } />
-                        <Route path='/admin/community/add' element={
-                            <Protected>
-                                <CreateCommunity />
-                            </Protected>
-                        } />
-                        <Route path='/admin/collection/add' element={
-                            <Protected>
-                                <CreateCollection />
-                            </Protected>
-                        } />
-                        
-                        <Route path='/admin/item/add' element={
-                            <Protected>
-                                <Item />
-                            </Protected>
-                        } />
-                        <Route path='/admin/community/:id' element={
-                            <Protected>
+            <SearchContextProvider>
+                <CommunityContextProvider>
+                    <CollectionContextProvider>
+                        <Routes>
+                            <Route path='/' element={<HomeV2 />} />
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/register/:id' element={<Setup />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/about' element={<About />} />
+                            <Route path='/search' element={<Search />} />
+                            <Route path='/admin' element={
+                                <Protected>
+                                    <Dashboard />
+                                </Protected>
+                            } />
+                            <Route path='/admin/community/add' element={
+                                <Protected>
+                                    <CreateCommunity />
+                                </Protected>
+                            } />
+                            <Route path='/admin/collection/add' element={
+                                <Protected>
+                                    <CreateCollection />
+                                </Protected>
+                            } />
+                            
+                            <Route path='/admin/item/add' element={
+                                <Protected>
+                                    <Item />
+                                </Protected>
+                            } />
+                            <Route path='/admin/community/:id' element={
+                                <Protected>
+                                    <Community />
+                                </Protected>
+                            } />
+                            <Route path='/community/:id' element={
                                 <Community />
-                            </Protected>
-                        } />
-                        <Route path='/community/:id' element={
-                            <Community />
-                        } />
-                    </Routes>
-                </CollectionContextProvider>
-            </CommunityContextProvider>
+                            } />
+                        </Routes>
+                    </CollectionContextProvider>
+                </CommunityContextProvider>
+            </SearchContextProvider>
         </AuthContextProvider>
     );
 }
