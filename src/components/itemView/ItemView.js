@@ -129,38 +129,39 @@ const ItemView = (props)=>{
                     {searchType === 1 &&
                         <>
                             <div className='form-item'>
-                                <div className='text'>
-                                    Filter results by year or month
-                                </div>
-
-                                <div className='select-group'>
-                                    <select className='dropdown'>
-                                        <option value="0">(Choose year)</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-
-                                    <select className='dropdown'>
-                                        <option value="0">(Choose month)</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-
-                                    <div className='filter-button'>
-                                        <div className='text-btn'>
-                                            <p>Filter results by date</p>
-                                        </div>
-
-                                        <div className='icon-btn'>
-                                            <img src = {book}/>
-                                            <p>Browse</p>
-                                        </div>
+                                <div className='title'>
+                                    <div className='text'>
+                                        Communities of this Community
                                     </div>
                                 </div>
-                
 
                                 <div className='show-text'>
                                     Now showing 1 - 1 of 1
+                                </div>
+
+                                <div className='show-item'>
+                                    <a href="Astrología">Astrología</a>
+                                </div>
+                                
+                                {/* 
+                                <div className='form-input'>
+                                    <input type = "text"></input>
+                                </div> */}
+                            </div>
+
+                            <div className='form-item'>
+                                <div className='title'>
+                                    <div className='text'>
+                                        Collections of this Community
+                                    </div>
+                                </div>
+
+                                <div className='show-text'>
+                                    Now showing 1 - 1 of 1
+                                </div>
+
+                                <div className='show-item'>
+                                    <a href="personas">personas</a>
                                 </div>
                                 
                                 {/* 

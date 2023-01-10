@@ -26,22 +26,29 @@ const Dashboard = (props) => {
     const { getCommunities } = useContext(CommunityContext);
     const [communities, setCommunities] = useState([])
     const [curPage, setCurPage] = useState(1);
+    const [totalElements, setTotalElements] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const itemsPerPage = 5;
 
     useEffect(() => {
         const loadCommunities = async () => {
-            const response = await getCommunities();
+            const page = curPage - 1;
+            const response = await getCommunities(page, itemsPerPage);
+            // console.log(response);
+            const pageInfo = response.data.page
+            setTotalPage(pageInfo.totalPages)
+            setTotalElements(pageInfo.totalElements);
+
             const data = response.data["_embedded"].communities
 
-            console.log(data);
+            // console.log(data);
 
             setCommunities(data);
-            setTotalPage( Math.floor((data.length-1) / itemsPerPage) + 1);
+            
         }
 
         loadCommunities();
-    }, [])
+    }, [curPage])
 
 
 
@@ -83,9 +90,9 @@ const Dashboard = (props) => {
                         <div className="text">
                             <h2 className="text__header">Community in DSpace</h2>
                             <h3 className="text__secondheader">Select a community to browse its collections.</h3>
-                            <p className="header__ul">Now showing {itemsPerPage * (curPage-1) + 1} - {itemsPerPage * curPage} of {communities.length}</p>
+                            <p className="header__ul">Now showing {itemsPerPage * (curPage-1) + 1} - {itemsPerPage * curPage < totalElements ? itemsPerPage * curPage : totalElements} of {totalElements}</p>
                             <ul>
-                                {communities.slice(itemsPerPage * (curPage-1), itemsPerPage * curPage).map((community, key) => {
+                                {communities.map((community, key) => {
                                     return <li onClick={() => moveTo("/admin/community/" + community.uuid)}>{community.name}</li> 
                                 })}
                                 
