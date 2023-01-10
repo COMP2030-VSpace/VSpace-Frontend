@@ -13,6 +13,7 @@ import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
 import Protected from './pages/protected/Protected';
+import Search from './pages/search/Search';
 
 
 
@@ -32,6 +33,7 @@ function App() {
                         <Route path='/register/:id' element={<Setup />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/about' element={<About />} />
+                        <Route path='/search' element={<Search />} />
                         <Route path='/admin' element={
                             <Protected>
                                 <Dashboard />
