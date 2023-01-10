@@ -31,6 +31,16 @@ const CreateForm = (props)=>{
 
     const [createState, setCreateState] = useState(1);
     const [topLevelTitle, setTopLevelTitle] = useState("");
+    const [searchValue, setSearchValue] = useState('');
+
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+            console.log(searchValue)
+            // Send Axios request here
+            }, 2000)
+
+            return () => clearTimeout(delayDebounceFn)
+    }, [searchValue])
 
     const nextCreateState = () => {
         setCreateState(createState + 1);
@@ -48,10 +58,10 @@ const CreateForm = (props)=>{
             // console.log("debug 1");
             setTopLevelTitle(event.target.value);
         }
-        // else if(type === "lastname"){
-        //     // console.log("debug 2");
-        //     setLastname(event.target.value);
-        // }
+        else if(type === "subCommunity-title"){
+            // console.log("debug 2");
+            setSearchValue(event.target.value);
+        }
 
     }
 
@@ -123,7 +133,12 @@ const CreateForm = (props)=>{
                             </div>
 
                             <div className='form-input'>
-                                <input type = "text" placeholder='Search for a community'></input>
+                                <input 
+                                    type = "text" 
+                                    placeholder='Search for a community'
+                                    value = {searchValue}
+                                    onChange = {(event) => {handleChange(event, "subCommunity-title")}}
+                                ></input>
                             </div>
                         </div>
 
