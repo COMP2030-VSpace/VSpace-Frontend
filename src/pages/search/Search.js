@@ -11,6 +11,10 @@ import Item from "../../components/item/Item";
 
 import { moveTo } from "../../utils/helperFunctions";
 
+// import assets
+
+import arrow from '../../assets/search/arrow.png';
+
 // import context
 import { CommunityContext } from "../../contexts/CommunityContext";
 
@@ -25,7 +29,32 @@ const Search = (props) => {
 
                 <div className="main">
                     <div className="left">
-                  
+                        <div className="header">
+                            <h2>Search</h2>
+                        </div>
+
+                        <div className="search-bar">
+                            <div className="selection-bar">
+                                All of VinSpace
+                                <img src = {arrow} alt = "arrow"/>
+                            </div>
+
+                            <div className='search-input'>
+                                <input className="search" autocomplete="off" type="search" placeholder="Search..."/>
+
+                                <div class="tmp-button">
+                                    Go
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="show-more-txt">
+                                Show advanced filters
+                        </div>
+
+                        <div className="result-txt">
+                            Search produced no results.
+                        </div>
                     </div>
 
                     <div className="right desktop">
