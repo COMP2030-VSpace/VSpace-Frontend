@@ -60,9 +60,9 @@ function App() {
                                 <Community />
                             </Protected>
                         } />
-                        <Route path='/community/:id' element={
+                        {/* <Route path='/community/:id' element={
                             <Community />
-                        } />
+                        } /> */}
                     </Routes>
                 </CollectionContextProvider>
             </CommunityContextProvider>
