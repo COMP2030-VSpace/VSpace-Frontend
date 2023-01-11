@@ -1,0 +1,133 @@
+.user-community {
+    position: relative;
+
+    .heading {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #cdd4de;
+
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 44px;
+    }
+
+    .browse {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 24px;
+        color: #757575;
+        padding-bottom: 2rem;
+    }
+
+    .boxes {
+        position: absolute;
+        margin-left: 3.8rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // gap: 2.5rem;
+
+        // padding: 0 1rem;
+
+        width: 55%;
+        height: 3rem;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+
+        .boxes-middle {
+            // border-right: 1px solid rgba(49, 49, 49, 0.4);
+            border: 1px solid rgba(49, 49, 49, 0.4);
+            padding: 1rem 2.2rem;
+        }
+
+        .boxes-first {
+            border: 1px solid rgba(49, 49, 49, 0.4);
+            padding: 1rem 2.2rem;
+            white-space: nowrap;
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+        .boxes-last {
+            border: 1px solid rgba(49, 49, 49, 0.4);
+            padding: 1rem 2.2rem;
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+    }
+
+    .search-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        padding-top: 5rem;
+        padding-bottom: 1rem;
+    }
+
+    .search {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 0.5rem;
+
+        display: flex;
+
+        width: 75%;
+        height: 3rem;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin-bottom: 4rem;
+        .search-bar {
+            // border-width: 0px;
+            border: none;
+            // outline: none;
+            width: 80%;
+        }
+
+        .go-button {
+            width: 15%;
+            border-left: 1px solid rgba(0, 0, 0, 0.3);
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: 400;
+            font-size: 18px;
+        }
+    }
+
+    .collection-text {
+        font-weight: 600;
+        font-size: 36px;
+
+        padding-top: 2rem;
+    }
+
+    .arbri-text {
+        font-weight: 700;
+        font-size: 25px;
+
+        color: #2e5288;
+        text-decoration: underline;
+
+        padding-top: 1rem;
+    }
+
+    .name {
+        font-weight: 500;
+        font-size: 20px;
+
+        color: #757575;
+
+        padding-top: 1.5rem;
+    }
+
+    .last-text {
+        font-weight: 400;
+        font-size: 16px;
+    }
+}

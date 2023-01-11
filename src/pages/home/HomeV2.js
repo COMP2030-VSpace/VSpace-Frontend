@@ -8,10 +8,10 @@ import Banner from "../../components/banner/Banner";
 import HomeSearch from "../../components/search/homeSearch/HomeSearchV2";
 import Footer from "../../components/footer/Footer";
 import Item from "../../components/item/Item";
+import UserDetailItem from "../../components/userDetailItem/UserDetailItem";
+import UserCommunity from "../../components/userCommunity/UserCommunity";
 
 // import assets
-import thumb from "../../assets/admin/thumbnail.png";
-import info from "../../assets/admin/info.png";
 
 import { moveTo } from "../../utils/helperFunctions";
 
@@ -40,6 +40,10 @@ const HomeV2 = (props) => {
     const handleShowItemDetail = () => {
         // set isDisplayItem to true
         setIsDisplayItem(true);
+    };
+    const handleShowCommunity = () => {
+        // set isDisplayItem to true
+        setIsDisplayCommunity(true);
     };
 
     // Tung creates a similar function here
@@ -86,10 +90,7 @@ const HomeV2 = (props) => {
                                                     return (
                                                         <li
                                                             onClick={() =>
-                                                                moveTo(
-                                                                    "/community/" +
-                                                                        community.uuid
-                                                                )
+                                                                handleShowCommunity()
                                                             }
                                                         >
                                                             {community.name}
@@ -108,7 +109,7 @@ const HomeV2 = (props) => {
                                 </div>
 
                                 <div className="item-list">
-                                    <Item
+                                    <Item   
                                         handleOnClick={() =>
                                             handleShowItemDetail()
                                         }
@@ -123,72 +124,7 @@ const HomeV2 = (props) => {
                     {isDisplayItem && (
                         <div className="left">
                             {/* Tung starts here: Create a seperated component */}
-                            <div className="user-detail-item">
-                                <h2 className="heading">
-                                    Mystical experience and global revolution
-                                </h2>
-
-                                <div className="wrapper">
-                                    <div className="left-left">
-                                        <img src={thumb} alt="Thumbnail" />
-                                        <div className="small-header">Files</div>
-                                        <div className="links">
-                                            ample-social-white-01.jpeg (59.61 KB)
-                                        </div>
-                                        <div className="small-header">Date</div>
-                                        <div className="small-header-content">
-                                            2020 - 10 - 17
-                                        </div>
-                                        <div className="small-header">Authors</div>
-                                        <div className="small-header-content">
-                                            Tuan
-                                        </div>
-                                        <div className="small-header">
-                                            Publisher
-                                        </div>
-                                        <div className="small-header-content">
-                                            Test Publisher
-                                        </div>
-                                    </div>
-                                    <div className="left-right">
-                                        <div className="small-header">Abstract</div>
-
-                                        <div className="small-header-content">
-                                            Test abstract
-                                        </div>
-
-                                        <div className="small-header">
-                                            Description
-                                        </div>
-
-                                        <div className="small-header-content">
-                                            Test description
-                                        </div>
-
-                                        <div className="small-header">Citation</div>
-
-                                        <div className="small-header-content">
-                                            APA
-                                        </div>
-
-                                        <div className="small-header">URI</div>
-                                        <div className="links">
-                                            https://vinspace.online/handle/1224534543/7
-                                        </div>
-
-                                        <div className="small-header">
-                                            Collections
-                                        </div>
-
-                                        <div className="links">lmao</div>
-
-                                        <div className="last-item">
-                                            <img src={info} alt="" />
-                                            <p>Full item page</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <UserDetailItem></UserDetailItem>
                             
                             {/* Tung ends here */}
                         </div>
@@ -196,7 +132,7 @@ const HomeV2 = (props) => {
 
                     {isDisplayCommunity && (
                         <div className="left">
-                            <div className="user-community"></div>
+                            <UserCommunity></UserCommunity>
                         </div>
                     )}
 
