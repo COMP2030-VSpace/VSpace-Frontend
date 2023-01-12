@@ -12,8 +12,11 @@ import CreateCollection from './pages/admin/collection/CreateCollection';
 import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
-import Protected from './pages/protected/Protected';
 import Search from './pages/search/Search';
+
+// modifier
+import Protected from './pages/protected/Protected';
+import BeforeLogin from './pages/protected/BeforeLogin';
 
 
 
@@ -33,9 +36,23 @@ function App() {
                         <ItemContextProvider>
                             <Routes>
                                 <Route path='/' element={<HomeV2 />} />
-                                <Route path='/register' element={<Register />} />
-                                <Route path='/register/:id' element={<Setup />} />
-                                <Route path='/login' element={<Login />} />
+
+                                <Route path='/register' element={
+                                    <BeforeLogin>
+                                        <Register />
+                                    </BeforeLogin> 
+                                } />
+                                <Route path='/register/:id' element={
+                                    <BeforeLogin>
+                                        <Setup />
+                                    </BeforeLogin> 
+                                } />
+                                <Route path='/login' element={
+                                    <BeforeLogin>
+                                        <Login />
+                                    </BeforeLogin> 
+                                } />
+
                                 <Route path='/about' element={<About />} />
                                 <Route path='/search' element={<Search />} />
                                 <Route path='/admin' element={
