@@ -26,7 +26,8 @@ const UserCommunity = (props) => {
 
 
     useEffect(() => {
-        const id = props.communityId;
+        const id = props.community.uuid;
+        // console.log("debug id", id);
         setItemId(id);
 
         console.log(id);
@@ -35,14 +36,16 @@ const UserCommunity = (props) => {
             // get sub communities
             const response1 = await getSubCommunities(id);
             console.log(response1);
+            setCommunities(response1.data["_embedded"].subcommunities);
 
             // get collections
             const response2 = await getCollections(id);
-            console.log(response2);
+            // console.log(response2);
+            setCollections(response2.data["_embedded"].collections);
         }
 
         loadData(id);
-    }, []);
+    }, [props.community]);
 
 
     return (
@@ -66,7 +69,7 @@ const UserCommunity = (props) => {
                 ></Button>
 
                 <h2>
-                    Athabasca River Basin Research Institute
+                    {props.community.metadata["dc.title"][0].value}
                 </h2>
             </div>
 
@@ -165,8 +168,11 @@ const UserCommunity = (props) => {
 
                             {communities.map((community) => {
                                 return(
-                                    <div className='show-item'>
-                                        <a href="personas">personas</a>
+                                    <div 
+                                        className='show-item'
+                                        onClick={() => {props.handleShowCommunity(community)}}
+                                    >
+                                        {community.metadata["dc.title"][0].value}
                                     </div>
                                 )
                             })}
@@ -185,8 +191,11 @@ const UserCommunity = (props) => {
 
                             {collections.map((collection) => {
                                 return(
-                                    <div className='show-item'>
-                                        <a href="personas">personas</a>
+                                    <div 
+                                        className='show-item'
+                                        // onClick={() => {props.handleShowCollection(collection)}}
+                                    >
+                                        {collection.metadata["dc.title"][0].value}
                                     </div>
                                 )
                             })}
