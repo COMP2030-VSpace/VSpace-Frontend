@@ -28,12 +28,17 @@ import { CollectionContext } from '../../contexts/CollectionContext';
 const CreateForm = (props)=>{
 
 
-    const { createCommunity, getCommunities } = useContext(CommunityContext);
+    const { createCommunity, getCommunities, createSubCommunity } = useContext(CommunityContext);
     const { getAllCollections } = useContext(CollectionContext);
     const { searchCommunity } = useContext(SearchContext);
 
     const [createState, setCreateState] = useState("begin");
     const [topLevelTitle, setTopLevelTitle] = useState("");
+    const [intro, setIntro] = useState("");
+    const [description, setDescription] = useState("");
+    const [right, setRight] = useState("");
+    const [news,setNews] = useState("");
+
     const [communities, setCommunities] = useState([]);
     const [collections, setCollections] = useState([]);
 
@@ -113,6 +118,22 @@ const CreateForm = (props)=>{
             // console.log("debug 2");
             setSearchValue(event.target.value);
         }
+        else if(type === "introduction"){
+            // console.log("debug 2");
+            setIntro(event.target.value);
+        }
+        else if(type === "description"){
+            // console.log("debug 2");
+            setDescription(event.target.value);
+        }
+        else if(type === "right"){
+            // console.log("debug 2");
+            setRight(event.target.value);
+        }
+        else if(type === "news"){
+            // console.log("debug 2");
+            setNews(event.target.value);
+        }
 
     }
 
@@ -124,14 +145,46 @@ const CreateForm = (props)=>{
         const data = {
             "name": topLevelTitle,
             "metadata": {
-              "dc.title": [
-                {
-                  "value": topLevelTitle,
-                  "language": null,
-                  "authority": null,
-                  "confidence": -1
-                }
-              ]
+                "dc.description": [
+                    {
+                        "value": description,
+                        "language": null,
+                        "authority": null,
+                        "confidence": -1
+                    }
+                ],
+                "dc.description.abstract": [
+                    {
+                        "value": intro,
+                        "language": null,
+                        "authority": null,
+                        "confidence": -1
+                    }
+                ],
+                "dc.description.tableofcontents": [
+                    {
+                        "value": news,
+                        "language": null,
+                        "authority": null,
+                        "confidence": -1
+                    }
+                ],
+                "dc.rights": [
+                    {
+                        "value": right,
+                        "language": null,
+                        "authority": null,
+                        "confidence": -1
+                    }
+                ],
+                "dc.title": [
+                    {
+                        "value": topLevelTitle,
+                        "language": null,
+                        "authority": null,
+                        "confidence": -1
+                    }
+                ]
             }
         }
 
@@ -141,7 +194,7 @@ const CreateForm = (props)=>{
             response = await createCommunity(data);
         } 
         else if(communityType === "sub-community"){
-
+            response = await createSubCommunity(data, topCommunity.uuid);
         }
 
 
@@ -331,7 +384,10 @@ const CreateForm = (props)=>{
                                 </div>
 
                                 <div className='form-input'>
-                                    <textarea></textarea>
+                                    <textarea
+                                        value={intro}
+                                        onChange = {(e) => handleChange(e, "introduction")}
+                                    ></textarea>
                                 </div>
                             </div>
 
@@ -341,7 +397,10 @@ const CreateForm = (props)=>{
                                 </div>
 
                                 <div className='form-input'>
-                                    <textarea></textarea>
+                                    <textarea
+                                        value={description}
+                                        onChange = {(e) => handleChange(e, "description")}
+                                    ></textarea>
                                 </div>
                             </div>
 
@@ -351,7 +410,10 @@ const CreateForm = (props)=>{
                                 </div>
 
                                 <div className='form-input'>
-                                    <textarea></textarea>
+                                    <textarea
+                                        value={right}
+                                        onChange = {(e) => handleChange(e, "right")}
+                                    ></textarea>
                                 </div>
                             </div>
 
@@ -361,7 +423,10 @@ const CreateForm = (props)=>{
                                 </div>
 
                                 <div className='form-input'>
-                                    <textarea></textarea>
+                                    <textarea
+                                        value={news}
+                                        onChange = {(e) => handleChange(e, "news")}
+                                    ></textarea>
                                 </div>
                             </div>
                         </div>

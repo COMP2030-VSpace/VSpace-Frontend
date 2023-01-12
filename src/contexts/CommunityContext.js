@@ -24,6 +24,18 @@ const CommunityContextProvider = ({ children }) => {
         return response
     }
 
+    const createSubCommunity = async (data, parent) => {
+        const url = "https://vinspace.online/server/api/core/communities";
+
+        const response = await instance.post(url, data, {
+            params: {
+                "parent": parent
+            }
+        });
+
+        return response
+    }
+
     const getCommunities = async (page, size) => {
         const url = "https://vinspace.online/server/api/core/communities";
         
@@ -47,7 +59,7 @@ const CommunityContextProvider = ({ children }) => {
 
  
 
-    const communityContextData = { createCommunity, getCommunities, getSubCommunities }
+    const communityContextData = { createCommunity, getCommunities, getSubCommunities, createSubCommunity }
 
     return (<CommunityContext.Provider value={communityContextData}>{children}</CommunityContext.Provider>)
 

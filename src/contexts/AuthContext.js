@@ -41,10 +41,18 @@ const AuthContextProvider = ({ children }) => {
 
             // if role change => logout
 
-            if(prevRole !== "" && role !== prevRole){
+            if(prevRole !== "" && prevRole !== userRole.USER && role !== prevRole){
                 // logout
                 logout();
                 return;
+            }
+
+
+            // if not, refresh token
+            if(role !== userRole.USER){
+                const refreshLoginResponse = await refreshLogin();
+
+                // console.log(refreshLoginResponse);
             }
 
 
@@ -66,6 +74,16 @@ const AuthContextProvider = ({ children }) => {
 
         return;
     }, []);
+
+
+    // refresh login
+    const refreshLogin = async () => {
+        const url = "https://vinspace.online/server/api/authn/login";
+
+        const response = await instance.post(url);
+
+        return response;
+    }
 
 
     // get csrf token
