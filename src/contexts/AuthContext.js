@@ -34,8 +34,19 @@ const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         const getRole = async () => {
             const response = await authUser();
-            console.log(response);
+            // console.log(response);
+
             const role = response.role;
+            const prevRole = response.prevRole;
+
+            // if role change => logout
+
+            if(prevRole !== "" && role !== prevRole){
+                // logout
+                logout();
+                return;
+            }
+
 
             if(role === userRole.SITE_ADMIN){
                 // check if path contains admin
@@ -99,6 +110,7 @@ const AuthContextProvider = ({ children }) => {
             // console.log(numberOfElements);
 
             const userToken = Cookies.get('user-token');
+            const prevRole = Cookies.get('role');
 
             if(userToken){
                 if(numberOfElements === 1){
@@ -108,7 +120,8 @@ const AuthContextProvider = ({ children }) => {
 
                     return {
                         success: true,
-                        role: userRole.SITE_ADMIN
+                        role: userRole.SITE_ADMIN,
+                        prevRole: prevRole
                     };
                 }
                 else{
@@ -121,7 +134,8 @@ const AuthContextProvider = ({ children }) => {
 
                     return {
                         success: true,
-                        role: userRole.LOGIN_USER
+                        role: userRole.LOGIN_USER,
+                        prevRole: prevRole
                     };
                 }
             }
@@ -130,7 +144,8 @@ const AuthContextProvider = ({ children }) => {
             Cookies.set("role", userRole.USER, {path: "/"});
             return {
                 success: false,
-                role: userRole.USER
+                role: userRole.USER,
+                prevRole: prevRole
             };
 
         } catch (error) {
