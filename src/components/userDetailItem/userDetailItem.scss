@@ -1,0 +1,65 @@
+.user-detail-item{
+    .heading {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #cdd4de;
+    
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 44px;
+    }
+    
+    .wrapper-2 {
+        display: flex;
+        gap: 13rem;
+    
+        img {
+            padding-bottom: 0.3rem;
+        }
+        .small-header {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+    
+            padding-bottom: 0.8rem;
+            padding-top: 1rem;
+        }
+    
+        .small-header-content {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    
+        .links {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+    
+            color: #159dff;
+        }
+    
+        .last-item {
+            border: 1px solid black;
+            border-radius: 0.8rem;
+    
+            width: 11rem;
+            height: 3rem;
+    
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+    
+            padding: 0 1rem;
+            margin-top: 1.5rem;
+    
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+    
+            img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}

@@ -8,6 +8,10 @@ import Banner from "../../components/banner/Banner";
 import HomeSearch from "../../components/search/homeSearch/HomeSearchV2";
 import Footer from "../../components/footer/Footer";
 import Item from "../../components/item/Item";
+import UserDetailItem from "../../components/userDetailItem/UserDetailItem";
+import UserCommunity from "../../components/userCommunity/UserCommunity";
+
+// import assets
 
 import { moveTo } from "../../utils/helperFunctions";
 
@@ -26,17 +30,20 @@ const HomeV2 = (props) => {
     const [topAuthors, setTopAuthors] = useState([]);
     const [topSubjects, setTopSubjects] = useState([]);
     const [topDateIssue, setTopDateIssued] = useState([]);
-
+    
+    const [isDisplayItem, setIsDisplayItem] = useState(false);
+    const [isDisplayCommunity, setIsDisplayCommunity] = useState(false);
+    const [communityId, setCommunityId] = useState("");
 
     useEffect(() => {
         const loadCommunities = async () => {
             const response = await getCommunities();
-            const data = response.data["_embedded"].communities
+            const data = response.data["_embedded"].communities;
 
             // console.log(data);
 
             setCommunities(data);
-        }
+        };
 
         const loadTopAuthors = async () => {
             const response = await searchTopAuthors();
@@ -88,6 +95,30 @@ const HomeV2 = (props) => {
         loadRecentItems();
     }, [])
 
+    const handleShowItemDetail = () => {
+        // set isDisplayItem to true
+        setIsDisplayItem(true);
+    };
+    
+    const handleShowCommunity = (id) => {
+        // set isDisplayItem to true
+        setCommunityId(id);
+        setIsDisplayCommunity(true);
+    };
+
+
+    const backHome = (type) => {
+        if(type === "item"){
+            setIsDisplayItem(false);
+        }
+        
+        if(type === "community"){
+            setIsDisplayCommunity(false)
+        }
+    }
+
+    // Tung creates a similar function here
+
     return (
         <div className="home">
             <div className="pageContentWrapper">
@@ -95,51 +126,92 @@ const HomeV2 = (props) => {
                 <Banner></Banner>
 
                 <div className="main">
-                    <div className="left">
-                        <div className="about item">
-                            <div className="heading">
-                                <h2>VinSpace</h2>
-                            </div>
-
-                            <div className="info">
-                                VinSpace is VinUniversity's institutional repository (IR). It is a digital service that collects, preserves, and distributes digital material. The collections and content in AUSpace can be browsed and searched. If you have any questions, please email auspace@athabascau.ca.
-                            </div>
-                        </div>
-
-
-                        <div className="community-list item">
-                            <div className="heading">
-                                <h2>Communities in VinSpace</h2>
-                            </div>
-
-                            <div className="list">
-                                <div className="list-heading">
-                                    Select a community to browse its collections.
+                    {!isDisplayItem && !isDisplayCommunity && (
+                        <div className="left">
+                            <div className="about item">
+                                <div className="heading">
+                                    <h2>VinSpace</h2>
                                 </div>
-                                <div className="list-main">
-                                    <ul>
-                                        {communities.map((community, key) => {
-                                            return <li onClick={() => moveTo("/community/" + community.uuid)}>{community.name}</li> 
-                                        })}
-                                    </ul>
+
+                                <div className="info">
+                                    VinSpace is VinUniversity's institutional
+                                    repository (IR). It is a digital service
+                                    that collects, preserves, and distributes
+                                    digital material. The collections and
+                                    content in AUSpace can be browsed and
+                                    searched. If you have any questions, please
+                                    email auspace@athabascau.ca.
                                 </div>
                             </div>
-                        </div>
 
+                            <div className="community-list item">
+                                <div className="heading">
+                                    <h2>Communities in VinSpace</h2>
+                                </div>
 
-                        <div className="recent-add item">
-                            <div className="heading">
-                                <h2>Recently Added</h2>
+                                <div className="list">
+                                    <div className="list-heading">
+                                        Select a community to browse its
+                                        collections.
+                                    </div>
+                                    <div className="list-main">
+                                        <ul>
+                                            {communities.map(
+                                                (community, key) => {
+                                                    return (
+                                                        <li
+                                                            onClick={() =>
+                                                                handleShowCommunity(community.uuid)
+                                                            }
+                                                        >
+                                                            {community.name}
+                                                        </li>
+                                                    );
+                                                }
+                                            )}
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="item-list">
-                                {recentItems.map((item) => {
-                                    return <Item data = {item["_embedded"].indexableObject}></Item>
-                                })}
-                                
+                            <div className="recent-add item">
+                                <div className="heading">
+                                    <h2>Recently Added</h2>
+                                </div>
+
+                                <div className="item-list">
+                                    {recentItems.map((item) => {
+                                        return <Item 
+                                                    data = {item["_embedded"].indexableObject}>
+                                                    handleOnClick={() =>
+                                                        handleShowItemDetail()
+                                                    }
+                                                </Item>
+                                    })}
+                                    
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    )}
+
+                    {isDisplayItem && (
+                        <div className="left">
+                            {/* Tung starts here: Create a seperated component */}
+                            <UserDetailItem></UserDetailItem>
+                            
+                            {/* Tung ends here */}
+                        </div>
+                    )}
+
+                    {isDisplayCommunity && (
+                        <div className="left">
+                            <UserCommunity
+                                backHome = {backHome}
+                                communityId = {communityId}
+                            ></UserCommunity>
+                        </div>
+                    )}
 
                     <div className="right desktop">
                         <div className="item mb2">
@@ -147,12 +219,10 @@ const HomeV2 = (props) => {
                         </div>
 
                         <div className="browse item mb2">
-                            <div className="text mb1">BROWSE</div> 
+                            <div className="text mb1">BROWSE</div>
 
                             <div className="vinspace-list">
-                                <div className="heading">
-                                    ALL OF VinSpace
-                                </div>
+                                <div className="heading">ALL OF VinSpace</div>
 
                                 <div className="browse-list">
                                     <ul>
@@ -160,19 +230,17 @@ const HomeV2 = (props) => {
                                         <li>By Issue Date</li>
                                         <li>Authors</li>
                                         <li>Titles</li>
-                                        <li>Subjects</li> 
+                                        <li>Subjects</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <div className="browse item">
-                            <div className="text mb1">DISCOVER</div> 
+                            <div className="text mb1">DISCOVER</div>
 
                             <div className="vinspace-list mb1">
-                                <div className="heading">
-                                    Author
-                                </div>
+                                <div className="heading">Author</div>
 
                                 <div className="browse-list">
                                     <ul>
@@ -184,9 +252,7 @@ const HomeV2 = (props) => {
                             </div>
 
                             <div className="vinspace-list mb1">
-                                <div className="heading">
-                                    Subject
-                                </div>
+                                <div className="heading">Subject</div>
 
                                 <div className="browse-list">
                                     <ul>
@@ -198,9 +264,7 @@ const HomeV2 = (props) => {
                             </div>
 
                             <div className="vinspace-list">
-                                <div className="heading">
-                                    Date Issued
-                                </div>
+                                <div className="heading">Date Issued</div>
 
                                 <div className="browse-list">
                                     <ul>
@@ -213,14 +277,9 @@ const HomeV2 = (props) => {
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
 
             <Footer></Footer>
-
-
         </div>
     );
 };
