@@ -23,6 +23,7 @@ const HomeV2 = (props) => {
     const [communities, setCommunities] = useState([]);
     const [isDisplayItem, setIsDisplayItem] = useState(false);
     const [isDisplayCommunity, setIsDisplayCommunity] = useState(false);
+    const [communityId, setCommunityId] = useState("");
 
     useEffect(() => {
         const loadCommunities = async () => {
@@ -41,10 +42,22 @@ const HomeV2 = (props) => {
         // set isDisplayItem to true
         setIsDisplayItem(true);
     };
-    const handleShowCommunity = () => {
+    const handleShowCommunity = (id) => {
         // set isDisplayItem to true
+        setCommunityId(id);
         setIsDisplayCommunity(true);
     };
+
+
+    const backHome = (type) => {
+        if(type === "item"){
+            setIsDisplayItem(false);
+        }
+        
+        if(type === "community"){
+            setIsDisplayCommunity(false)
+        }
+    }
 
     // Tung creates a similar function here
 
@@ -90,7 +103,7 @@ const HomeV2 = (props) => {
                                                     return (
                                                         <li
                                                             onClick={() =>
-                                                                handleShowCommunity()
+                                                                handleShowCommunity(community.uuid)
                                                             }
                                                         >
                                                             {community.name}
@@ -132,7 +145,10 @@ const HomeV2 = (props) => {
 
                     {isDisplayCommunity && (
                         <div className="left">
-                            <UserCommunity></UserCommunity>
+                            <UserCommunity
+                                backHome = {backHome}
+                                communityId = {communityId}
+                            ></UserCommunity>
                         </div>
                     )}
 
