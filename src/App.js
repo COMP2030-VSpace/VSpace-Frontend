@@ -35,9 +35,9 @@ function App() {
                         <Route path='/about' element={<About />} />
                         <Route path='/search' element={<Search />} />
                         <Route path='/admin' element={
-                            <Protected>
+                            // <Protected>
                                 <Dashboard />
-                            </Protected>
+                            // </Protected>
                         } />
                         <Route path='/admin/community/add' element={
                             <Protected>

@@ -10,7 +10,7 @@ const UserDetailItem = (props) => {
                 Mystical experience and global revolution
             </h2>
 
-            <div className="wrapper">
+            <div className="wrapper-2">
                 <div className="left-left">
                     <img src={thumb} alt="Thumbnail" />
                     <div className="small-header">Files</div>
