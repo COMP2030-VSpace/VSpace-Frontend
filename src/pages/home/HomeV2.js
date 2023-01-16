@@ -12,6 +12,7 @@ import UserDetailItem from "../../components/userDetailItem/UserDetailItem";
 import UserCommunity from "../../components/userCommunity/UserCommunity";
 
 // import assets
+import pagination_arrow from "../../assets/admin/arrow-admin.png";
 
 import { moveTo } from "../../utils/helperFunctions";
 
@@ -30,15 +31,25 @@ const HomeV2 = (props) => {
     const [topAuthors, setTopAuthors] = useState([]);
     const [topSubjects, setTopSubjects] = useState([]);
     const [topDateIssue, setTopDateIssued] = useState([]);
+    const [curPage, setCurPage] = useState(1);
+    const [totalPage, setTotalPage] = useState(0);
+    const [totalElements, setTotalElements] = useState(1);
     
     const [isDisplayItem, setIsDisplayItem] = useState(false);
     const [isDisplayCommunity, setIsDisplayCommunity] = useState(false);
     // const [communityId, setCommunityId] = useState("");
     const [chosenCommunity, setChosenCommunity] = useState({});
+    const itemsPerPage = 5;
+
 
     useEffect(() => {
         const loadCommunities = async () => {
-            const response = await getCommunities();
+            const page = curPage - 1;
+            const response = await getCommunities(page, itemsPerPage);
+            const pageInfo = response.data.page
+            setTotalPage(pageInfo.totalPages)
+            setTotalElements(pageInfo.totalElements);
+            
             const data = response.data["_embedded"].communities;
 
             // console.log(data);
@@ -46,6 +57,12 @@ const HomeV2 = (props) => {
             setCommunities(data);
         };
 
+
+        loadCommunities();
+    }, [curPage])
+
+    useEffect(() => {
+    
         const loadTopAuthors = async () => {
             const response = await searchTopAuthors();
             // console.log(response);
@@ -89,7 +106,6 @@ const HomeV2 = (props) => {
             setRecentItems(data);
         }
 
-        loadCommunities();
         loadTopAuthors();
         loadTopSubjects();
         loadTopDateIssued();
@@ -173,6 +189,37 @@ const HomeV2 = (props) => {
                                             )}
                                         </ul>
                                     </div>
+                                </div>
+
+                                <div className="blocklist">
+                                    {curPage > 1 &&
+                                        <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+                                            <img 
+                                                src={pagination_arrow} 
+                                                alt="" 
+                                                onClick={() => {setCurPage(curPage - 1)}}
+                                            />
+                                        </div>
+                                    }
+                                    {[...Array(totalPage)].map((page, i) => {
+                                        if(i+1 === curPage){
+                                            return <div 
+                                                        className="block active" 
+                                                        key = {i}
+                                                        onClick = {() => {setCurPage(i+1)}}
+                                                    >{i+1}</div>
+                                        }
+                                        
+                                        return <div 
+                                                    className="block" 
+                                                    key = {i}
+                                                    onClick = {() => {setCurPage(i+1)}}
+                                                >{i+1}</div>
+                                    })}
+
+                                    {/* <div className="block">...</div>
+                                    <div className="block" style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>20</div> */}
+                                
                                 </div>
                             </div>
 

@@ -72,7 +72,7 @@ const ItemContextProvider = ({ children }) => {
                 "dsoType": "item",
                 "sort": "dc.date.accessioned,desc",
                 "page": "0",
-                "size": "3"
+                "size": "5"
             }
         })
 
