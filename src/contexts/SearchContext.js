@@ -36,7 +36,7 @@ const SearchContextProvider = ({ children }) => {
     }
 
     const searchCommunity = async (keyword) => {
-        const url = "https://vinspace.online/server/api/core/communities/search/findAdminAuthorized"
+        const url = "https://vinspace.online/server/api/core/communities/search/findAdminAuthorized";
 
         const response = await instance.get(url, {
             params: {
@@ -47,10 +47,29 @@ const SearchContextProvider = ({ children }) => {
         return response;
     }
 
+    const searchSite = async (keyword) => {
+        const url = "https://vinspace.online/server/api/discover/search/objects";
+
+        const response = await instance.get(url, {
+            params: {
+                "page": 0,
+                "size": 5,
+                "configuration": "default",
+                "query": keyword,
+                "embed": "thumbnail",
+                "embed": "item%2Fthumbnail",
+                "embed": "accessStatus",
+                "dsoType": "item"
+            }
+        })
+
+        return response;
+    }
+
 
  
 
-    const searchContextData = { searchTopAuthors, searchTopSubjects, searchTopDateIssued, searchCommunity }
+    const searchContextData = { searchTopAuthors, searchTopSubjects, searchTopDateIssued, searchCommunity, searchSite }
 
     return (<SearchContext.Provider value={searchContextData}>{children}</SearchContext.Provider>)
 
