@@ -122,59 +122,6 @@
             flex-grow: 1;
             box-sizing: border-box;
             padding-left: 2.5rem;
-
-            .browse {
-                .text {
-                    font-weight: 600;
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-
-                    color: #828282;
-                }
-            }
-
-            .vinspace-list {
-                .heading {
-                    font-weight: 700;
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-
-                    background: var(--primary-blue);
-                    color: #ffffff;
-
-                    width: 100%;
-                    box-sizing: border-box;
-
-                    padding: 0.7rem 1.2rem;
-
-                    border-radius: 5px 5px 0 0;
-                }
-
-                .browse-list {
-                    ul {
-                        padding: 0;
-                        margin: 0;
-
-                        list-style: none;
-
-                        border: 1px solid rgba(62, 62, 62, 0.3);
-                        border-top: none;
-                        border-bottom: none;
-
-                        li {
-                            box-sizing: border-box;
-                            width: 100%;
-                            padding: 0.7rem 1.2rem;
-                            border-bottom: 1px solid rgba(62, 62, 62, 0.3);
-
-                            &:hover {
-                                cursor: pointer;
-                                font-weight: 600;
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

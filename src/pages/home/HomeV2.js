@@ -5,11 +5,12 @@ import "./homeV2.scss";
 // import components
 import Navbar from "../../components/navbar/Navbar";
 import Banner from "../../components/banner/Banner";
-import HomeSearch from "../../components/search/homeSearch/HomeSearchV2";
+
 import Footer from "../../components/footer/Footer";
 import Item from "../../components/item/Item";
 import UserDetailItem from "../../components/userDetailItem/UserDetailItem";
 import UserCommunity from "../../components/userCommunity/UserCommunity";
+import SiteSearch from "../../components/search/siteSearch/SiteSearch";
 
 // import assets
 import pagination_arrow from "../../assets/admin/arrow-admin.png";
@@ -18,19 +19,16 @@ import { moveTo } from "../../utils/helperFunctions";
 
 // import context
 import { CommunityContext } from "../../contexts/CommunityContext";
-import { SearchContext } from "../../contexts/SearchContext";
 import { ItemContext } from "../../contexts/ItemContext";
 
 const HomeV2 = (props) => {
     const { getCommunities } = useContext(CommunityContext);
-    const { searchTopAuthors, searchTopSubjects, searchTopDateIssued } = useContext(SearchContext);
+    
     const { getRecentItemsFromSite } = useContext(ItemContext);
 
     const [communities, setCommunities] = useState([]);
     const [recentItems, setRecentItems] = useState([]);
-    const [topAuthors, setTopAuthors] = useState([]);
-    const [topSubjects, setTopSubjects] = useState([]);
-    const [topDateIssue, setTopDateIssued] = useState([]);
+    
     const [curPage, setCurPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const [totalElements, setTotalElements] = useState(1);
@@ -62,40 +60,6 @@ const HomeV2 = (props) => {
     }, [curPage])
 
     useEffect(() => {
-    
-        const loadTopAuthors = async () => {
-            const response = await searchTopAuthors();
-            // console.log(response);
-
-            const data = response.data["_embedded"].values.slice(0,5);
-
-            // console.log(data);
-
-            setTopAuthors(data);
-        }
-
-        const loadTopSubjects = async () => {
-            const response = await searchTopSubjects();
-            // console.log(response);
-
-            const data = response.data["_embedded"].values.slice(0,5);
-
-            // console.log(data);
-
-            setTopSubjects(data);
-        }
-
-        const loadTopDateIssued = async () => {
-            const response = await searchTopDateIssued();
-            // console.log(response);
-
-            const data = response.data["_embedded"].values.slice(0,5);
-
-            // console.log(data);
-
-            setTopDateIssued(data);
-        }
-
         const loadRecentItems = async () => {
             const response = await getRecentItemsFromSite();
 
@@ -106,9 +70,6 @@ const HomeV2 = (props) => {
             setRecentItems(data);
         }
 
-        loadTopAuthors();
-        loadTopSubjects();
-        loadTopDateIssued();
         loadRecentItems();
     }, [])
 
@@ -264,67 +225,7 @@ const HomeV2 = (props) => {
                     )}
 
                     <div className="right desktop">
-                        <div className="item mb2">
-                            <HomeSearch></HomeSearch>
-                        </div>
-
-                        <div className="browse item mb2">
-                            <div className="text mb1">BROWSE</div>
-
-                            <div className="vinspace-list">
-                                <div className="heading">ALL OF VinSpace</div>
-
-                                <div className="browse-list">
-                                    <ul>
-                                        <li>Communities & Collections</li>
-                                        <li>By Issue Date</li>
-                                        <li>Authors</li>
-                                        <li>Titles</li>
-                                        <li>Subjects</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="browse item">
-                            <div className="text mb1">DISCOVER</div>
-
-                            <div className="vinspace-list mb1">
-                                <div className="heading">Author</div>
-
-                                <div className="browse-list">
-                                    <ul>
-                                        {topAuthors.map((author) => {
-                                            return <li>{author.label} ({author.count})</li> 
-                                        })}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="vinspace-list mb1">
-                                <div className="heading">Subject</div>
-
-                                <div className="browse-list">
-                                    <ul>
-                                        {topSubjects.map((subject) => {
-                                            return <li>{subject.label} ({subject.count})</li> 
-                                        })}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="vinspace-list">
-                                <div className="heading">Date Issued</div>
-
-                                <div className="browse-list">
-                                    <ul>
-                                        {topDateIssue.map((date) => {
-                                            return <li>{date.label} ({date.count})</li> 
-                                        })}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <SiteSearch></SiteSearch>
                     </div>
                 </div>
             </div>
