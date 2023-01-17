@@ -36,7 +36,10 @@ const HomeV2 = (props) => {
     const [isDisplayItem, setIsDisplayItem] = useState(false);
     const [isDisplayCommunity, setIsDisplayCommunity] = useState(false);
     // const [communityId, setCommunityId] = useState("");
+
     const [chosenCommunity, setChosenCommunity] = useState({});
+    const [chosenItem, setChosenItem] = useState({});
+
     const itemsPerPage = 5;
 
 
@@ -73,8 +76,10 @@ const HomeV2 = (props) => {
         loadRecentItems();
     }, [])
 
-    const handleShowItemDetail = () => {
+    const handleShowItemDetail = (item) => {
+        console.log("item displaying...");
         // set isDisplayItem to true
+        setChosenItem(item);
         setIsDisplayItem(true);
     };
     
@@ -192,10 +197,11 @@ const HomeV2 = (props) => {
                                 <div className="item-list">
                                     {recentItems.map((item) => {
                                         return <Item 
-                                                    data = {item["_embedded"].indexableObject}>
+                                                    data = {item["_embedded"].indexableObject}
                                                     handleOnClick={() =>
-                                                        handleShowItemDetail()
+                                                        handleShowItemDetail(item)
                                                     }
+                                                >
                                                 </Item>
                                     })}
                                     
