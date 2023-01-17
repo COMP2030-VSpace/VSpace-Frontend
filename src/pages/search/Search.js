@@ -16,50 +16,27 @@ import thumb from "../../assets/admin/thumbnail.png";
 import arrow from '../../assets/search/arrow.png';
 
 // import context
-import { CommunityContext } from "../../contexts/CommunityContext";
-import { ItemContext } from "../../contexts/ItemContext";
+import { SearchContext } from "../../contexts/SearchContext";
 
 const Search = (props) => {
-    const { getCommunities } = useContext(CommunityContext);
-    const { getRecentItemsFromSite } = useContext(ItemContext);
-    
-    const [communities, setCommunities] = useState([])
-    const [curPage, setCurPage] = useState(1);
-    const [totalElements, setTotalElements] = useState(1);
-    const [totalPage, setTotalPage] = useState(0);
-    const itemsPerPage = 5;
-    const [recentItems, setRecentItems] = useState([]);
+    const { searchSite } = useContext(SearchContext);
+
+    const [searchRes, setSearchRes] = useState([]);
 
     useEffect(() => {
-        const loadCommunities = async () => {
-            const page = curPage - 1;
-            const response = await getCommunities(page, itemsPerPage);
-            // console.log(response);
-            const pageInfo = response.data.page
-            setTotalPage(pageInfo.totalPages)
-            setTotalElements(pageInfo.totalElements);
+        const searchItems = async () => {
+            const search = window.location.search;
+            const params = new URLSearchParams(search);
+            const keyword = params.get('query');
 
-            const data = response.data["_embedded"].communities
+            const response = await searchSite(keyword);
 
-            // console.log(data);
-
-            setCommunities(data);
-            
+            console.log(response.data["_embedded"].searchResult["_embedded"].objects);
+            setSearchRes(response.data["_embedded"].searchResult["_embedded"].objects)
         }
 
-        const loadRecentItems = async () => {
-            const response = await getRecentItemsFromSite();
-
-            // console.log(response);
-
-            const data = response.data["_embedded"].searchResult["_embedded"].objects;
-
-            setRecentItems(data);
-        }
-
-        loadCommunities();
-        loadRecentItems();
-    }, [curPage])
+        searchItems();
+    }, []);
 
     return (
         <div className="search">
@@ -112,8 +89,9 @@ const Search = (props) => {
                         </div>
 
                         <div className="item">
-                                {recentItems.map((item) => {
+                                {searchRes.map((item) => {
                                     const data = item["_embedded"].indexableObject;
+
                                     return <div className="item-content">
                                                 <div className="thumb">
                                                     <img src= {thumb} alt="Thumbnail"/>
