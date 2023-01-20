@@ -24,7 +24,7 @@ import arrow_right_icon from "../../assets/side_menu/arrow_right.png";
 
 // import functions
 import { moveTo } from '../../utils/helperFunctions';
-
+import Cookies from 'js-cookie';
 
 // import components
 
@@ -34,6 +34,8 @@ const SideMenu = (props)=>{
     const [menuIsCollapsed, setMenuIsCollapsed] = useState(true);
     const [curMenuItem, setCurMenuItem] = useState(-1);
 
+    const role = Cookies.get("role");
+
     // realtime data
     const menu_list = [
         {
@@ -41,19 +43,26 @@ const SideMenu = (props)=>{
             "title": "New",
             "sub_menu_list":
             [
-                {
-                    "title": "Community",
-                    "link":"/admin/community/add"
-                },
-                {
-                    "title": "Collection",
-                    "link":"/admin/collection/add"
-                },
-                {
-                    "title": "Item",
-                    "link":"/admin/item/add"
-                }
-                
+                role === "site_admin" ? (
+                    {
+                        "title": "Community",
+                        "link":"/admin/community/add"
+                    },
+                    {
+                        "title": "Collection",
+                        "link":"/admin/collection/add"
+                    },
+                    {
+                        "title": "Item",
+                        "link":"/admin/item/add"
+                    }
+                ) :
+                (
+                    {
+                        "title": "Item",
+                        "link":"/admin/item/add"
+                    }
+                )
             ]
         },
         {
@@ -61,141 +70,150 @@ const SideMenu = (props)=>{
             "title": "Edit",
             "sub_menu_list":
             [
-                {
-                    "title": "community",
-                    "link":""
-                },
-                {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
-                }
-                
+                role === "site_admin" ? (
+                    {
+                        "title": "community",
+                        "link":""
+                    },
+                    {
+                        "title": "Collection",
+                        "link":""
+                    },
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                ) :
+                (
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                )
             ]
         },
-        {
-            "icon": import_icon,
-            "title": "Import",
-            "sub_menu_list":
-            [
-                {
-                    "title": "community",
-                    "link":""
-                },
-                {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
-                }
-                
-            ]
-        },
-        {
-            "icon": export_icon,
-            "title": "Export",
-            "sub_menu_list":
-            [
-                {
-                    "title": "community",
-                    "link":""
-                },
-                {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
-                }
-                
-            ]
-        },
-        {
-            "icon": access_control_icon,
-            "title": "Access Control",
-            "sub_menu_list":
-            [
-                {
-                    "title": "community",
-                    "link":""
-                },
-                {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
-                }
-                
-            ]
-        },
-        {
-            "icon": admin_search_icon,
-            "title": "Admin Search",
-            "sub_menu_list":
-            [
+        role === "site_admin" && (
+            {
+                "icon": import_icon,
+                "title": "Import",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "community",
+                        "link":""
+                    },
+                    {
+                        "title": "Collection",
+                        "link":""
+                    },
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                    
+                ]
+            },
+            {
+                "icon": export_icon,
+                "title": "Export",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "community",
+                        "link":""
+                    },
+                    {
+                        "title": "Collection",
+                        "link":""
+                    },
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                    
+                ]
+            },
+            {
+                "icon": access_control_icon,
+                "title": "Access Control",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "community",
+                        "link":""
+                    },
+                    {
+                        "title": "Collection",
+                        "link":""
+                    },
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                    
+                ]
+            },
+            {
+                "icon": admin_search_icon,
+                "title": "Admin Search",
+                "sub_menu_list":
+                [
 
-            ]
-        },
-        {
-            "icon": registers_icon,
-            "title": "Registries",
-            "sub_menu_list":
-            [
-                {
-                    "title": "Community",
-                    "link":""
-                },
-                {
-                    "title": "Collection",
-                    "link":""
-                },
-                {
-                    "title": "Item",
-                    "link":""
-                }
-                
-            ]
-        },
-        {
-            "icon": curation_task_icon,
-            "title": "Curation Task",
-            "sub_menu_list":
-            [
+                ]
+            },
+            {
+                "icon": registers_icon,
+                "title": "Registries",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "Community",
+                        "link":""
+                    },
+                    {
+                        "title": "Collection",
+                        "link":""
+                    },
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                    
+                ]
+            },
+            {
+                "icon": curation_task_icon,
+                "title": "Curation Task",
+                "sub_menu_list":
+                [
 
-            ]
-        },
-        {
-            "icon": processes_icon,
-            "title": "Processes",
-            "sub_menu_list":
-            [
+                ]
+            },
+            {
+                "icon": processes_icon,
+                "title": "Processes",
+                "sub_menu_list":
+                [
 
-            ]
-        },
-        {
-            "icon": health_icon,
-            "title": "Health",
-            "sub_menu_list":
-            [
-   
-            ]
-        },
-        {
-            "icon": admin_workflow_icon,
-            "title": "Administer Workflow",
-            "sub_menu_list":
-            [
+                ]
+            },
+            {
+                "icon": health_icon,
+                "title": "Health",
+                "sub_menu_list":
+                [
+    
+                ]
+            },
+            {
+                "icon": admin_workflow_icon,
+                "title": "Administer Workflow",
+                "sub_menu_list":
+                [
 
-            ]
-        }
+                ]
+            }
+        )
     ]
 
 
@@ -247,6 +265,7 @@ const SideMenu = (props)=>{
                         <div className='common-items menu-item'>
                             <ul>
                                 {menu_list.map((menu_item, key) => 
+                                    menu_item && 
                                     <li key = {key}>
                                         <div className='top' onClick = {() => switch_sub_list(key)}>
                                             <div className='border'></div>

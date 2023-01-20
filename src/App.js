@@ -13,6 +13,7 @@ import Setup from './pages/register/Setup';
 import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
 import Search from './pages/search/Search';
+import Profile from './pages/profile/Profile';
 
 // modifier
 import Protected from './pages/protected/Protected';
@@ -83,6 +84,10 @@ function App() {
                                 } />
                                 <Route path='/community/:id' element={
                                     <Community />
+                                } />
+
+                                <Route path='/profile/:id' element={
+                                    <Profile />
                                 } />
                             </Routes>
                         </ItemContextProvider>
