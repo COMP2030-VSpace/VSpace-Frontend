@@ -112,6 +112,25 @@ const Navbar = (props) => {
                                         "margin": "0"
                                     }}
 
+                                    content = "Profile"
+
+                                    handleClick = {() => logout()}
+                                ></Button>
+                            </div>
+
+                            <div className="ml2">
+                                <Button 
+                                    styles = {{
+                                        "height": "2.6rem",
+                                        // "width": "3rem",
+                                        "background": " #CD3C3F",
+                                        "margin-right": "0",
+                                        "margin-bottom": "0",
+                                        "color": "#ffffff",
+                                        "padding": "0.05rem 1.2rem",
+                                        "margin": "0"
+                                    }}
+
                                     content = "Logout"
 
                                     handleClick = {() => logout()}
