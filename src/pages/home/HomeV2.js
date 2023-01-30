@@ -21,6 +21,13 @@ import { moveTo } from "../../utils/helperFunctions";
 import { CommunityContext } from "../../contexts/CommunityContext";
 import { ItemContext } from "../../contexts/ItemContext";
 
+import SideMenu from "../../components/sideMenu/SideMenu";
+
+
+
+import Cookies from 'js-cookie';
+import { userRole } from "../../enums/enum";
+
 const HomeV2 = (props) => {
     const { getCommunities } = useContext(CommunityContext);
     
@@ -42,6 +49,12 @@ const HomeV2 = (props) => {
 
     const itemsPerPage = 5;
 
+    const [isAuthenticated, setAuthenticate] = useState(false);
+
+    useEffect(() => {
+        let checkLogin = (Cookies.get("role") && (Cookies.get("role")  !== userRole.USER));
+        setAuthenticate(checkLogin);
+    }, []);
 
     useEffect(() => {
         const loadCommunities = async () => {
@@ -77,7 +90,7 @@ const HomeV2 = (props) => {
     }, [])
 
     const handleShowItemDetail = (item) => {
-        console.log("item displaying...");
+        // console.log("item displaying...");
         // set isDisplayItem to true
         setChosenItem(item);
         setIsDisplayItem(true);
@@ -110,106 +123,111 @@ const HomeV2 = (props) => {
                 <Banner></Banner>
 
                 <div className="main">
-                    {!isDisplayItem && !isDisplayCommunity && (
-                        <div className="left">
-                            <div className="about item">
-                                <div className="heading">
-                                    <h2>VinSpace</h2>
-                                </div>
+                    {isAuthenticated &&
+                        <SideMenu></SideMenu>   
+                    }
 
-                                <div className="info">
-                                    VinSpace is VinUniversity's institutional
-                                    repository (IR). It is a digital service
-                                    that collects, preserves, and distributes
-                                    digital material. The collections and
-                                    content in AUSpace can be browsed and
-                                    searched. If you have any questions, please
-                                    email auspace@athabascau.ca.
-                                </div>
-                            </div>
-
-                            <div className="community-list item">
-                                <div className="heading">
-                                    <h2>Communities in VinSpace</h2>
-                                </div>
-
-                                <div className="list">
-                                    <div className="list-heading">
-                                        Select a community to browse its
-                                        collections.
+                    <div className="main-right">
+                        {!isDisplayItem && !isDisplayCommunity && (
+                            <div className="left">
+                                <div className="about item">
+                                    <div className="heading">
+                                        <h2>VinSpace</h2>
                                     </div>
-                                    <div className="list-main">
-                                        <ul>
-                                            {communities.map(
-                                                (community, key) => {
-                                                    return (
-                                                        <li
-                                                            onClick={() =>
-                                                                handleShowCommunity(community)
-                                                            }
-                                                        >
-                                                            {community.name}
-                                                        </li>
-                                                    );
-                                                }
-                                            )}
-                                        </ul>
+
+                                    <div className="info">
+                                        VinSpace is VinUniversity's institutional
+                                        repository (IR). It is a digital service
+                                        that collects, preserves, and distributes
+                                        digital material. The collections and
+                                        content in AUSpace can be browsed and
+                                        searched. If you have any questions, please
+                                        email auspace@athabascau.ca.
                                     </div>
                                 </div>
 
-                                <div className="blocklist">
-                                    {curPage > 1 &&
-                                        <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
-                                            <img 
-                                                src={pagination_arrow} 
-                                                alt="" 
-                                                onClick={() => {setCurPage(curPage - 1)}}
-                                            />
+                                <div className="community-list item">
+                                    <div className="heading">
+                                        <h2>Communities in VinSpace</h2>
+                                    </div>
+
+                                    <div className="list">
+                                        <div className="list-heading">
+                                            Select a community to browse its
+                                            collections.
                                         </div>
-                                    }
-                                    {[...Array(totalPage)].map((page, i) => {
-                                        if(i+1 === curPage){
+                                        <div className="list-main">
+                                            <ul>
+                                                {communities.map(
+                                                    (community, key) => {
+                                                        return (
+                                                            <li
+                                                                onClick={() =>
+                                                                    handleShowCommunity(community)
+                                                                }
+                                                            >
+                                                                {community.name}
+                                                            </li>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div className="blocklist">
+                                        {curPage > 1 &&
+                                            <div className="block" style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+                                                <img 
+                                                    src={pagination_arrow} 
+                                                    alt="" 
+                                                    onClick={() => {setCurPage(curPage - 1)}}
+                                                />
+                                            </div>
+                                        }
+                                        {[...Array(totalPage)].map((page, i) => {
+                                            if(i+1 === curPage){
+                                                return <div 
+                                                            className="block active" 
+                                                            key = {i}
+                                                            onClick = {() => {setCurPage(i+1)}}
+                                                        >{i+1}</div>
+                                            }
+                                            
                                             return <div 
-                                                        className="block active" 
+                                                        className="block" 
                                                         key = {i}
                                                         onClick = {() => {setCurPage(i+1)}}
                                                     >{i+1}</div>
-                                        }
-                                        
-                                        return <div 
-                                                    className="block" 
-                                                    key = {i}
-                                                    onClick = {() => {setCurPage(i+1)}}
-                                                >{i+1}</div>
-                                    })}
+                                        })}
 
-                                    {/* <div className="block">...</div>
-                                    <div className="block" style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>20</div> */}
-                                
-                                </div>
-                            </div>
-
-                            <div className="recent-add item">
-                                <div className="heading">
-                                    <h2>Recently Added</h2>
-                                </div>
-
-                                <div className="item-list">
-                                    {recentItems.map((item) => {
-                                        return <Item 
-                                                    data = {item["_embedded"].indexableObject}
-                                                    handleOnClick={() =>
-                                                        handleShowItemDetail(item)
-                                                    }
-                                                >
-                                                </Item>
-                                    })}
+                                        {/* <div className="block">...</div>
+                                        <div className="block" style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>20</div> */}
                                     
+                                    </div>
                                 </div>
 
+                                <div className="recent-add item">
+                                    <div className="heading">
+                                        <h2>Recently Added</h2>
+                                    </div>
+
+                                    <div className="item-list">
+                                        {recentItems.map((item) => {
+                                            return <Item 
+                                                        data = {item["_embedded"].indexableObject}
+                                                        handleOnClick={() =>
+                                                            handleShowItemDetail(item)
+                                                        }
+                                                    >
+                                                    </Item>
+                                        })}
+                                        
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
                     {isDisplayItem && (
                         <div className="left">
@@ -224,18 +242,19 @@ const HomeV2 = (props) => {
                         </div>
                     )}
 
-                    {isDisplayCommunity && (
-                        <div className="left">
-                            <UserCommunity
-                                backHome = {backHome}
-                                community = {chosenCommunity}
-                                handleShowCommunity = {handleShowCommunity}
-                            ></UserCommunity>
-                        </div>
-                    )}
+                        {isDisplayCommunity && (
+                            <div className="left">
+                                <UserCommunity
+                                    backHome = {backHome}
+                                    community = {chosenCommunity}
+                                    handleShowCommunity = {handleShowCommunity}
+                                ></UserCommunity>
+                            </div>
+                        )}
 
-                    <div className="right desktop">
-                        <SiteSearch></SiteSearch>
+                        <div className="right desktop">
+                            <SiteSearch></SiteSearch>
+                        </div>
                     </div>
                 </div>
             </div>

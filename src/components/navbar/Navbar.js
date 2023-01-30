@@ -114,7 +114,7 @@ const Navbar = (props) => {
 
                                     content = "Profile"
 
-                                    handleClick = {() => logout()}
+                                    handleClick = {() => moveTo("/profile")}
                                 ></Button>
                             </div>
 
