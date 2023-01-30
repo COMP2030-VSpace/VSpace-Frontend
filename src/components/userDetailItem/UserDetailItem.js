@@ -4,10 +4,14 @@ import thumb from "../../assets/admin/thumbnail.png";
 import info from "../../assets/admin/info.png";
 
 const UserDetailItem = (props) => {
+    const data = props.item["_embedded"].indexableObject.metadata;
+
+    // console.log(data);
+
     return (
         <div className="user-detail-item">
             <h2 className="heading">
-                Mystical experience and global revolution
+                {data["dc.title"][0].value}
             </h2>
 
             <div className="wrapper-2">
@@ -20,22 +24,31 @@ const UserDetailItem = (props) => {
                     <div className="small-header">Date</div>
                     <div className="small-header-content">2020 - 10 - 17</div>
                     <div className="small-header">Authors</div>
-                    <div className="small-header-content">Tuan</div>
+                    <div className="small-header-content">
+                        {data["dc.contributor.author"].map((author, idx) => {
+                            if(idx !== data["dc.contributor.author"].length - 1){
+                                return <span>{author.value}, </span>
+                            }
+
+                            return <span>{author.value}</span>
+                        })}
+                    </div>
+                    
                     <div className="small-header">Publisher</div>
-                    <div className="small-header-content">Test Publisher</div>
+                    <div className="small-header-content">{data["dc.publisher"][0].value}</div>
                 </div>
                 <div className="left-right">
                     <div className="small-header">Abstract</div>
 
-                    <div className="small-header-content">Test abstract</div>
+                    <div className="small-header-content">{data["dc.description.abstract"][0].value}</div>
 
                     <div className="small-header">Description</div>
 
-                    <div className="small-header-content">Test description</div>
+                    <div className="small-header-content">{data["dc.description"][0].value}</div>
 
                     <div className="small-header">Citation</div>
 
-                    <div className="small-header-content">APA</div>
+                    <div className="small-header-content">{data["dc.identifier.citation"][0].value}</div>
 
                     <div className="small-header">URI</div>
                     <div className="links">

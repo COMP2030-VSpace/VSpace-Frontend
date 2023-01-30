@@ -214,7 +214,11 @@ const HomeV2 = (props) => {
                     {isDisplayItem && (
                         <div className="left">
                             {/* Tung starts here: Create a seperated component */}
-                            <UserDetailItem></UserDetailItem>
+                            <UserDetailItem
+                                backHome = {backHome}
+                                item = {chosenItem}
+                                handleShowItemDetail = {handleShowItemDetail}
+                            ></UserDetailItem>
                             
                             {/* Tung ends here */}
                         </div>
