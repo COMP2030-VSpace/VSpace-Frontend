@@ -18,6 +18,7 @@ import Profile from './pages/profile/Profile';
 // modifier
 import Protected from './pages/protected/Protected';
 import BeforeLogin from './pages/protected/BeforeLogin';
+import Auth from './pages/protected/Auth';
 
 
 
@@ -61,21 +62,21 @@ function App() {
                                         <Dashboard />
                                     </Protected>
                                 } />
-                                <Route path='/admin/community/add' element={
+                                <Route path='/community/add' element={
                                     <Protected>
                                         <CreateCommunity />
                                     </Protected>
                                 } />
-                                <Route path='/admin/collection/add' element={
+                                <Route path='/collection/add' element={
                                     <Protected>
                                         <CreateCollection />
                                     </Protected>
                                 } />
                                 
-                                <Route path='/admin/item/add' element={
-                                    <Protected>
+                                <Route path='/item/add' element={
+                                    <Auth>
                                         <Item />
-                                    </Protected>
+                                    </Auth>
                                 } />
                                 <Route path='/admin/community/:id' element={
                                     <Protected>

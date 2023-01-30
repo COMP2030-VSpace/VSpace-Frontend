@@ -1,4 +1,4 @@
-import {useEffect, createRef, useContext, useState} from 'react';
+import {useEffect, useRef, useContext, useState} from 'react';
 
 import "./userCommunity.scss";
 
@@ -9,6 +9,8 @@ import { CommunityContext } from '../../contexts/CommunityContext';
 import { CollectionContext } from '../../contexts/CollectionContext';
 
 const UserCommunity = (props) => {
+    const myRef = useRef(null)
+
     const [searchType, setSearchType] = useState(1);
 
     const { getSubCommunities } = useContext(CommunityContext);
@@ -45,12 +47,14 @@ const UserCommunity = (props) => {
         }
 
         loadData(id);
+        myRef.current.scrollIntoView({ block: 'start',  behavior: 'smooth' });
+
     }, [props.community]);
 
 
     return (
         <div className="user-community">
-            <div className='heading'>
+            <div className='heading' ref={myRef}>
                 <Button 
                     styles = {{
                         "height": "2.6rem",

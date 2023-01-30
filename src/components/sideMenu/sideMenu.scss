@@ -30,6 +30,7 @@
     transition: width 0.3s linear;
     box-sizing: border-box;
     padding: 0 2.5rem;
+    z-index: 1;
 }
 
 .side-menu{
@@ -44,7 +45,7 @@
 
     position:sticky;
     position:-webkit-sticky;
-    // top:20px;
+    z-index: 1;
 
     transition: width 0.3s linear;
 

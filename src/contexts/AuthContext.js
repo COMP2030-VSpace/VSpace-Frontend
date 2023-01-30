@@ -50,19 +50,19 @@ const AuthContextProvider = ({ children }) => {
 
             // if not, refresh token
             if(role !== userRole.USER){
-                const refreshLoginResponse = await refreshLogin();
+                // const refreshLoginResponse = await refreshLogin();
 
                 // console.log(refreshLoginResponse);
             }
 
 
-            if(role === userRole.SITE_ADMIN){
-                // check if path contains admin
-                const path = window.location.pathname;
-                if(!path.includes("admin")){
-                    window.location.href = "/admin";
-                }
-            }
+            // if(role === userRole.SITE_ADMIN){
+            //     // check if path contains admin
+            //     const path = window.location.pathname;
+            //     if(!path.includes("admin")){
+            //         window.location.href = "/admin";
+            //     }
+            // }
         }
 
         getRole();

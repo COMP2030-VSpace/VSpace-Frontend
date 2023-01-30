@@ -107,14 +107,12 @@ instance.interceptors.response.use(
     },
     (error) => {
         // Do something with request error
-        if(error.response.status === 403){
-            // console.log("in here");
-            
-            const newCsrf = error.response.headers["dspace-xsrf-token"];
-            refreshToken(newCsrf);
+        const newCsrf = error.response.headers["dspace-xsrf-token"];
 
-            // Cookies.set("X-XSRF-TOKEN", newCsrf, {path: "/"});
+        if(newCsrf){
+            refreshToken(newCsrf);
         }
+        
         return Promise.reject(error);
     }
 );

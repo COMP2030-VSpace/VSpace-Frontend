@@ -79,9 +79,38 @@ const ItemContextProvider = ({ children }) => {
         return response
     }
 
+
+    const getThumbnail = async (id) => {
+        const url = `https://vinspace.online/server/api/core/items/${id}/thumbnail`;
+
+        const response = await instance.get(url);
+
+        return response;
+    }
+
+    const getBundles = async (id) => {
+        const url = `https://vinspace.online/server/api/core/items/${id}/bundles`;
+
+        const response = await instance.get(url);
+
+        return response;
+    }
+
+    const getBitstreams = async (id) => {
+        const url = `https://vinspace.online/server/api/core/bundles/${id}/bitstreams`
+
+        const response = await instance.get(url);
+
+        return response;
+    }
+
  
 
-    const itemContextData = { startSubmission, uploadFiles, saveWorkspace, submitWorkspace, getRecentItemsFromSite }
+    const itemContextData = { 
+        startSubmission, uploadFiles, saveWorkspace, 
+        submitWorkspace, getRecentItemsFromSite, getThumbnail, 
+        getBundles, getBitstreams
+    }
 
     return (<ItemContext.Provider value={itemContextData}>{children}</ItemContext.Provider>)
 

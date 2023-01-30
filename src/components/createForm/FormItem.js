@@ -26,9 +26,9 @@ const FormItem = (props) => {
     const [author, setAuthor] = useState("");
     const [title, setTitle] = useState("");
     const [alternativeTitle, setAlternativeTitle] = useState("");
-    const [doiYear, setDoiYear] = useState(-1);
-    const [doiMonth, setDoiMonth] = useState(-1);
-    const [doiDay, setDoiDay] = useState(-1);
+    const [doiYear, setDoiYear] = useState("yyyy");
+    const [doiMonth, setDoiMonth] = useState("mm");
+    const [doiDay, setDoiDay] = useState("dd");
     const [publisher, setPublisher] = useState("");
     const [citationStyle, setCitationStyle] = useState("");
     const [series, setSeries] = useState("");
@@ -44,9 +44,10 @@ const FormItem = (props) => {
     useEffect(() => {
         const init = async () => {
             // testing
-            const owningCollection = "2eda7407-f83e-4459-a468-36c9bd726fc9";
+            const owningCollection = props.parent.uuid;
 
             const response = await startSubmission(owningCollection)
+            console.log(response);
 
             setSubmissionId(response.data.id);
         }
@@ -250,15 +251,15 @@ const FormItem = (props) => {
                     }
                 ]
             },
-            {
-                "op": "add",
-                "path": "/sections/traditionalpageone/dc.identifier.uri",
-                "value": [
-                    {
-                        "value": "1"
-                    }
-                ]
-            },
+            // {
+            //     "op": "add",
+            //     "path": "/sections/traditionalpageone/dc.identifier.uri",
+            //     "value": [
+            //         {
+            //             "value": "1"
+            //         }
+            //     ]
+            // },
             {
                 "op": "add",
                 "path": "/sections/traditionalpageone/dc.identifier.isbn",
@@ -391,17 +392,19 @@ const FormItem = (props) => {
                         <button className="collection">Collection</button>
 
                         <button className="more">
-                            B.Lib l.sc
-                            <img src={polygon} height="10px"/>
+                            {props.parent.name}
+                            {/* <img src={polygon} height="10px"/> */}
                         </button>
                     </div>
 
-                    <div className='right'>
+
+                    {/* do it later */}
+                    {/* <div className='right'>
                         <button className='add-more'>
                             Add more
                             <img src={plusblack} height="16px"/>
                         </button>                                   
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="divider">

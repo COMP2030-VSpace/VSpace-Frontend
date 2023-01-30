@@ -45,6 +45,7 @@ const CreateForm = (props)=>{
     const [searchValue, setSearchValue] = useState('');
 
     const [topCommunity, setTopCommunity] = useState("");
+    const [parentCollection, setParentCollection] = useState("");
 
     const itemsPerPage = 25;
 
@@ -92,10 +93,14 @@ const CreateForm = (props)=>{
             return () => clearTimeout(delayDebounceFn)
     }, [searchValue])
 
-    const nextCreateState = (state, topCommunity) => {
+    const nextCreateState = (state, parent) => {
         if(state === "sub-community"){
-            console.log(topCommunity);
-            setTopCommunity(topCommunity);
+            console.log(parent);
+            setTopCommunity(parent);
+        }
+        else if(state === "item"){
+            console.log(parent);
+            setParentCollection(parent);
         }
 
 
@@ -635,6 +640,7 @@ const CreateForm = (props)=>{
 
                 {props.createType === "item" &&
                     <FormItem
+                        parent = {parentCollection}
                         nextCreateState = {nextCreateState}
                         lastCreateState = {lastCreateState}
                     ></FormItem>

@@ -26,6 +26,8 @@ import arrow_right_icon from "../../assets/side_menu/arrow_right.png";
 import { moveTo } from '../../utils/helperFunctions';
 import Cookies from 'js-cookie';
 
+import { userRole } from '../../enums/enum';
+
 // import components
 
 
@@ -35,42 +37,36 @@ const SideMenu = (props)=>{
     const [curMenuItem, setCurMenuItem] = useState(-1);
 
     const role = Cookies.get("role");
+    
 
     // realtime data
-    const menu_list = [
-        {
-            "icon": new_icon,
-            "title": "New",
-            "sub_menu_list":
-            [
-                role === "site_admin" ? (
+    let menu_list;
+    if(role === userRole.SITE_ADMIN){
+        menu_list = [
+            {
+                "icon": new_icon,
+                "title": "New",
+                "sub_menu_list":
+                [
                     {
                         "title": "Community",
-                        "link":"/admin/community/add"
+                        "link":"/community/add"
                     },
                     {
                         "title": "Collection",
-                        "link":"/admin/collection/add"
+                        "link":"/collection/add"
                     },
                     {
                         "title": "Item",
-                        "link":"/admin/item/add"
+                        "link":"/item/add"
                     }
-                ) :
-                (
-                    {
-                        "title": "Item",
-                        "link":"/admin/item/add"
-                    }
-                )
-            ]
-        },
-        {
-            "icon": edit_icon,
-            "title": "Edit",
-            "sub_menu_list":
-            [
-                role === "site_admin" ? (
+                ]
+            },
+            {
+                "icon": edit_icon,
+                "title": "Edit",
+                "sub_menu_list":
+                [
                     {
                         "title": "community",
                         "link":""
@@ -83,16 +79,8 @@ const SideMenu = (props)=>{
                         "title": "Item",
                         "link":""
                     }
-                ) :
-                (
-                    {
-                        "title": "Item",
-                        "link":""
-                    }
-                )
-            ]
-        },
-        role === "site_admin" && (
+                ]
+            },
             {
                 "icon": import_icon,
                 "title": "Import",
@@ -213,8 +201,34 @@ const SideMenu = (props)=>{
 
                 ]
             }
-        )
-    ]
+        ]
+    }
+    else{
+        menu_list = [
+            {
+                "icon": new_icon,
+                "title": "New",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "Item",
+                        "link":"/item/add"
+                    }
+                ]
+            },
+            {
+                "icon": edit_icon,
+                "title": "Edit",
+                "sub_menu_list":
+                [
+                    {
+                        "title": "Item",
+                        "link":""
+                    }
+                ]
+            }
+        ]
+    }
 
 
     // functions
@@ -242,10 +256,12 @@ const SideMenu = (props)=>{
         <>
             <div className = {["sidemenu-bg", menuIsCollapsed ? "collapsed" : "expand"].join(" ")}
                 onMouseEnter = {() => expand()}
+                onMouseLeave = {() => collapse()}
             ></div>
 
             <div className = {['side-menu' , menuIsCollapsed ? "collapsed" : "expand"].join(" ")}
                 onMouseLeave = {() => collapse()}
+                onMouseEnter = {() => expand()}
             >
                 {!menuIsCollapsed &&
                     <>

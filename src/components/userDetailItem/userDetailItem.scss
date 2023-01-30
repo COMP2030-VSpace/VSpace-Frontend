@@ -1,12 +1,18 @@
 .user-detail-item{
-    .heading {
-        padding-bottom: 1rem;
+    .heading{
+        display: flex;
         border-bottom: 1px solid #cdd4de;
-    
-        font-weight: 600;
-        font-size: 2rem;
-        line-height: 44px;
-    }
+        margin-bottom: 2rem;
+        // justify-content: space-between;
+
+        h2 {
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 44px;
+            margin-top: 0;
+            margin-left: 1rem;
+        }
+    } 
     
     .wrapper-2 {
         display: flex;
