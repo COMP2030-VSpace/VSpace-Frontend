@@ -132,9 +132,15 @@ const UserDetailItem = (props) => {
 
                     <div className="small-header-content">{data["dc.identifier.citation"][0].value}</div>
 
-                    <div className="small-header">URI</div>
+                    {/* <div className="small-header">URI</div>
                     <div className="links">
                         {data["dc.identifier.uri"][0].value}
+                    </div> */}
+
+                    <div className="small-header">URL</div>
+                    
+                    <div className="links">
+                        {data["dc.identifier.uri"][0].value.split("handle")[0] + "item/" + props.item["_embedded"].indexableObject.uuid}
                     </div>
 
                     <div className="small-header">Collections</div>
