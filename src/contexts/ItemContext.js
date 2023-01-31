@@ -104,12 +104,20 @@ const ItemContextProvider = ({ children }) => {
         return response;
     }
 
+    const getItemInfo = async (id) => {
+        const url = `https://vinspace.online/server/api/core/items/${id}`;
+
+        const response = await instance.get(url);
+
+        return response;
+    }
+
  
 
     const itemContextData = { 
         startSubmission, uploadFiles, saveWorkspace, 
         submitWorkspace, getRecentItemsFromSite, getThumbnail, 
-        getBundles, getBitstreams
+        getBundles, getBitstreams, getItemInfo
     }
 
     return (<ItemContext.Provider value={itemContextData}>{children}</ItemContext.Provider>)

@@ -8,11 +8,24 @@ import { useContext, useEffect, useState, useRef } from "react";
 
 import { ItemContext } from "../../contexts/ItemContext";
 
+import { moveTo } from "../../utils/helperFunctions";
+
 const UserDetailItem = (props) => {
     const myRef = useRef(null)
 
-    const data = props.item["_embedded"].indexableObject.metadata;
+    let data;
+
     // console.log(props.item);
+    
+    if(props.type === "detail"){
+        // console.log("hello 1");
+        data = props.item.metadata;
+    }
+    else{
+        data = props.item["_embedded"].indexableObject.metadata;
+    }
+    
+    // console.log("hello", data);
 
     const [thumbnail, setThumbnail] = useState("");
 
@@ -24,7 +37,15 @@ const UserDetailItem = (props) => {
     useEffect(() => {
         const getItemThumbnail = async () => {
             // console.log(props.item);
-            const itemId = props.item["_embedded"].indexableObject.uuid;
+            let itemId;
+
+            if(props.type === "detail"){
+                itemId = props.item.uuid;
+            }
+            else{
+                itemId = props.item["_embedded"].indexableObject.uuid;
+            }
+            
             const response = await getThumbnail(itemId);
 
             // console.log(response);
@@ -33,7 +54,16 @@ const UserDetailItem = (props) => {
         }
 
         const getItemBitstreams = async () => {
-            const itemId = props.item["_embedded"].indexableObject.uuid;
+
+            let itemId;
+
+            if(props.type === "detail"){
+                itemId = props.item.uuid;
+            }
+            else{
+                itemId = props.item["_embedded"].indexableObject.uuid;
+            }
+
             const response = await getBundles(itemId);
 
             // console.log(response);
@@ -49,6 +79,7 @@ const UserDetailItem = (props) => {
         getItemBitstreams();
 
         myRef.current.scrollIntoView({ block: 'start',  behavior: 'smooth' });
+
     }, [])
 
     return (
@@ -74,85 +105,102 @@ const UserDetailItem = (props) => {
             </h2> */}
 
             <div className='heading' ref={myRef}>
-                <Button 
-                    styles = {{
-                        "height": "2.6rem",
-                        // "width": "90%",
-                        "background": " #2E5288",
-                        "margin-right": "0",
-                        "margin-bottom": "0",
-                        "color": "#ffffff",
-                        "padding": "0.05rem 1.5rem",
-                        "margin": "0"
-                    }}
+                {props.type !== "detail" &&
+                    <Button 
+                        styles = {{
+                            "height": "2.6rem",
+                            // "width": "90%",
+                            "background": " #2E5288",
+                            "margin-right": "0",
+                            "margin-bottom": "0",
+                            "color": "#ffffff",
+                            "padding": "0.05rem 1.5rem",
+                            "margin": "0"
+                        }}
 
-                    content = "Back"
+                        content = "Back"
 
-                    handleClick = {() => props.backHome("item")}
-                ></Button>
+                        handleClick = {() => props.backHome("item")}
+                    ></Button>
+                }
 
                 <h2>
                     {data["dc.title"][0].value}
                 </h2>
             </div>
+            
+            {data &&
+                <div className="wrapper-2">
+                    <div className="left-left">
+                        <img src={thumbnail} alt="Thumbnail" />
+                        <div className="small-header">Files</div>
+                        <div className="links">
+                            {file !== "" && <a href={file["_links"].content.href} target="_blank" rel="noreferrer">{file.metadata["dc.title"][0].value}</a>}
+                        </div>
+                        <div className="small-header">Date</div>
+                        <div className="small-header-content">2020 - 10 - 17</div>
+                        <div className="small-header">Authors</div>
+                        <div className="small-header-content">
+                            {data["dc.contributor.author"].map((author, idx) => {
+                                if(idx !== data["dc.contributor.author"].length - 1){
+                                    return <span>{author.value}, </span>
+                                }
 
-            <div className="wrapper-2">
-                <div className="left-left">
-                    <img src={thumbnail} alt="Thumbnail" />
-                    <div className="small-header">Files</div>
-                    <div className="links">
-                        {file !== "" && <a href={file["_links"].content.href} target="_blank" rel="noreferrer">{file.metadata["dc.title"][0].value}</a>}
+                                return <span>{author.value}</span>
+                            })}
+                        </div>
+                        
+                        <div className="small-header">Publisher</div>
+                        <div className="small-header-content">{data["dc.publisher"][0].value}</div>
                     </div>
-                    <div className="small-header">Date</div>
-                    <div className="small-header-content">2020 - 10 - 17</div>
-                    <div className="small-header">Authors</div>
-                    <div className="small-header-content">
-                        {data["dc.contributor.author"].map((author, idx) => {
-                            if(idx !== data["dc.contributor.author"].length - 1){
-                                return <span>{author.value}, </span>
+                    <div className="left-right">
+                        <div className="small-header">Abstract</div>
+
+                        <div className="small-header-content">{data["dc.description.abstract"][0].value}</div>
+
+                        <div className="small-header">Description</div>
+
+                        <div className="small-header-content">{data["dc.description"][0].value}</div>
+
+                        <div className="small-header">Citation</div>
+
+                        <div className="small-header-content">{data["dc.identifier.citation"][0].value}</div>
+
+                        {/* <div className="small-header">URI</div>
+                        <div className="links">
+                            {data["dc.identifier.uri"][0].value}
+                        </div> */}
+
+                        <div className="small-header">URL</div>
+                        
+                        <div className="links">
+                            {props.type === "detail" &&
+                                data["dc.identifier.uri"][0].value.split("handle")[0] + "item/" + props.item.uuid
                             }
 
-                            return <span>{author.value}</span>
-                        })}
-                    </div>
-                    
-                    <div className="small-header">Publisher</div>
-                    <div className="small-header-content">{data["dc.publisher"][0].value}</div>
-                </div>
-                <div className="left-right">
-                    <div className="small-header">Abstract</div>
+                            {props.type !== "detail" &&
+                                data["dc.identifier.uri"][0].value.split("handle")[0] + "item/" + props.item["_embedded"].indexableObject.uuid
+                            }
+                        </div>
+                        
 
-                    <div className="small-header-content">{data["dc.description.abstract"][0].value}</div>
+                        {/* later */}
+                        {/* <div className="small-header">Collections</div>
 
-                    <div className="small-header">Description</div>
+                        <div className="links">lmao</div> */}
 
-                    <div className="small-header-content">{data["dc.description"][0].value}</div>
 
-                    <div className="small-header">Citation</div>
+                        
+                        {props.type !== "detail" &&
+                            <div className="last-item" onClick={() => moveTo("/item/" + props.item["_embedded"].indexableObject.uuid)}>
+                                <img src={info} alt="" />
+                                <p>Full item page</p>
+                            </div>
+                        }
 
-                    <div className="small-header-content">{data["dc.identifier.citation"][0].value}</div>
-
-                    {/* <div className="small-header">URI</div>
-                    <div className="links">
-                        {data["dc.identifier.uri"][0].value}
-                    </div> */}
-
-                    <div className="small-header">URL</div>
-                    
-                    <div className="links">
-                        {data["dc.identifier.uri"][0].value.split("handle")[0] + "item/" + props.item["_embedded"].indexableObject.uuid}
-                    </div>
-
-                    <div className="small-header">Collections</div>
-
-                    <div className="links">lmao</div>
-
-                    <div className="last-item">
-                        <img src={info} alt="" />
-                        <p>Full item page</p>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     );
 };

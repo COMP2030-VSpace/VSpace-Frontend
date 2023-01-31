@@ -2,7 +2,7 @@
 
 @import "../../scss/variables.scss";
 
-.home {
+.item-detail {
     h1 {
         // color: $red;
         font-weight: 500;
@@ -42,7 +42,7 @@
 
             .left {
                 // background: red;
-                flex-basis: 70%;
+                flex-basis: 100%;
                 box-sizing: border-box;
 
                 .item {
