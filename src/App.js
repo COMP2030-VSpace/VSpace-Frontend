@@ -14,6 +14,7 @@ import Item from './pages/admin/item/CreateItem';
 import Community from './pages/admin/community/Community';
 import Search from './pages/search/Search';
 import Profile from './pages/profile/Profile';
+import ItemPage from './pages/item/ItemPage';
 
 // modifier
 import Protected from './pages/protected/Protected';
@@ -89,6 +90,11 @@ function App() {
 
                                 <Route path='/profile/:id' element={
                                     <Profile />
+                                } />
+
+
+                                <Route path='/item/:id' element={
+                                    <ItemPage/>
                                 } />
                             </Routes>
                         </ItemContextProvider>

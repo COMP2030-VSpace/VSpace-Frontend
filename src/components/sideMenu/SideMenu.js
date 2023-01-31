@@ -68,7 +68,7 @@ const SideMenu = (props)=>{
                 "sub_menu_list":
                 [
                     {
-                        "title": "community",
+                        "title": "Community",
                         "link":""
                     },
                     {
@@ -87,7 +87,7 @@ const SideMenu = (props)=>{
                 "sub_menu_list":
                 [
                     {
-                        "title": "community",
+                        "title": "Community",
                         "link":""
                     },
                     {

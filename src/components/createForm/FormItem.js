@@ -419,7 +419,7 @@ const FormItem = (props) => {
 
                 <div className='form-item'>
                     <div className='text'>
-                        Author
+                        Author *
                     </div>
 
                     <div className='form-input-remove'>
