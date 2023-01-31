@@ -55,7 +55,7 @@ const CreateForm = (props)=>{
             const response = await getCommunities(page, itemsPerPage);
             const data = response.data["_embedded"].communities
 
-            console.log(data);
+            // console.log(data);
 
             setCommunities(data);
             
@@ -65,7 +65,7 @@ const CreateForm = (props)=>{
             const page = 0;
             const response = await getAllCollections(page, itemsPerPage);
 
-            console.log(response);
+            // console.log(response);
             const data = response.data["_embedded"].collections
 
             // console.log(data);

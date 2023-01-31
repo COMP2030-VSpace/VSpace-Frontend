@@ -109,7 +109,10 @@ instance.interceptors.response.use(
         // Do something with request error
         const newCsrf = error.response.headers["dspace-xsrf-token"];
 
+        // console.log("in here", newCsrf);
+
         if(newCsrf){
+            // console.log("in here", newCsrf);
             refreshToken(newCsrf);
         }
         
