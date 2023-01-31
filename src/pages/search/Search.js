@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, createRef, useContext, useState } from "react";
+import { useEffect, useRef, useContext, useState } from "react";
 import "./search.scss";
 
 // import components
@@ -17,9 +17,21 @@ import arrow from '../../assets/search/arrow.png';
 import { SearchContext } from "../../contexts/SearchContext";
 
 const Search = (props) => {
+    const myRef = useRef(null)
     const { searchSite } = useContext(SearchContext);
 
     const [searchRes, setSearchRes] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
+
+    const handleChange = (event) => {
+        // console.log(event.target.value);
+        setSearchValue(event.target.value);
+    }
+
+    const submitSearch = () => {
+        const url = "/search?query=" + searchValue.trim();
+        window.location.href = url;
+    }
 
     useEffect(() => {
         const searchItems = async () => {
@@ -29,11 +41,12 @@ const Search = (props) => {
 
             const response = await searchSite(keyword);
 
-            console.log(response.data["_embedded"].searchResult["_embedded"].objects);
+            // console.log(response.data["_embedded"].searchResult["_embedded"].objects);
             setSearchRes(response.data["_embedded"].searchResult["_embedded"].objects)
         }
 
         searchItems();
+        myRef.current.scrollIntoView({ block: 'start',  behavior: 'smooth' });
     }, []);
 
     return (
@@ -44,7 +57,7 @@ const Search = (props) => {
 
                 <div className="main">
                     <div className="left">
-                        <div className="header">
+                        <div className="header" ref={myRef}>
                             <h2>Search</h2>
                         </div>
 
@@ -66,9 +79,16 @@ const Search = (props) => {
                             </div>
 
                             <div className='search-input'>
-                                <input className="search" autocomplete="off" type="search" placeholder="Search..."/>
+                                <input 
+                                    className="search" 
+                                    autocomplete="off" 
+                                    type="search" 
+                                    placeholder="Search..."
+                                    value={searchValue}
+                                    onChange = {(event) => handleChange(event)}
+                                />
 
-                                <div class="tmp-button">
+                                <div class="tmp-button" onClick={() => submitSearch()}>
                                     Go
                                 </div>
                             </div>
