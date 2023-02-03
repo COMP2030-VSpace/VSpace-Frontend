@@ -1,1 +1,0 @@
-export const apiUrl = 'https://vinspace.online/server/api'; 
